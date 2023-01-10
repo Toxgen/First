@@ -4,7 +4,6 @@ import time
 weapons = []
 items = []
 exp = []
-global weapons
 
 def Turtorial():
     

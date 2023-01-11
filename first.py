@@ -83,4 +83,6 @@ def Turtorial():
         time.sleep(0.333)
         weapons.append('wooden cub')
         print('P.S. the "wooden cub does 3-5 DMG')
-
+        
+weapons.append("wooden cub")
+print(weapons)

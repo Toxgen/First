@@ -72,7 +72,8 @@ def Turtorial():
                 else:
                         print('That is not "attack", try again')
 
-
+# to be honest, change the while statement if cause it looks wierd.
+                       
     while monsterHp != 0 or -1 or -2:
         combat()
         if monsterHp == 0:
@@ -81,8 +82,12 @@ def Turtorial():
         time.sleep(0.6667)
         print('Gotten "wooden cub"')
         time.sleep(0.333)
-        weapons.append('wooden cub')
         print('P.S. the "wooden cub does 3-5 DMG')
         
 weapons.append("wooden cub")
 print(weapons)
+
+def Mid():
+    # prepare for like an interactive system for this and maybe not a def aswell.
+
+

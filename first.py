@@ -69,7 +69,6 @@ def bruh():
 def combat():
     if monsterHp > 0:
          while True:
-            print(monsterHp)
             time.sleep(0.25)
             line = input('> ')
             if line.lower().strip() == 'attack' :

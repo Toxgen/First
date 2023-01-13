@@ -81,7 +81,7 @@ def combat():
                 break
 combat()
 
-# somehow make if the value of monsterHp goes neg, then ignore everying printed 
+# somehow make if the value of monsterHp goes neg, then ignore everying printed.
 
 bruh()
 

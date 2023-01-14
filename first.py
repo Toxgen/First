@@ -1,8 +1,6 @@
 import random
 import time
 
-
-
 global weapons
 weapons = []
 items = []
@@ -25,30 +23,36 @@ def beginning():
     print('The mouth was full of teeth, which were stained yellow, and standing up to 8 feet')
     time.sleep(2)
     print("You didn't carry anything, unfortunately, but you still tried to attack it")
+    time.sleep(1.12)
     print('The monster has ' + str(monsterHp) + ' hp')
-    time.sleep(4.5)
+    time.sleep(2.75)
     print('While you have ' + str(selfHp) + ' hp')
     time.sleep(3.1)
     print('You will always attack first no matter what')
     time.sleep(2)
-    print('In order to atack, you need to type "attack"')
+    print('In order to attack, you need to type "attack"')
 
 beginning()
 
 # crtl^c to stop input line :/
 
 def attackSystem():
+    global monsterHp, selfHp
     fist_Dmg = random.randint(1, 3)
     monster_Dmg = random.randint(2, 4)
-    global monsterHp, selfHp
     monsterHp = monsterHp - fist_Dmg
     selfHp = selfHp - monster_Dmg
-    time.sleep(0.2)
-    print('The monster now has, ' + str(monsterHp) + ' hp')
-    time.sleep(1)
-    print('Ouch, now you have, ' + str(selfHp) + ' hp')
-    return monsterHp, selfHp
+    for i in range(1):
+        if not monsterHp == [0, -1, -2] or not monsterHp > 0:
+            time.sleep(0.2)
+            print('The monster now has, ' + str(monsterHp) + ' hp')
+            time.sleep(1)
+            print('Ouch, now you have, ' + str(selfHp) + ' hp')
+            return monsterHp, selfHp
+        else:
+            break
 
+#cant fix if neg monsterHp happens, idk if haeve free time do this
 
 def bruh():
     print('Congratulations, you have defeated the monster')
@@ -74,10 +78,8 @@ def combat():
 combat()
 
 # somehow make if the value of monsterHp goes neg, then ignore everying printed 
-# make exp a variable
 
 bruh()
 
 weapons.append("wooden cub")
 Exp =+ 8
-

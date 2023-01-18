@@ -30,6 +30,7 @@ def beginning():
     time.sleep(3.1)
     print('You will always attack first no matter what')
     time.sleep(2)
+    print("\n")
     print('In order to attack, you need to type "attack"')
 
 beginning()
@@ -45,6 +46,7 @@ def attackSystem():
     for i in range(1):
         if not monsterHp == [0, -1, -2] or not monsterHp > 0:
             time.sleep(0.2)
+            print('\n')
             print('The monster now has, ' + str(monsterHp) + ' hp')
             time.sleep(1)
             print('Ouch, now you have, ' + str(selfHp) + ' hp')
@@ -81,5 +83,12 @@ combat()
 
 bruh()
 
+# https://stackoverflow.com/questions/23271575/printing-bold-colored-etc-text-in-ipython-qtconsole (scrol down)
+
 weapons.append("wooden cub")
 Exp =+ 8
+
+def Continuation():
+    print('\x1b[3;30;40m' + 'test' + '\x1b[0m') # <-- the print statement is just a test
+
+Continuation()

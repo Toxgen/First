@@ -54,8 +54,6 @@ def attackSystem():
         else:
             break
 
-#cant fix if neg monsterHp happens, idk if haeve free time do this
-
 def bruh():
     print('Congratulations, you have defeated the monster')
     time.sleep(0.6667)
@@ -80,8 +78,6 @@ def combat():
                 break
 combat()
 
-# somehow make if the value of monsterHp goes neg, then ignore everying printed 
-
 bruh()
 
 weapons.append("wooden cub")
@@ -100,4 +96,73 @@ def Sad_goodbye():
 
 Sad_goodbye()
 
+# Below these are "resources"
+'''
 
+
+https://stackoverflow.com/questions/23271575/printing-bold-colored-etc-text-in-ipython-qtconsole (scroll down)
+'''
+
+
+def naming():
+    print("Make a Username")
+    time.sleep(2.2)
+    print('The Username can only be 1-8 characters')
+    name = input('> ')
+    dummy = len(name)
+    while dummy >= 9:
+        print('\n')
+        print('3-8 characters')
+        time.sleep(1.0)
+        print('Try again')
+        name = input('> ')
+        dummy = len(name)
+        if dummy <= 9:
+            break
+    if name != None:
+        print('You typed in "' + name + '". Are you Sure? Type in "yes" or "no"')
+        Sureness = input('> ')
+        if Sureness.lower().strip() == 'yes':
+            print('Your name now will be' + name)
+
+        elif Sureness.lower().strip() != 'no':
+           while Sureness.lower().strip() != 'yes' or 'no':
+            print('Type in Yes or No')
+            Sureness = input('> ')
+            if Sureness.lower().strip() == 'yes':
+                print('Your name is "' + name + '"')
+
+            elif Sureness.lower().strip() == 'no':
+                time.sleep(0.22)
+                while Sureness.lower().strip() == 'no':
+                    print("What's your new name")
+                    name = input('> ')
+                    if not name == None:
+                        print('You typed in "' + name +
+                              '". Are you Sure? Type in "yes" or "no"')
+                        Sureness = input('> ')
+                        if Sureness.lower().strip() == 'yes':
+                            print('Your name now will be ' + name)
+                        else:
+                            print('')
+            else:
+                print('Type Yes or No')
+                print('\n')
+
+        else:
+            time.sleep(0.22)
+            while Sureness.lower().strip() == 'no':
+                print('\n')
+                print("What's your new name ")
+                name = input('> ')
+                if not name == None:
+                    print('You typed in ' + name +
+                          '. Are you Sure? Type in "yes" or "no"')
+                    Sureness = input('> ')
+                    if Sureness.lower().strip() == 'yes':
+                        print('Your name now will be ' + name)
+                    else:
+                        print('')
+
+
+naming()

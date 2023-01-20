@@ -96,14 +96,6 @@ def Sad_goodbye():
 
 Sad_goodbye()
 
-# Below these are "resources"
-'''
-
-
-https://stackoverflow.com/questions/23271575/printing-bold-colored-etc-text-in-ipython-qtconsole (scroll down)
-'''
-
-
 def naming():
     print("Make a Username")
     time.sleep(2.2)

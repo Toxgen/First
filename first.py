@@ -105,7 +105,7 @@ def naming():
     print('The Username can only be 1-8 characters')
     name = input('> ')
     dummy = len(name)
-    while dummy >= 9:
+    while dummy >= 9: # make this so this also equals 0 as 0 not good
         print('\n')
         print('3-8 characters')
         time.sleep(1.0)

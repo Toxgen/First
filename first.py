@@ -96,6 +96,9 @@ def Sad_goodbye():
 
 Sad_goodbye()
 
+def naming1():
+    #maybe put the code here?! 
+
 def naming():
     print("Make a Username")
     time.sleep(2.2)

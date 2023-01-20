@@ -64,6 +64,7 @@ def bruh():
     print('P.S. the "wooden cub does 3-5 DMG')
     time.sleep(0.333)
     print('Gained 8 XP')
+    print('\n')
 
 def combat():
     if monsterHp > 0:
@@ -83,12 +84,20 @@ combat()
 
 bruh()
 
-# https://stackoverflow.com/questions/23271575/printing-bold-colored-etc-text-in-ipython-qtconsole (scrol down)
-
 weapons.append("wooden cub")
 Exp =+ 8
 
-def Continuation():
-    print('\x1b[3;30;40m' + 'test' + '\x1b[0m') # <-- the print statement is just a test
 
-Continuation()
+def Sad_goodbye():
+    print('\x1b[3;30;40m' + 'A few minute later...' + '\x1b[0m') 
+    time.sleep(2.3)
+    print('You got back to your cabin, preparing for the long adventure that awaits you to the city')
+    time.sleep(4)
+    print('You pack you necessities food, water, and clothes')
+    time.sleep(3)
+    print('After you\'re done, you say goodbye to your small cabin and started your journey')
+    print('\n')
+
+Sad_goodbye()
+
+

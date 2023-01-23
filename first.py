@@ -89,23 +89,21 @@ def Sad_goodbye():
     time.sleep(2.3)
     print('You got back to your cabin, preparing for the long adventure that awaits you to the city')
     time.sleep(4)
-    print('You pack you necessities food, water, and clothes')
+    print('You pack your necessities food, water, and clothes')
     time.sleep(3)
     print('After you\'re done, you say goodbye to your small cabin and started your journey')
     print('\n')
 
 Sad_goodbye()
 
-def naming1():
-    #maybe put the code here?! 
 
 def naming():
     print("Make a Username")
     time.sleep(2.2)
-    print('The Username can only be 1-8 characters')
+    print('The Username can only be 1-8 characters long')
     name = input('> ')
     dummy = len(name)
-    while dummy >= 9: # make this so this also equals 0 as 0 not good
+    while dummy >= 9:
         print('\n')
         print('3-8 characters')
         time.sleep(1.0)
@@ -114,34 +112,47 @@ def naming():
         dummy = len(name)
         if dummy <= 9:
             break
-    if name != None:
+    if len(name) != 0:
+        print('\n')
         print('You typed in "' + name + '". Are you Sure? Type in "yes" or "no"')
         Sureness = input('> ')
         if Sureness.lower().strip() == 'yes':
-            print('Your name now will be' + name)
+            print('Your name now will be "' + name + '" ')
 
         elif Sureness.lower().strip() != 'no':
-           while Sureness.lower().strip() != 'yes' or 'no':
+           while Sureness.lower().strip() != 'yes':
             print('Type in Yes or No')
             Sureness = input('> ')
             if Sureness.lower().strip() == 'yes':
                 print('Your name is "' + name + '"')
+                break
 
             elif Sureness.lower().strip() == 'no':
                 time.sleep(0.22)
+                print('\n')
                 while Sureness.lower().strip() == 'no':
                     print("What's your new name")
                     name = input('> ')
-                    if not name == None:
+                    dummy = len(name)
+                    while dummy >= 9:
+                        print('\n')
+                        print('3-8 characters')
+                        time.sleep(1.0)
+                        print('Try again')
+                        name = input('> ')
+                        dummy = len(name)
+                        if dummy <= 9:
+                            break
+                    if len(name) != 0:
                         print('You typed in "' + name +
                               '". Are you Sure? Type in "yes" or "no"')
                         Sureness = input('> ')
                         if Sureness.lower().strip() == 'yes':
-                            print('Your name now will be ' + name)
+                            print('Your name now will be "' + name + '" ')
+                            break
                         else:
                             print('')
             else:
-                print('Type Yes or No')
                 print('\n')
 
         else:
@@ -150,14 +161,31 @@ def naming():
                 print('\n')
                 print("What's your new name ")
                 name = input('> ')
-                if not name == None:
-                    print('You typed in ' + name +
-                          '. Are you Sure? Type in "yes" or "no"')
+                dummy = len(name)
+                while dummy >= 9:
+                    print('\n')
+                    print('3-8 characters')
+                    time.sleep(1.0)
+                    print('Try again')
+                    name = input('> ')
+                    dummy = len(name)
+                    if dummy <= 9:
+                        break
+                if len(name) != 0:
+                    print('You typed in "' + name +
+                          '". Are you Sure? Type in "yes" or "no"')
                     Sureness = input('> ')
                     if Sureness.lower().strip() == 'yes':
-                        print('Your name now will be ' + name)
+                        print('Your name is "' + name + '" ')
+                        break
                     else:
                         print('')
+                else:
+                    print('\n')
+                    naming()
+    else:
+        print('\n')
+        naming()
 
 
 naming()

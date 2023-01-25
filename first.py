@@ -196,7 +196,6 @@ print('\n')
 time.sleep(1.2223)
 
 print('Type in ".help" to find your commands')
-counter = 0
 
 help1 = input('> ')
 if help1.lower().strip() == ".help":  # fix this, i am bored(in a way of lazy) should be simple

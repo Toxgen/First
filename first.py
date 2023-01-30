@@ -196,11 +196,11 @@ print('\n')
 time.sleep(1.2223)
 
 print('Type in ".help" to find your commands')
-
-help1 = input('> ')
-if help1.lower().strip() == ".help":  # fix this, i am bored(in a way of lazy) should be simple
+def bk(): # indent this
+help1 = input('> ') #put while statement same like naming
+if help1.lower().strip() == ".help":  # just dont put a else statement
     commands = ['stats', 'inv', 'adv']
     print(*commands, sep='\n')
+    time.sleep(0.34)
      #break 
-else:
-    print('Type .help')
+# put else statement

@@ -197,7 +197,7 @@ time.sleep(1.2223)
 
 print('Type in ".help" to find your commands')
 def bk(): # indent this
-help1 = input('> ') #put while statement same like naming
+     help1 = input('> ') #put while statement same like naming
 if help1.lower().strip() == ".help":  # just dont put a else statement
     commands = ['stats', 'inv', 'adv']
     print(*commands, sep='\n')

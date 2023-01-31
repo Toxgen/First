@@ -218,11 +218,17 @@ time.sleep(0.2)
 help2 = input('> ')
 def picking101():
     while help2 != None:
-        if help2.lower().strip() == commands[0]: # this litteraly doesnt work i think (just for python idle)
+        if help2.lower().strip() == commands[0]:
             print('print this!!!??!?')
+            break
         elif help2.lower().strip() == commands[1]:
             print('that')
+            break
         elif help2.lower().strip() == commands[2]:
             print('idk anymore')
+            break
         else:
             print('type in one of the above words ("stats", "inv", "adv")')
+            picking101()
+
+picking101()

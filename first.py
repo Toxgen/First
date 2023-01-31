@@ -219,7 +219,7 @@ help2 = input('> ')
 def picking101():
     while help2 != None:
         if help2.lower().strip() == commands[0]:
-            print('print this!!!??!?')
+            print('Here are your stats')
             break
         elif help2.lower().strip() == commands[1]:
             print('that')

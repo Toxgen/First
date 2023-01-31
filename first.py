@@ -196,7 +196,7 @@ print('\n')
 time.sleep(1.2223)
 
 print('Type in ".help" to find your commands')
-def bk(): # indent this
+def bk(): 
     help1 = input('> ') 
     while help1.lower().strip() == ".help" :
         if help1.lower().strip() == ".help": 

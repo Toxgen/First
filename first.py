@@ -13,23 +13,23 @@ selfHp = 50
 
 def beginning(): # make the time even longer as Zach can't read that fast 
     print('The day is the September 1st, a peaceful and normal day') # also is put like some pet with him
-    time.sleep(1.5)
+    time.sleep(2)
     print('You wake up and feel refresed from yesterday')
-    time.sleep(1.7666)
+    time.sleep(2.2)
     print('You get ready for your morning stroll around the woods')
-    time.sleep(2)
+    time.sleep(2.2)
     print('However, when you went outside, you saw a disgusting, huge creature')
-    time.sleep(2.785)
+    time.sleep(3)
     print('The mouth was full of teeth, which were stained yellow, and standing up to 8 feet')
-    time.sleep(2)
-    print("You didn't carry anything, unfortunately, but you still tried to attack it")
-    time.sleep(1.12)
-    print('The monster has ' + str(monsterHp) + ' hp')
-    time.sleep(2.75)
-    print('While you have ' + str(selfHp) + ' hp')
     time.sleep(3.1)
+    print("You didn't carry anything, unfortunately, but you still tried to attack it")
+    time.sleep(1.5)
+    print('The monster has ' + str(monsterHp) + ' hp')
+    time.sleep(3)
+    print('While you have ' + str(selfHp) + ' hp')
+    time.sleep(2.75)
     print('You will always attack first no matter what')
-    time.sleep(2)
+    time.sleep(2.1)
     print("\n")
     print('In order to attack, you need to type "attack"')
 
@@ -195,7 +195,7 @@ print('What do you want to do, ' + name)
 
 print('\n')
 time.sleep(1.2223)
-
+# put like a print statement for like "oh you dont know how to do things"
 print('Type in ".help" to find your commands')
 def bk(): 
     global commands
@@ -215,11 +215,11 @@ bk()
 
 time.sleep(1)
 print('Try to type one of the printed words out!!')
-time.sleep(0.2)
+time.sleep(1)
 
 help2 = input('> ')
 def picking101():
-    while help2 != None:
+    while help2 != None: # maybe change this to len, test this out.
         if help2.lower().strip() == commands[0]:
             print('Here are your stats')
             break

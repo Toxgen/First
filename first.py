@@ -11,7 +11,7 @@ monsterHp = 10
 global selfHp
 selfHp = 50
 
-def beginning(): # make the time even longer as Zach can't read that fast 
+def beginning(): 
     print('The day is the September 1st, a peaceful and normal day') # also is put like some pet with him
     time.sleep(2)
     print('You wake up and feel refresed from yesterday')

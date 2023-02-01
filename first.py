@@ -98,6 +98,7 @@ Sad_goodbye()
 
 
 def naming():
+    global name
     print("Make a Username")
     time.sleep(2.2)
     print('The Username can only be 1-8 characters long')
@@ -197,6 +198,7 @@ time.sleep(1.2223)
 
 print('Type in ".help" to find your commands')
 def bk(): 
+    global commands
     help1 = input('> ') 
     while help1.lower().strip() == ".help" :
         if help1.lower().strip() == ".help": 

@@ -17,7 +17,7 @@ global selfHp
 selfHp = 50
 
 
-def beginning():  # make the time even longer as Zach can't read that fast
+def beginning():  
     # also is put like some pet with him
     print('The day is the September 1st, a peaceful and normal day')
     time.sleep(1.5)

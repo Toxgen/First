@@ -71,8 +71,6 @@ def attackSystem():
         time.sleep(1)
         print('Ouch, now you have, ' + str(selfHp) + ' hp')
         return monsterHp, selfHp
-bruh()
-
 
 def combat():
     while monsterHp >= 0:

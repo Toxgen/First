@@ -38,7 +38,8 @@ def beginning():
     print('You will always attack first no matter what')
     time.sleep(2)
     print("\n")
-    print('In order to attack, you need to type "attack"')
+    print('In order to attack, you need to type "adv"')
+    # print('and you have a fellow pet called ____') maybe something like this.
 
 
 beginning()
@@ -74,10 +75,8 @@ def attackSystem():
 
 def combat():
     while monsterHp >= 0:
-        if monsterHp == 0:
-            break
-        if monsterHp < 0:
-            break
+        if monsterHp <= 0:
+            break 
         time.sleep(0.25)
         line = input('> ')
         if line.lower().strip() == 'z':
@@ -236,7 +235,7 @@ help2 = input('> ')
 def picking101():
     while help2 != None:
         if help2.lower().strip() == commands[0]:
-            print('Here are your stats')
+            print('Here are your stats') #Maybe use a dictionary for this or smth like that
             break
         elif help2.lower().strip() == commands[1]:
             print('that')

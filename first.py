@@ -79,7 +79,7 @@ def combat():
             break 
         time.sleep(0.25)
         line = input('> ')
-        if line.lower().strip() == 'z':
+        if line.lower().strip() == 'adv':
             attackSystem()
         else:
             print('That is not "adv", try again')

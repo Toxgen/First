@@ -239,6 +239,9 @@ def picking101():
             stats = dict()
             stats = {
               "name" = name 
+              "weapon" = #make weapon variable
+              "exp" = #make exp update before this and make that exp a varibale/try to find a way
+            }
             break
         elif help2.lower().strip() == commands[1]:
             print('that')

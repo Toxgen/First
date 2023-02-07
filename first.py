@@ -7,7 +7,7 @@ import time
 
 '''
 global weapons
-weapons = []
+weapons = []#  make this a dict()
 items = []
 exp = 0
 

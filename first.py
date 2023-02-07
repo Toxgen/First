@@ -236,6 +236,9 @@ def picking101():
     while help2 != None:
         if help2.lower().strip() == commands[0]:
             print('Here are your stats') #Maybe use a dictionary for this or smth like that
+            stats = dict()
+            stats = {
+              "name" = name 
             break
         elif help2.lower().strip() == commands[1]:
             print('that')

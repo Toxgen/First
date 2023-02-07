@@ -89,7 +89,7 @@ combat()
 bruh()
 
 weapons.append("wooden cub")
-Exp = + 8
+Exp =+ 8
 
 
 def Sad_goodbye():
@@ -239,10 +239,11 @@ def picking101():
             stats = dict()
             stats = {
               "name" = name 
-              "weapon" = #make weapon variable
-              "exp" = #make exp update before this and make that exp a varibale/try to find a way
+              "weapon" = 
+              "exp" = exp
             }
             break
+            # MAKE AN ANOTHER DICTIONARY FOR A WEAPON STORAGE
         elif help2.lower().strip() == commands[1]:
             print('that')
             break

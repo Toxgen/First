@@ -5,6 +5,8 @@ import time
 "code is unreachable pylance" do: check if the code is after a return statement and
                               put it before the return function-ish
 
+crtl + z = undo
+crtl + y = redo
 '''
 global weapons
 weapons = dict()
@@ -233,42 +235,38 @@ help2 = input('> ')
 
 
 def picking101():
-    while help2 != None:
+    while any(x in commands for x in ['stats', 'inv', 'adv']):
         if help2.lower().strip() == commands[0]:
-            # Maybe use a dictionary for this or smth like that
             print('Here are your stats')
             stats = dict()
             stats = {
                 "name": name,
-                "weapon": weapons,
-                "exp": exp
+                "weapon(s)": weapons,
+                "exp": exp,
+                "health": selfHp
             }
-            print('\n')
+            print(sep=' ')
             for key, value in stats.items():
                 if key == 'name':
                     print('------------------------')
-                    print(key)
+                    print(key + ':')
                     print('"' + value + '" ')
                     print('------------------------')
-                    print(sep=' ')
-                elif key == 'weapon':
-                    print('------------------------')
-                    print(key)
+                elif key == 'weapon(s)':
+                    print(key + ":")
                     print(value)
                     print('------------------------')
-                    print(sep=' ')
                 elif key == 'exp':
-                    print('------------------------')
-                    print(key)
+                    print(key + ':')
                     print(str(value) + '/10')
                     print('------------------------')
-                    print(sep=' ')
-               # continue adding to this like health, pet health, defense, etc.
-            break
+                elif key == 'health':
+                    print(key + ':')
+                    print(str(value) + '/50')
+                    print('------------------------')
+                    break
         elif help2.lower().strip() == commands[1]:
-            inv = dict()
-            inv = {
-              "
+            print('WORK IN PROGRESS')
             break
         elif help2.lower().strip() == commands[2]:
             print('WORK IN PROGRESS')

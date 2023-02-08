@@ -7,8 +7,8 @@ import time
 
 '''
 global weapons
-weapons = []#  make this a dict()
-items = []
+weapons = dict()
+items = dict()
 exp = 0
 
 global monsterHp
@@ -17,7 +17,7 @@ global selfHp
 selfHp = 50
 
 
-def beginning():  
+def beginning():
     # also is put like some pet with him
     print('The day is the September 1st, a peaceful and normal day')
     time.sleep(1.5)
@@ -73,10 +73,11 @@ def attackSystem():
         print('Ouch, now you have, ' + str(selfHp) + ' hp')
         return monsterHp, selfHp
 
+
 def combat():
     while monsterHp >= 0:
         if monsterHp <= 0:
-            break 
+            break
         time.sleep(0.25)
         line = input('> ')
         if line.lower().strip() == 'adv':
@@ -88,8 +89,8 @@ def combat():
 combat()
 bruh()
 
-weapons.append("wooden cub")
-Exp =+ 8
+weapons.update({"wooden club": 1})
+Exp = + 8
 
 
 def Sad_goodbye():
@@ -205,20 +206,19 @@ print('What do you want to do, ' + name)
 print('\n')
 time.sleep(1.2223)
 
-print('Type in ".help" to find your commands')
-
+print('Type in "help" to find your commands')
 
 def bk():
     global commands
     help1 = input('> ')
-    while help1.lower().strip() == ".help":
-        if help1.lower().strip() == ".help":
+    while help1.lower().strip() == "help":
+        if help1.lower().strip() == "help":
             commands = ['stats', 'inv', 'adv']
             print(*commands, sep='\n')
             time.sleep(0.34)
             break
     else:
-        print('type in ".help"')
+        print('type in "help"')
         print('\n')
         bk()
 
@@ -235,20 +235,40 @@ help2 = input('> ')
 def picking101():
     while help2 != None:
         if help2.lower().strip() == commands[0]:
-            print('Here are your stats') #Maybe use a dictionary for this or smth like that
+            # Maybe use a dictionary for this or smth like that
+            print('Here are your stats')
             stats = dict()
             stats = {
-              "name" = name 
-              "weapon" = 
-              "exp" = exp
+                "name": name,
+                "weapon": weapons,
+                "exp": exp
             }
+            print('\n')
+            for key, value in stats.items():
+                if key == 'name':
+                    print('------------------------')
+                    print(key)
+                    print('"' + value + '" ')
+                    print('------------------------')
+                    print(sep=' ')
+                elif key == 'weapon':
+                    print('------------------------')
+                    print(key)
+                    print(value)
+                    print('------------------------')
+                    print(sep=' ')
+                elif key == 'exp':
+                    print('------------------------')
+                    print(key)
+                    print(str(value) + '/10')
+                    print('------------------------')
+                    print(sep=' ')
             break
-            # MAKE AN ANOTHER DICTIONARY FOR A WEAPON STORAGE
         elif help2.lower().strip() == commands[1]:
-            print('that')
+            print('WORK IN PROGRESS')
             break
         elif help2.lower().strip() == commands[2]:
-            print('idk anymore')
+            print('WORK IN PROGRESS')
             break
         else:
             print('type in one of the above words ("stats", "inv", "adv")')

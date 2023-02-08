@@ -263,9 +263,12 @@ def picking101():
                     print(str(value) + '/10')
                     print('------------------------')
                     print(sep=' ')
+               # continue adding to this like health, pet health, defense, etc.
             break
         elif help2.lower().strip() == commands[1]:
-            print('WORK IN PROGRESS')
+            inv = dict()
+            inv = {
+              "
             break
         elif help2.lower().strip() == commands[2]:
             print('WORK IN PROGRESS')

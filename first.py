@@ -235,7 +235,7 @@ help2 = input('> ')
 
 
 def picking101():
-    while any(x in commands for x in ['stats', 'inv', 'adv']):
+    while any(x in commands for x in ['stats', 'inv', 'adv']): # couldn't it be any(for x in [...]): {test it out}
         if help2.lower().strip() == commands[0]:
             print('Here are your stats')
             stats = dict()

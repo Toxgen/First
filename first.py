@@ -231,49 +231,45 @@ time.sleep(1)
 print('Try to type one of the printed words out!!')
 time.sleep(0.2)
 
-help2 = input('> ')
-
-
 def picking101():
-    while any(x in commands for x in ['stats', 'inv', 'adv']): # couldn't it be any(for x in [...]): {test it out} maybe have to change x to help1
-        if help2.lower().strip() == commands[0]:
-            print('Here are your stats')
-            stats = dict()
-            stats = {
-                "name": name,
-                "weapon(s)": weapons,
-                "exp": exp,
-                "health": selfHp
-            }
-            print(sep=' ')
-            for key, value in stats.items():
-                if key == 'name':
-                    print('------------------------')
-                    print(key + ':')
-                    print('"' + value + '" ')
-                    print('------------------------')
-                elif key == 'weapon(s)':
-                    print(key + ":")
-                    print(value)
-                    print('------------------------')
-                elif key == 'exp':
-                    print(key + ':')
-                    print(str(value) + '/10')
-                    print('------------------------')
-                elif key == 'health':
-                    print(key + ':')
-                    print(str(value) + '/50')
-                    print('------------------------')
-                    break
-        elif help2.lower().strip() == commands[1]:
-            print('WORK IN PROGRESS')
-            break
-        elif help2.lower().strip() == commands[2]:
-            print('WORK IN PROGRESS')
-            break
-        else:
-            print('type in one of the above words ("stats", "inv", "adv")')
-            picking101()
+    help2 = input('> ')
+    if help2.lower().strip() == commands[0]:
+        print('Here are your stats')
+        stats = dict()
+        stats = {
+            "name": name,
+            "weapon(s)": weapons,
+            "exp": exp,
+            "health": selfHp
+        }
+        print(sep=' ')
+        for key, value in stats.items():
+            if key == 'name':
+                print('------------------------')
+                print(key + ':')
+                print('"' + value + '" ')
+                print('------------------------')
+            elif key == 'weapon(s)':
+                print(key + ":")
+                print(value)
+                print('------------------------')
+            elif key == 'exp':
+                print(key + ':')
+                print(str(value) + '/10')
+                print('------------------------')
+            elif key == 'health':
+                print(key + ':')
+                print(str(value) + '/50')
+                print('------------------------')
+                break
+    elif help2.lower().strip() == commands[1]:
+        pass
+    elif help2.lower().strip() == commands[2]:
+        print('WORK IN PROGRESS')
+    else:
+        print('\n')
+        print('Type in one of the words above ("stats", "inv", "adv")')
+        picking101()
 
 
 picking101()

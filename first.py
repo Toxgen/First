@@ -238,7 +238,7 @@ def picking101():
         stats = dict()
         stats = {
             "name": name,
-            "weapon(s)": weapons,
+            "weapon(s)": weapons, # probably chnage weapons into inv.
             "exp": exp,
             "health": selfHp
         }

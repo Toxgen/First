@@ -95,7 +95,7 @@ weapons.update({"wooden club": 1})
 Exp = + 8
 
 
-def Sad_goodbye():
+def sad_goodbye():
     print('\x1b[3;30;40m' + 'A few minute later...' + '\x1b[0m')
     time.sleep(2.3)
     print('You got back to your cabin, preparing for the long adventure that awaits you to the city')
@@ -106,7 +106,7 @@ def Sad_goodbye():
     print('\n')
 
 
-Sad_goodbye()
+sad_goodbye()
 
 
 def naming():
@@ -210,7 +210,7 @@ time.sleep(1.2223)
 
 print('Type in "help" to find your commands')
 
-def bk():
+def bK():
     global commands
     help1 = input('> ')
     while help1.lower().strip() == "help":
@@ -222,10 +222,10 @@ def bk():
     else:
         print('type in "help"')
         print('\n')
-        bk()
+        bK()
 
 
-bk()
+bK()
 
 time.sleep(1)
 print('Try to type one of the printed words out!!')

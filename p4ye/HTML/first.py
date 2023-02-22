@@ -20,7 +20,7 @@ selfHp = 50
 
 
 def beginning():
-    # also is put like some pet with him
+    # also is put like some pet with him.
     print('The day is the September 1st, a peaceful and normal day')
     time.sleep(1.5)
     print('You wake up and feel refresed from yesterday')

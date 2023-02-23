@@ -20,7 +20,7 @@ selfHp = 50
 
 
 def beginning():
-    # also is put like some pet with him
+    # also is put like some pet with him.
     print('The day is the September 1st, a peaceful and normal day')
     time.sleep(1.5)
     print('You wake up and feel refreshed from yesterday')
@@ -231,6 +231,7 @@ time.sleep(1)
 print('Try to type one of the printed words out!!')
 time.sleep(0.2)
 
+
 def picking101():
     help2 = input('> ')
     if help2.lower().strip() == commands[0]:
@@ -238,7 +239,7 @@ def picking101():
         stats = dict()
         stats = {
             "name": name,
-            "weapon(s)": weapons, # probably chnage weapons into inv.
+            "weapon(s)": weapons,
             "exp": exp,
             "health": selfHp
         }
@@ -249,14 +250,17 @@ def picking101():
                 print(key + ':')
                 print('"' + value + '" ')
                 print('------------------------')
+                time.sleep(0.21)
             elif key == 'weapon(s)':
                 print(key + ":")
                 print(value)
                 print('------------------------')
+                time.sleep(0.21)
             elif key == 'exp':
                 print(key + ':')
                 print(str(value) + '/10')
                 print('------------------------')
+                time.sleep(0.21)
             elif key == 'health':
                 print(key + ':')
                 print(str(value) + '/50')
@@ -266,7 +270,7 @@ def picking101():
         pass
     elif help2.lower().strip() == commands[2]:
         print('WORK IN PROGRESS')
-    else:
+    else: 
         print('\n')
         print('Type in one of the words above ("stats", "inv", "adv")')
         picking101()

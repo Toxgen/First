@@ -23,7 +23,7 @@ def beginning():
     # also is put like some pet with him
     print('The day is the September 1st, a peaceful and normal day')
     time.sleep(1.5)
-    print('You wake up and feel refresed from yesterday')
+    print('You wake up and feel refreshed from yesterday')
     time.sleep(1.7666)
     print('You get ready for your morning stroll around the woods')
     time.sleep(2)
@@ -133,14 +133,14 @@ def naming():
             print('Your name now will be "' + name + '" ')
 
         elif Sureness.lower().strip() != 'no':
-           while Sureness.lower().strip() != 'yes':
-            print('Type in Yes or No')
-            Sureness = input('> ')
-            if Sureness.lower().strip() == 'yes':
-                print('Your name is "' + name + '"')
-                break
+            while Sureness.lower().strip() != 'yes':
+                print('Type in Yes or No')
+                Sureness = input('> ')
+                if Sureness.lower().strip() == 'yes':
+                    print('Your name is "' + name + '"')
+                    break
 
-            elif Sureness.lower().strip() == 'no':
+            elif Sureness.lower().strip() == 'no': # bunch of errors for code indentations ;()
                 time.sleep(0.22)
                 print('\n')
                 while Sureness.lower().strip() == 'no':

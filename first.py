@@ -269,7 +269,7 @@ def picking101():
     elif help2.lower().strip() == commands[1]:
         pass
     elif help2.lower().strip() == commands[2]:
-        print('WORK IN PROGRESS')
+        pass
     else: 
         print('\n')
         print('Type in one of the words above ("stats", "inv", "adv")')
@@ -278,4 +278,3 @@ def picking101():
 
 picking101()
 
-# testing hm2d da

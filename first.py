@@ -269,7 +269,7 @@ def picking101():
     elif help2.lower().strip() == commands[1]:
         pass
     elif help2.lower().strip() == commands[2]:
-        pass
+        print('\n')
     else: 
         print('\n')
         print('Type in one of the words above ("stats", "inv", "adv")')
@@ -277,4 +277,4 @@ def picking101():
 
 
 picking101()
-
+# will this work pleaseeeee??

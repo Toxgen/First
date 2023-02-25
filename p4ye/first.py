@@ -267,7 +267,7 @@ def picking101():
                 print('------------------------')
                 break
     elif help2.lower().strip() == commands[1]:
-        pass
+        print('\n')
     elif help2.lower().strip() == commands[2]:
         print('\n')
     else: 
@@ -277,4 +277,4 @@ def picking101():
 
 
 picking101()
-# will this work pleaseeeee??dwad  continuation
+print('Hello worldw!dwdad')

@@ -1,6 +1,4 @@
-fruits = (7, 8, 0)
-for x in fruits:
-    print(x)
+print("try")
 
 print(x)
 '''

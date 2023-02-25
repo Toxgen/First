@@ -277,4 +277,3 @@ def picking101():
 
 
 picking101()
-print('Hello worldw!dwdadwdwd')

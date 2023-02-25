@@ -1,6 +1,6 @@
 print("try")
 
-print(x)
+
 '''
 import time
 import random

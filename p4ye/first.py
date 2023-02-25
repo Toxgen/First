@@ -18,7 +18,7 @@ monsterHp = 10
 global selfHp
 selfHp = 50
 
-
+# test
 def beginning():
     # also is put like some pet with him
     print('The day is the September 1st, a peaceful and normal day')

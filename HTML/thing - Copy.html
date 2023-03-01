@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <body>
 
-        <div class="div1"><a href="https://freecatphotoapp.com"><img
-                        src="https://pngimg.com/uploads/cat/cat_PNG50445.png" alt="A cat"> </a></div>
+        <div class="div1"><img src="https://pngimg.com/uploads/cat/cat_PNG50445.png" alt="A cat"> </a></div>
 
         <style>
                 .div1 {
@@ -37,38 +35,86 @@
                 }
 
                 .div1 {
-                        animation: 1.5s div1 infinite alternate;
+                        animation: 2.5s div1 2 alternate;
                         }
                 
         </style>
-        <p class="cat">cat</p>
+        <p class="cat" id="meow">hey cat</p>
+        <p class="cat1" id="cat">cool cat</p>
+        <p class="cat2" id="food">bye cat</p>
         <style>
                 .cat {
                         height: 20px;
                         width: 20px;
-                        font-size: 1px;
+                        font-size: 0px;
                 }
-        
+
+                #meow {
+                        animation-delay: -0.15s;
+                }
+                
+                #cat {
+                        animation-delay: 1.5s;
+                }
+
+                #food {
+                        animation-delay: 3.0s;
+                }
+
                 @keyframes cat {
-                        from {
-                                height: 0%;
-                                margin-left: 0%;
-                                font-size: 0px;
-                        }
-        
-                        to {
-                                height: 50%;
-                                margin-left: 50%;
-                                font-size: 25px;
+                        0% {height: 20px; width: 20px; font: 0px}
+                        50% {height: 20px; width: 20px; margin-left: 25%; font-size: 25px;}
+                        100% {
+                                visibility: hidden;
                         }
                 }
-        
+
                 .cat {
-                        animation: 1.5s cat infinite alternate;
+                        animation: 2.5s cat 1;
                 }
+
+                .cat1 {
+                        height: 20px;
+                        width: 20px;
+                        font-size: 0px;
+                }
+
+                @keyframes cat1 {
+                        0% {height: 20px; width: 20px; font: 0px}
+                        70% {height: 20px; width: 20px; margin-left: 25%; font-size: 25px;}
+                        100% {
+                                visibility: hidden;
+                        }
+                }
+                
+                .cat1 {
+                        animation: 2.5s cat1 1;
+                }
+
+                .cat2 {
+                        height: 20px;
+                        width: 20px;
+                        font-size: 0px;
+                }
+
+                @keyframes cat2 {
+                        0% {height: 20px; width: 20px; font: 0px}
+                        90% {height: 20px; width: 20px; margin-left: 25%; font-size: 25px;}
+                        100% {
+                                visibility: hidden;
+                        }
+                }
+                
+                .cat2 {
+                        animation: 2.5s cat2 1;
+                }
+                
         </style>
 </body>
 
 </html>
 
-<!-- try to find a way on uow to change the text mid way-->
+<!--.cat 
+                        animation: 2.5s cat1 1;
+
+                -->

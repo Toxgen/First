@@ -40,28 +40,43 @@
                         }
                 
         </style>
-        <p class="cat" id="meow">hey cat</p>
+        <p id="meow">hey cat</p>
         <p class="cat1" id="cat">cool cat</p>
-        <div class="cat2" id></div>
-        <p class="cat2" id="food">bye cat</p>
+        <p id="food">bye cat</p>
+        <div id="shape"></div>
         <style>
 
-                .cat {
+                #meow {
                         height: 20px;
                         width: 20px;
-                        font-size: 0.0px;
-                }
-
-                #meow {
+                        font-size: 0px;
+                        animation: 2.3s cat 1;
                         animation-delay: -0.15s;
                 }
-                
+
                 #cat {
+                        height: 20px;
+                        width: 20px;
+                        font-size: 0px;
+                        animation: 2.85s cat1 1;
                         animation-delay: 1.2s;
                 }
 
                 #food {
+                        height: 20px;
+                        width: 20px;
+                        font-size: 0px;
+                        animation: 1.45s cat2 1;
                         animation-delay: 3.45s;
+                }
+
+                #shape {
+                        height: 300px;
+                        width: 300px;
+                        background-color: red;
+                        margin: 77px;
+                        animation: 1s explosion 1;
+                        animation-delay: 4.0s;
                 }
 
                 @keyframes cat {
@@ -72,32 +87,12 @@
                         }
                 }
 
-                .cat {
-                        animation: 2.3s cat 1;
-                }
-
-                .cat1 {
-                        height: 20px;
-                        width: 20px;
-                        font-size: 0px;
-                }
-
                 @keyframes cat1 {
                         0% {height: 20px; width: 20px; font: 0px}
                         70% {height: 20px; width: 20px; margin-left: 25%; font-size: 25px;}
                         100% {
                                 visibility: hidden;
                         }
-                }
-                
-                .cat1 {
-                        animation: 2.85s cat1 1;
-                }
-
-                .cat2 {
-                        height: 20px;
-                        width: 20px;
-                        font-size: 0px;
                 }
 
                 @keyframes cat2 {
@@ -107,13 +102,23 @@
                                 visibility: hidden;
                         }
                 }
-                
-                .cat2 {
-                        animation: 1.45s cat2 1;
+
+                @keyframes explosion {
+                        from {
+                                height: 300px;
+                                width: 300px;
+                        }
+
+                        to {
+                                height: 0px;
+                                width: 0px;
+                        }
+                        100% {
+                                opacity: 0;
+                        }
                 }
                 
         </style>
 </body>
 
 </html>
-                -->

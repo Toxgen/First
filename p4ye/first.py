@@ -92,7 +92,7 @@ combat()
 bruh()
 
 weapons.update({"wooden club": 1})
-Exp = + 8
+exp =+ 8
 
 
 def Sad_goodbye():

@@ -6,25 +6,18 @@
        2 idk how to really make opacity thing (maybe fix)
        3 the shapes different keyframes connecting to 2
        4 kinda difficult currently
-       5 returninig kitten explosion get rid of kitten cause looks wierd with it
+       5 returninig kitten explosion get rid of kitten cause looks wierd with it (acutally maybe make it like opactiy 0 or smth like that)
 -->
 
 <body>
 
         <div class="div1"><img src="https://pngimg.com/uploads/cat/cat_PNG50445.png" alt="A cat"> </a></div>
-        <div class="div2"><img src="https://pngimg.com/uploads/cat/cat_PNG50445.png" alt="A cat"> </a></div>
 
         <style>
                 .div1 {
                         height: 0px;
                         width: 0px;
                         margin-left: 0%;
-                }
-
-                .div2 {
-                        height: 50px;
-                        width: 50px;
-                        margin-left: 50%;
                 }
 
                 @keyframes div1 {
@@ -50,21 +43,6 @@
                                 transform: rotate(360deg);
                         }
                 }
-
-                @keyframes div2 {
-                        from {
-
-                        }
-
-                        90% {
-
-                        }
-
-                        to {
-
-                        }
-                }
-
 
                 .div1 {
                         animation: 2.5s div1 2 alternate;
@@ -103,25 +81,25 @@
                 }
 
                 #shape {
-                        height: 300px;
-                        width: 300px;
+                        height: 3000px;
+                        width: 4000px;
                         background-color: red;
                         position: absolute;
                         margin-left: 135px;
                         margin-top: -200px;
                         opacity: 0;
-                        animation: 1s explosion 1;
+                        animation: 1s explosion linear 2;
                         animation-delay: 3s;
                 }
 
                 #shape2 {
-                        height: 250px;
-                        width: 250px;
+                        height: 2500px;
+                        width: 3000px;
                         background-color: orange;
                         margin-left: 135px;
                         margin-top: -200px;
                         opacity: 0;
-                        animation: 1s explosion 1;
+                        animation: 1s explosion linear 2;
                         animation-delay: 3s;
                 }
 
@@ -183,66 +161,17 @@
                 }
 
                 @keyframes explosion {
-                        from {
-                                opacity: 1;
-                        }
-
-                        25% {
-                                opacity: 0
-                        }
-                        
-                        30% {
-                                opacity: 1;
-                        }
-
-                        35% {
-                                opacity: 0.5;
-                        }
-
-                        40% {
-                                opacity: 0;
+                        to {
+                                opacity: 1
                         }
 
                         50% {
-                                opacity: 1;
-                        }
-
-                        55% {
-                                opacity: 0.5;
-                        }
-
-                        60% {
-                                opacity: 0;
-                        }
-
-                        65% {
-                                opacity: 1;
-                        }
-
-                        70% {
-                                opacity: 0.5;
-                        }
-
-                        75% {
-                                opacity: 1;
-                        }
-
-                        80% {
-                                opacity: 0;
-                        }
-
-                        85% {
-                                opacity: 1;
-                        }
-
-                        90% {
                                 opacity: 0.5;
                         }
 
                         to {
                                 opacity: 0;
                         }
-
                 }
         </style>
 </body>

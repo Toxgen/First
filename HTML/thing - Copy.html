@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <body>
 
         <div class="div1"><img src="https://pngimg.com/uploads/cat/cat_PNG50445.png" alt="A cat"> </a></div>
@@ -11,7 +12,7 @@
                         margin-left: 0%;
                 }
 
-                @keyframes div1{
+                @keyframes div1 {
                         from {
                                 margin-left: 0%;
                                 width: 0%;
@@ -35,17 +36,17 @@
                         }
                 }
 
+
                 .div1 {
                         animation: 2.5s div1 2 alternate;
-                        }
-                
+                }
+
         </style>
         <p id="meow">hey cat</p>
         <p class="cat1" id="cat">cool cat</p>
         <p id="food">bye cat</p>
         <div id="shape"></div>
         <style>
-
                 #meow {
                         height: 20px;
                         width: 20px;
@@ -53,7 +54,7 @@
                         animation: 2.3s cat 1;
                         animation-delay: -0.15s;
                 }
-                        
+
 
                 #cat {
                         height: 20px;
@@ -75,30 +76,66 @@
                         height: 300px;
                         width: 300px;
                         background-color: red;
-                        margin: 77px;
+                        position: absolute;
+                        margin-left: 135px;
+                        margin-top: -200px;
+                        opacity: 0;
                         animation: 1s explosion 1;
                         animation-delay: 4.0s;
                 }
 
                 @keyframes cat {
-                        0% {height: 20px; width: 20px; font: 0px}
-                        50% {height: 20px; width: 20px; margin-left: 25%; font-size: 25px;}
+                        0% {
+                                height: 20px;
+                                width: 20px;
+                                font: 0px
+                        }
+
+                        50% {
+                                height: 20px;
+                                width: 20px;
+                                margin-left: 25%;
+                                font-size: 25px;
+                        }
+
                         100% {
                                 visibility: hidden;
                         }
                 }
 
                 @keyframes cat1 {
-                        0% {height: 20px; width: 20px; font: 0px}
-                        70% {height: 20px; width: 20px; margin-left: 25%; font-size: 25px;}
+                        0% {
+                                height: 20px;
+                                width: 20px;
+                                font: 0px
+                        }
+
+                        70% {
+                                height: 20px;
+                                width: 20px;
+                                margin-left: 25%;
+                                font-size: 25px;
+                        }
+
                         100% {
                                 visibility: hidden;
                         }
                 }
 
                 @keyframes cat2 {
-                        0% {height: 20px; width: 20px; font: 0px}
-                        90% {height: 20px; width: 20px; margin-left: 25%; font-size: 25px;}
+                        0% {
+                                height: 20px;
+                                width: 20px;
+                                font: 0px;
+                        }
+
+                        90% {
+                                height: 20px;
+                                width: 20px;
+                                margin-left: 25%;
+                                font-size: 25px;
+                        }
+
                         100% {
                                 visibility: hidden;
                         }
@@ -108,18 +145,24 @@
                         from {
                                 height: 300px;
                                 width: 300px;
+                                opacity: 1;
+                        }
+
+                        49% {
+                                opacity: 0;
+                        }
+
+                        50% {
+                                opacity: 0.5;
                         }
 
                         to {
                                 height: 0px;
                                 width: 0px;
-                        }
-                        100% {
                                 opacity: 0;
                         }
-                
+
                 }
-                
         </style>
 </body>
 

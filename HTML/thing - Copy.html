@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Plan
+       1 have to make an another div for the cat image to come back
+       2 idk how to really make opacity thing (maybe fix)
+       3 the shapes different keyframes connecting to 2
+       4 kinda difficult currently
+       5 returninig kitten explosion get rid of kitten cause looks wierd with it
+-->
+
 <body>
 
         <div class="div1"><img src="https://pngimg.com/uploads/cat/cat_PNG50445.png" alt="A cat"> </a></div>
+        <div class="div2"><img src="https://pngimg.com/uploads/cat/cat_PNG50445.png" alt="A cat"> </a></div>
 
         <style>
                 .div1 {
                         height: 0px;
                         width: 0px;
                         margin-left: 0%;
+                }
+
+                .div2 {
+                        height: 50px;
+                        width: 50px;
+                        margin-left: 50%;
                 }
 
                 @keyframes div1 {
@@ -36,6 +51,20 @@
                         }
                 }
 
+                @keyframes div2 {
+                        from {
+
+                        }
+
+                        90% {
+
+                        }
+
+                        to {
+
+                        }
+                }
+
 
                 .div1 {
                         animation: 2.5s div1 2 alternate;
@@ -46,6 +75,7 @@
         <p class="cat1" id="cat">cool cat</p>
         <p id="food">bye cat</p>
         <div id="shape"></div>
+        <div id="shape2"></div>
         <style>
                 #meow {
                         height: 20px;
@@ -81,7 +111,18 @@
                         margin-top: -200px;
                         opacity: 0;
                         animation: 1s explosion 1;
-                        animation-delay: 4.0s;
+                        animation-delay: 3s;
+                }
+
+                #shape2 {
+                        height: 250px;
+                        width: 250px;
+                        background-color: orange;
+                        margin-left: 135px;
+                        margin-top: -200px;
+                        opacity: 0;
+                        animation: 1s explosion 1;
+                        animation-delay: 3s;
                 }
 
                 @keyframes cat {
@@ -143,22 +184,62 @@
 
                 @keyframes explosion {
                         from {
-                                height: 300px;
-                                width: 300px;
                                 opacity: 1;
                         }
 
-                        49% {
+                        25% {
+                                opacity: 0
+                        }
+                        
+                        30% {
+                                opacity: 1;
+                        }
+
+                        35% {
+                                opacity: 0.5;
+                        }
+
+                        40% {
                                 opacity: 0;
                         }
 
                         50% {
+                                opacity: 1;
+                        }
+
+                        55% {
+                                opacity: 0.5;
+                        }
+
+                        60% {
+                                opacity: 0;
+                        }
+
+                        65% {
+                                opacity: 1;
+                        }
+
+                        70% {
+                                opacity: 0.5;
+                        }
+
+                        75% {
+                                opacity: 1;
+                        }
+
+                        80% {
+                                opacity: 0;
+                        }
+
+                        85% {
+                                opacity: 1;
+                        }
+
+                        90% {
                                 opacity: 0.5;
                         }
 
                         to {
-                                height: 0px;
-                                width: 0px;
                                 opacity: 0;
                         }
 

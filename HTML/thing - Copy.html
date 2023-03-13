@@ -46,6 +46,7 @@
         <p id="food">bye cat</p>
         <div id="shape"></div>
         <div id="shape2"></div>
+        <p id="Death">NOOOOO :( </p>
         
         <style>
                 #meow {
@@ -82,7 +83,7 @@
                         bottom: 100px;
                         opacity: 0;
                         animation: 2.4s explosion 1;
-                        animation-delay: 3.6s;
+                        animation-delay: 3.63s;
                 }
 
                 #shape2 {
@@ -94,9 +95,15 @@
                         bottom: 175px;
                         opacity: 0;
                         animation: 2.6s explosion 1;
-                        animation-delay: 3.6s;
+                        animation-delay: 3.62s;
                 }
-
+                
+                #Death {
+                        font-size: 0px;
+                        animation: 2s NOO 1;
+                        animation-delay: 6.6s;
+                        margin-left: 100px;
+                }
                 @keyframes cat {
                         0% {
                                 height: 20px;
@@ -155,6 +162,7 @@
                 }
 
                 @keyframes explosion {
+                        
                         0%{opacity:1}
 
                         1% {
@@ -168,7 +176,18 @@
                         100% {
                                 opacity: 0;
                         }
+                }
 
+                @keyframes NOO {
+                        
+                        from {
+                                font-size: 500px;
+                        }
+
+                        to {
+                                font-size: 0px;
+                                visibility: hidden;
+                        }
                 }
         </style>
 </body>

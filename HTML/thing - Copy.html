@@ -50,10 +50,11 @@
 
         </style>
         <p id="meow">hey cat</p>
-        <p class="cat1" id="cat">cool cat</p>
+        <p class="cat1" id="cat" >cool cat</p>
         <p id="food">bye cat</p>
         <div id="shape"></div>
         <div id="shape2"></div>
+        
         <style>
                 #meow {
                         height: 20px;
@@ -81,26 +82,27 @@
                 }
 
                 #shape {
-                        height: 3000px;
-                        width: 4000px;
-                        background-color: red;
-                        position: absolute;
-                        margin-left: 135px;
-                        margin-top: -200px;
+                        height: 2500px;
+                        width: 3000px;
+                        background-color: #ff0000;
+                        position: fixed;
+                        right: 100px;
+                        bottom: 100px;
                         opacity: 0;
-                        animation: 1s explosion linear 2;
-                        animation-delay: 3s;
+                        animation: 2.4s explosion 1;
+                        animation-delay: 3.6s;
                 }
 
                 #shape2 {
                         height: 2500px;
                         width: 3000px;
                         background-color: orange;
-                        margin-left: 135px;
-                        margin-top: -200px;
+                        position: fixed;
+                        right: 150px;
+                        bottom: 175px;
                         opacity: 0;
-                        animation: 1s explosion linear 2;
-                        animation-delay: 3s;
+                        animation: 2.6s explosion 1;
+                        animation-delay: 3.6s;
                 }
 
                 @keyframes cat {
@@ -161,17 +163,20 @@
                 }
 
                 @keyframes explosion {
-                        to {
-                                opacity: 1
+                        0%{opacity:1}
+
+                        1% {
+                                opacity: 1;
                         }
 
-                        50% {
-                                opacity: 0.5;
+                        99% {
+                                opacity: 1;
                         }
 
-                        to {
+                        100% {
                                 opacity: 0;
                         }
+
                 }
         </style>
 </body>

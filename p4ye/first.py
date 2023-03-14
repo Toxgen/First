@@ -50,6 +50,8 @@ beginning()
 def bruh():
     print('Congratulations, you have defeated the monster')
     time.sleep(0.6667)
+    print('You still have', selfHp, 'hp left')
+    time.sleep(0.445)
     print('Gotten "wooden cub"')
     time.sleep(0.333)
     print('P.S. the "wooden cub does 3-5 DMG')
@@ -133,38 +135,38 @@ def naming():
             print('Your name now will be "' + name + '" ')
 
         elif Sureness.lower().strip() != 'no':
-           while Sureness.lower().strip() != 'yes':
-            print('Type in Yes or No')
-            Sureness = input('> ')
-            if Sureness.lower().strip() == 'yes':
-                print('Your name is "' + name + '"')
-                break
+            while Sureness.lower().strip() != 'yes':
+                print('Type in Yes or No')
+                Sureness = input('> ')
+                if Sureness.lower().strip() == 'yes':
+                    print('Your name is "' + name + '"')
+                    break
 
-            elif Sureness.lower().strip() == 'no':
-                time.sleep(0.22)
-                print('\n')
-                while Sureness.lower().strip() == 'no':
-                    print("What's your new name")
+        elif Sureness.lower().strip() == 'no':
+            time.sleep(0.22)
+            print('\n')
+            while Sureness.lower().strip() == 'no':
+                print("What's your new name")
+                name = input('> ')
+                dummy = len(name)
+                while dummy >= 9:
+                    print('\n')
+                    print('3-8 characters')
+                    time.sleep(1.0)
+                    print('Try again')
                     name = input('> ')
                     dummy = len(name)
-                    while dummy >= 9:
-                        print('\n')
-                        print('3-8 characters')
-                        time.sleep(1.0)
-                        print('Try again')
-                        name = input('> ')
-                        dummy = len(name)
-                        if dummy <= 9:
-                            break
-                    if len(name) != 0:
-                        print('You typed in "' + name +
-                              '". Are you Sure? Type in "yes" or "no"')
-                        Sureness = input('> ')
-                        if Sureness.lower().strip() == 'yes':
-                            print('Your name now will be "' + name + '" ')
-                            break
-                        else:
-                            print('')
+                    if dummy <= 9:
+                        break
+                if len(name) != 0:
+                    print('You typed in "' + name +
+                            '". Are you Sure? Type in "yes" or "no"')
+                    Sureness = input('> ')
+                    if Sureness.lower().strip() == 'yes':
+                        print('Your name now will be "' + name + '" ')
+                        break
+                    else:
+                        print('')
             else:
                 print('\n')
 

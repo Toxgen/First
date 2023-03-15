@@ -30,8 +30,8 @@ private DcMotor	bR;
           	fR.setPower(-1);
           	fL.setPower(1);
           	program.sleep(1000);
-            telemetry.update();
-            fR.setPower(0);
+            	telemetry.update();
+            	fR.setPower(0);
           	fL.setPower(0);
           	telemetry.update();
 

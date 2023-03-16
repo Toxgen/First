@@ -1,3 +1,4 @@
+
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -21,20 +22,24 @@ private DcMotor	bR;
         fR = hardwareMap.get(DcMotor.class, "frontRight");
         bL = hardwareMap.get(DcMotor.class, "backLeft");
         bR = hardwareMap.get(DcMotor.class, "backRight");
-        telemetry.update();
+      	telemetry.update();
       	waitForStart();
 
         while (opModeIsActive()) {
-          	fR.setPower(-1); // idunno it worked like with 2 motors but now it doesnt work for 4 motors?
+          	fR.setPower(-1);
           	fL.setPower(1);	
+          	bR.setPower(-1);
+          	bL.setPower(1);
+          	program.sleep(950)
+          	fR.setPower(-1);
+            fL.setPower(-1);	
           	bR.setPower(1);
-          	bL.setPower(-1);
-          	program.sleep(1000);
+          	bL.setPower(1);
+          	program.sleep(1200);
             fR.setPower(0);
           	fL.setPower(0);	
           	bR.setPower(0);
           	bL.setPower(0);
-          	program.sleep(1000);
           	telemetry.update(); 
 
         }

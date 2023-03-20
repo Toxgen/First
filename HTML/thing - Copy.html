@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Plan
-       1 have to make an another div for the cat image to come back
-       2 idk how to really make opacity thing (maybe fix)
-       3 the shapes different keyframes connecting to 2
-       4 kinda difficult currently
-       5 returninig kitten explosion get rid of kitten cause looks wierd with it (acutally maybe make it like opactiy 0 or smth like that)
--->
-
+       
 <body>
 
         <div class="div1"><img src="https://pngimg.com/uploads/cat/cat_PNG50445.png" alt="A cat"> </a></div>
@@ -50,10 +42,12 @@
 
         </style>
         <p id="meow">hey cat</p>
-        <p class="cat1" id="cat">cool cat</p>
+        <p class="cat1" id="cat" >cool cat</p>
         <p id="food">bye cat</p>
         <div id="shape"></div>
         <div id="shape2"></div>
+        <p id="Death">NOOOOO :(</p>
+        
         <style>
                 #meow {
                         height: 20px;
@@ -81,28 +75,35 @@
                 }
 
                 #shape {
-                        height: 3000px;
-                        width: 4000px;
-                        background-color: red;
-                        position: absolute;
-                        margin-left: 135px;
-                        margin-top: -200px;
+                        height: 2500px;
+                        width: 3000px;
+                        background-color: #ff0000;
+                        position: fixed;
+                        right: 100px;
+                        bottom: 100px;
                         opacity: 0;
-                        animation: 1s explosion linear 2;
-                        animation-delay: 3s;
+                        animation: 2.4s explosion 1;
+                        animation-delay: 3.57s;
                 }
 
                 #shape2 {
                         height: 2500px;
                         width: 3000px;
                         background-color: orange;
-                        margin-left: 135px;
-                        margin-top: -200px;
+                        position: fixed;
+                        right: 150px;
+                        bottom: 175px;
                         opacity: 0;
-                        animation: 1s explosion linear 2;
-                        animation-delay: 3s;
+                        animation: 2.6s explosion 1;
+                        animation-delay: 3.6s;
                 }
-
+                
+                #Death {
+                        font-size: 0px;
+                        animation: 2s NOO 1;
+                        animation-delay: 6.6s;
+                        margin-left: 100px;
+                }
                 @keyframes cat {
                         0% {
                                 height: 20px;
@@ -161,8 +162,11 @@
                 }
 
                 @keyframes explosion {
-                        to {
-                                opacity: 1
+                        
+                        0%{opacity:1}
+
+                        from {
+                                opacity: 1;
                         }
 
                         80% {
@@ -171,6 +175,18 @@
 
                         to {
                                 opacity: 0;
+                        }
+                }
+
+                @keyframes NOO {
+                        
+                        from {
+                                font-size: 500px;
+                        }
+
+                        to {
+                                font-size: 0px;
+                                visibility: hidden;
                         }
                 }
         </style>

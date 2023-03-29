@@ -109,6 +109,7 @@ score_a = 0
 score_b = 0
 
 def game_inside(): 
+    # Yellow Border
     pen.penup()
     pen.pensize(5)
     pen.goto(-395, 295)

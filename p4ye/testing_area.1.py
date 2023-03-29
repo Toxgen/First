@@ -1,6 +1,5 @@
 import turtle
 import time
-import random
 
 pen = turtle.Turtle()
 wn = turtle.Screen()

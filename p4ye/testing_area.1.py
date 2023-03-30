@@ -99,7 +99,6 @@ def exit():
 
 # Border Function
 
-
 def border():
     pen.penup()
     pen.pensize(5)

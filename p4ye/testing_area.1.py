@@ -7,7 +7,7 @@ wn = turtle.Screen()
 pen.hideturtle()
 colors = ["blue", "cyan", "green", "yellow", "red", "orange", "purple"]
 
-# loading screen
+# Loading Screen
 wn.bgcolor("black")
 pen.color("red")
 pen.penup()
@@ -22,7 +22,7 @@ time.sleep(5)
 pen.clear()
 
 # Setup
-# wn stands for window
+
 wn.title("Pong by Jayden Xia and Ethan Zhang")
 wn.setup(width=800, height=600)
 wn.tracer(0)
@@ -58,7 +58,7 @@ paddle_b.goto(350, 0)
 ball = turtle.Turtle()
 ball.speed(0)
 ball.shape("circle")
-#ball.color("white")
+ball.color("white")
 ball.shapesize(stretch_wid=1, stretch_len=1)
 ball.penup()
 ball.goto(0, 0)

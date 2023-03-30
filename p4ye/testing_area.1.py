@@ -203,7 +203,6 @@ def game():
             border()
             dottedline()
             
-
         # Paddle and ball collisions
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b. ycor() - 50):
             ball.setx(340)
@@ -214,7 +213,6 @@ def game():
             ball.dx *= -1
 
         # Score
-
         if score_a == 10:
             time.sleep(0.45)
             pen.goto(0, 0)
@@ -233,6 +231,7 @@ def game():
                 pen.bgcolor("blue")
                 time.sleep(5)
                 break
+        # To make the color changing happen occasionally
         if x != 2:
             x += 4
 

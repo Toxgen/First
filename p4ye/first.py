@@ -94,7 +94,7 @@ combat()
 bruh()
 
 weapons.update({"wooden club": 1})
-exp =+ 8
+exp += 8
 
 
 def Sad_goodbye():
@@ -269,9 +269,9 @@ def picking101():
                 print('------------------------')
                 break
     elif help2.lower().strip() == commands[1]:
-        print('\n')
+        pass
     elif help2.lower().strip() == commands[2]:
-        print('\n')
+        pass
     else: 
         print('\n')
         print('Type in one of the words above ("stats", "inv", "adv")')

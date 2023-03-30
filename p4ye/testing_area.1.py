@@ -95,7 +95,7 @@ def paddle_b_down():
 
 
 def exit():
-    quit()
+    turtle.Screen().bye()
 
 # Border Function
 
@@ -111,7 +111,6 @@ def border():
         pen.right(90)
         pen.forward(585)
         pen.right(90)
-
 # Score Function
 
 

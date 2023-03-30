@@ -149,16 +149,18 @@ wn.listen()
 # Main game loop
 score_a = 0
 score_b = 0
-
+x = 0
 
 def game():
-    global score_a, score_b
+    global score_a, score_b, x
     border()
     dottedline()
     while True:
         wn.update()
         # Color Changing Ball
-        ball.color(colors[randint(0,6)])
+        if x > 1:
+            ball.color(colors[randint(0,6)])
+            x -= 2
         # Moving the ball
         ball.setx(ball.xcor() + ball.dx)
         ball.sety(ball.ycor() + ball.dy)
@@ -231,6 +233,8 @@ def game():
                 pen.bgcolor("blue")
                 time.sleep(5)
                 break
+        if x != 2:
+            x += 4
 
 
 game()

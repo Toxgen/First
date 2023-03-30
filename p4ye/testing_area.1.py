@@ -1,9 +1,11 @@
 import turtle
 import time
+from random import *
 
 pen = turtle.Turtle()
 wn = turtle.Screen()
 pen.hideturtle()
+colors = ["blue", "cyan", "green", "yellow", "red", "orange", "purple"]
 
 # loading screen
 wn.bgcolor("black")
@@ -56,12 +58,12 @@ paddle_b.goto(350, 0)
 ball = turtle.Turtle()
 ball.speed(0)
 ball.shape("circle")
-ball.color("white")
+#ball.color("white")
 ball.shapesize(stretch_wid=1, stretch_len=1)
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.1
-ball.dy = -0.1
+ball.dx = 0.2
+ball.dy = -0.2
 
 #  Paddle Functions
 
@@ -95,21 +97,10 @@ def paddle_b_down():
 def exit():
     quit()
 
+# Border Function
 
-# Moving the paddle
-wn.onkeypress(paddle_a_up, "w")
-wn.onkeypress(paddle_a_down, "s")
-wn.onkeypress(paddle_b_up, "Up")
-wn.onkeypress(paddle_b_down, "Down")
-wn.onkeypress(exit, "space")
-wn.listen()
 
-# Main game loop
-score_a = 0
-score_b = 0
-
-def game_inside(): 
-    # Yellow Border
+def border():
     pen.penup()
     pen.pensize(5)
     pen.goto(-395, 295)
@@ -120,7 +111,20 @@ def game_inside():
         pen.right(90)
         pen.forward(585)
         pen.right(90)
-    # Middle Dashed Line
+
+# Score Function
+
+
+def score():
+    pen.penup()
+    pen.clear()
+    pen.color("white")
+    pen.goto(0, 260)
+    pen.write("Player A: {} Player B: {}".format(score_a, score_b),
+              align="center", font=("Courier", 24, "normal"))
+
+# Middle Dashed Line
+def dottedline():
     pen.penup()
     pen.pensize(5)
     pen.color("white")
@@ -134,11 +138,27 @@ def game_inside():
         pen.forward(30)
         pen.penup()
 
+# Moving the paddle
+wn.onkeypress(paddle_a_up, "w")
+wn.onkeypress(paddle_a_down, "s")
+wn.onkeypress(paddle_b_up, "Up")
+wn.onkeypress(paddle_b_down, "Down")
+wn.onkeypress(exit, "space")
+wn.listen()
+
+# Main game loop
+score_a = 0
+score_b = 0
+
+
 def game():
     global score_a, score_b
-    game_inside()
+    border()
+    dottedline()
     while True:
         wn.update()
+        # Color Changing Ball
+        ball.color(colors[randint(0,6)])
         # Moving the ball
         ball.setx(ball.xcor() + ball.dx)
         ball.sety(ball.ycor() + ball.dy)
@@ -167,17 +187,20 @@ def game():
             ball.goto(0, 0)
             ball.dx *= -1
             score_a += 1
-            pen.clear()
-            pen.write("Player A: {} Player B: {}".format(
-                score_a, score_b), align="center", font=("Courier", 24, "normal"))
+            pen.left(90)
+            score()
+            border()
+            dottedline()
 
         if ball.xcor() < -390:
             ball.goto(0, 0)
             ball.dx *= -1
             score_b += 1
-            pen.clear()
-            pen.write("Player A: {} Player B: {}".format(
-                score_a, score_b), align="center", font=("Courier", 24, "normal"))
+            pen.left(90)
+            score()
+            border()
+            dottedline()
+            
 
         # Paddle and ball collisions
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b. ycor() - 50):
@@ -190,7 +213,7 @@ def game():
 
         # Score
 
-        if score_a == 1:
+        if score_a == 10:
             time.sleep(0.45)
             pen.goto(0, 0)
             pen.write("Player A Wins", align="center",
@@ -200,13 +223,14 @@ def game():
             break
 
         else:
-            if score_b == 1:
+            if score_b == 10:
                 time.sleep(0.45)
                 pen.goto(0, 0)
                 pen.write("Player B Wins", align="center",
                           font=("Courier", 24, "normal"))
-                wn.bgcolor("blue")
+                pen.bgcolor("blue")
                 time.sleep(5)
                 break
+
 
 game()

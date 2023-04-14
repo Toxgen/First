@@ -9,10 +9,15 @@ pen.hideturtle()
 # Main game loop
 score_a = 0
 score_b = 0
-x = 0
+xx = 0
+is_paused = False
+no = True
+medium = False
+hard = False
+fireActivation = False
 
 def game():
-    global score_a, score_b, x
+    global score_a, score_b, xx, medium, fireActivation
     # Pen
     pen.speed(0)
     pen.color("white")
@@ -47,10 +52,17 @@ def game():
     ball.shapesize(stretch_wid=1, stretch_len=1)
     ball.penup()
     ball.goto(0, 0)
-    ball.dx = 0.25
-    ball.dy = -0.25
+    ball.dx = 0.1
+    ball.dy = -0.1
+    if medium is True and hard is False:
+        ball.dx = 0.15
+        ball.dy = -0.15
+    else:
+        if medium is False and hard is True:
+            ball.dx = 0.25
+            ball.dy = -0.25
 
-    # Paddle Functions
+    # Paddle and Game Functions
 
     def paddle_a_up():
         if not is_paused:
@@ -80,8 +92,6 @@ def game():
 
     def exit():
         turtle.Screen().bye()
-
-    is_paused = False
 
     def toggle_pause():
         global is_paused
@@ -137,9 +147,9 @@ def game():
         colors = (random(), random(), random())
         # Color Changing Ball
 
-        if x > 1:
+        if xx > 1:
             ball.color(colors)
-            x -= 2
+            xx -= 2
         # Moving the ball
         ball.setx(ball.xcor() + ball.dx)
         ball.sety(ball.ycor() + ball.dy)
@@ -186,11 +196,20 @@ def game():
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b. ycor() - 50):
             ball.setx(340)
             ball.dx *= -1
+            if fireActivation is True:
+                if ball.dx > 0:
+                    ball.dx += randint(0, 0.009)
+                elif ball.dx < 0:
+                    ball.dx -= randint(0, 0.009)
 
         if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a. ycor() - 50):
             ball.setx(-340)
             ball.dx *= -1
-
+            if fireActivation is True:
+                if ball.dx > 0:
+                    ball.dx += randint(0, 0.009)
+                elif ball.dx < 0:
+                    ball.dx -= randint(0, 0.009)
         # Score
 
         if score_a == 10:
@@ -220,71 +239,176 @@ def game():
         wn.onkeypress(paddle_b_up, "Up")
         wn.onkeypress(paddle_b_down, "Down")
         wn.listen()
-        if x != 2:
-            x += 4
+        if xx != 2:
+            xx += 4
 
       else:
         wn.update()
 
 # Button Dimensions
-Button_x = -50
-Button_y = -50
-ButtonLength = 135
-ButtonWidth = 50
+easy_x = -200
+easy_y = -50
+easy_length = 70
+easy_width = 50
+
+medium_x = -50
+medium_y = -50
+medium_length = 90
+medium_width = 50
+
+hard_x = 120
+hard_y = -50
+hard_length = 70
+hard_width = 50
 
 mode = "dark"
 # Draw Button Function
 xyx = True
 
-def draw_Button(pen, message="Start Button"):
+def draw_easyButton(pen, message="easy"):
     pen.color("red")
     pen.penup()
     pen.fillcolor("Blue")
     pen.begin_fill()
-    pen.goto(Button_x, Button_y)
-    pen.goto(Button_x + ButtonLength, Button_y)
-    pen.goto(Button_x + ButtonLength, Button_y + ButtonWidth)
-    pen.goto(Button_x, Button_y + ButtonWidth)
-    pen.goto(Button_x, Button_y)
+    pen.goto(easy_x, easy_y)
+    pen.goto(easy_x + easy_length, easy_y)
+    pen.goto(easy_x + easy_length, easy_y + easy_width)
+    pen.goto(easy_x,  easy_y + easy_width)
+    pen.goto(easy_x, easy_y)
     pen.end_fill()
-    pen.goto(Button_x + 15, Button_y + 15)
+    pen.goto(easy_x + 15, easy_y + 15)
+    pen.write(message, font=("Arial", 15, "normal"))
+
+def draw_mediumButton(pen, message="medium"):
+    pen.color("orange")
+    pen.penup()
+    pen.fillcolor("yellow")
+    pen.begin_fill()
+    pen.goto(medium_x, medium_y)
+    pen.goto(medium_x + medium_length, medium_y)
+    pen.goto(medium_x + medium_length, medium_y + medium_width)
+    pen.goto(medium_x,  medium_y + medium_width)
+    pen.goto(medium_x, medium_y)
+    pen.end_fill()
+    pen.goto(medium_x + 15, medium_y + 15)
+    pen.write(message, font=("Arial", 15, "normal"))
+
+def draw_hardButton(pen, message="hard"):
+    pen.color("red")
+    pen.penup()
+    pen.fillcolor("purple")
+    pen.begin_fill()
+    pen.goto(hard_x, hard_y)
+    pen.goto(hard_x + hard_length, hard_y)
+    pen.goto(hard_x + hard_length, hard_y + hard_width)
+    pen.goto(hard_x,  hard_y + hard_width)
+    pen.goto(hard_x, hard_y)
+    pen.end_fill()
+    pen.goto(hard_x + 15, hard_y + 15)
     pen.write(message, font=("Arial", 15, "normal"))
 
 while xyx is True:
+
     # loading screen
     wn.bgcolor("black")
     pen.color("red")
     pen.penup()
     pen.goto(0, 200)
     pen.write("Welcome to pong, by Jayden and Ethan and Gary",
-            align="center", font=("Courier", 20, "normal"))
+              align="center", font=("Courier", 20, "normal"))
     pen.penup()
     pen.color("blue")
-    pen.goto(0, 130)
-    pen.write("Game will start in 10 seconds",
-            align="center", font=("Courier", 20, "normal"))
     pen.goto(0, 100)
     pen.write("Controls for Paddle A is W and S",
-            align="center", font=("Courier", 20, "normal"))
+              align="center", font=("Courier", 20, "normal"))
     pen.goto(0, 70)
     pen.write("Controls for Paddle B is the Up and Down Arrow",
-            align="center", font=("Courier", 20, "normal"))
+              align="center", font=("Courier", 20, "normal"))
     pen.goto(0, 40)
 
     # Setup
     wn.title("Pong by Jayden Xia and Ethan Zhang")
     wn.setup(width=800, height=600)
     wn.tracer(0)
-    draw_Button(pen)
+    draw_easyButton(pen)
+    draw_mediumButton(pen)
+    draw_hardButton(pen)
 
     # Button Clicking Function
     def button_click(x, y):
-        global mode, xyx
-        if Button_x <= x <= Button_x + ButtonLength:
-            if Button_y <= y <= Button_y + ButtonWidth:
+        global mode, xyx, medium, hard
+        print(easy_x)
+        if easy_x <= x <= easy_x + easy_length:
+            if easy_y <= y <= easy_y + easy_width:
                 xyx = False
                 pen.clear()
-                game()
+                print(x, y)
+                x = 50
+                y = 50
+        elif medium_x <= x <= medium_x + medium_length: 
+            if medium_y <= y <= medium_y + medium_width:
+                xyx = False
                 pen.clear()
-
+                medium = True
+                print(x, y)
+                x = 50
+                y = 50
+        else:
+            if hard_x <= x <= hard_x + hard_length:
+                if hard_y <= y <= hard_y + hard_width:
+                    xyx = False
+                    pen.clear()
+                    hard = True
+                    print(x, y)
+                    x = 50
+                    y = 50
     wn.onclick(button_click)
+
+pen.clear()
+
+def fireBall(pen, message="fireball"):
+    pen.color("orange")
+    pen.penup()
+    pen.fillcolor("red")
+    pen.begin_fill()
+    pen.goto(medium_x, medium_y)
+    pen.goto(medium_x + medium_length, medium_y)
+    pen.goto(medium_x + medium_length, medium_y + medium_width)
+    pen.goto(medium_x,  medium_y + medium_width)
+    pen.goto(medium_x, medium_y)
+    pen.end_fill()
+    pen.goto(medium_x + 15, medium_y + 15)
+    pen.write(message, font=("Arial", 15, "normal"))
+
+def noGamemodeButton(pen, message="continue"):
+        pen.color("red")
+        pen.penup()
+        pen.fillcolor("purple")
+        pen.begin_fill()
+        pen.goto(hard_x, hard_y)
+        pen.goto(hard_x + hard_length, hard_y)
+        pen.goto(hard_x + hard_length, hard_y + hard_width)
+        pen.goto(hard_x,  hard_y + hard_width)
+        pen.goto(hard_x, hard_y)
+        pen.end_fill()
+        pen.goto(hard_x + 15, hard_y + 15)
+        pen.write(message, font=("Arial", 15, "normal"))
+
+while no is True:
+    pen.penup()
+    pen.goto(0, 200)
+    pen.write("Gamemodes", align="center", font=("Courier", 20, "normal"))
+    fireBall(pen)
+    noGamemodeButton(pen)
+    def gamemodeButtonClick(x, y):
+        global no, fireActivation
+        if medium_x <= x <= medium_x + medium_length:
+            if medium_y <= y <= medium_y + medium_width:
+                no = False
+                fireActivation = True
+                game()
+        elif hard_x <= x <= hard_x + hard_length:
+            if hard_y <= y <= hard_y + hard_width:
+                no = False
+                game()
+    wn.onclick(gamemodeButtonClick)

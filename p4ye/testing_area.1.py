@@ -47,8 +47,8 @@ def game():
     ball.shapesize(stretch_wid=1, stretch_len=1)
     ball.penup()
     ball.goto(0, 0)
-    ball.dx = 0.2
-    ball.dy = -0.2
+    ball.dx = 0.25
+    ball.dy = -0.25
 
     # Paddle Functions
 
@@ -233,7 +233,6 @@ ButtonLength = 135
 ButtonWidth = 50
 
 mode = "dark"
-
 # Draw Button Function
 xyx = True
 
@@ -252,7 +251,6 @@ def draw_Button(pen, message="Start Button"):
     pen.write(message, font=("Arial", 15, "normal"))
 
 while xyx is True:
-
     # loading screen
     wn.bgcolor("black")
     pen.color("red")
@@ -287,4 +285,6 @@ while xyx is True:
                 xyx = False
                 pen.clear()
                 game()
+                pen.clear()
+
     wn.onclick(button_click)

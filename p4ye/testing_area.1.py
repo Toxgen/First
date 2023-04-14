@@ -230,7 +230,7 @@ def game():
                 pen.goto(0, 0)
                 pen.write("Player B Wins", align="center",
                           font=("Courier", 24, "normal"))
-                pen.bgcolor("blue")
+                wn.bgcolor("blue")
                 time.sleep(5)
                 break
 

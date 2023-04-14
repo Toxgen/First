@@ -16,7 +16,6 @@ no = True
 medium = False
 hard = False
 fireActivation = False
-
 # Main Game Function
 
 def game():
@@ -380,7 +379,7 @@ pen.clear()
 
 # FireBall Gamemode Button
 
-def fireBall(pen, message="fireball"):
+def fireBall(pen, message):
     pen.color("orange")
     pen.penup()
     pen.fillcolor("red")
@@ -396,7 +395,7 @@ def fireBall(pen, message="fireball"):
 
 # No Gamemode Button
 
-def noGamemodeButton(pen, message="continue"):
+def noGamemodeButton(pen, message):
     pen.color("red")
     pen.penup()
     pen.fillcolor("purple")
@@ -409,15 +408,14 @@ def noGamemodeButton(pen, message="continue"):
     pen.end_fill()
     pen.goto(hard_x + 15, hard_y + 15)
     pen.write(message, font=("Arial", 15, "normal"))
-
 # Gamemode Screen Loop
 
 while no is True:
     pen.penup()
     pen.goto(0, 200)
     pen.write("Gamemodes", align="center", font=("Courier", 25, "normal"))
-    fireBall(pen)
-    noGamemodeButton(pen)
+    fireBall(pen, "fireball")
+    noGamemodeButton(pen, "continue")
 
     # Checking if the button was pressed
     def gamemodeButtonClick(x, y):

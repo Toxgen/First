@@ -64,10 +64,8 @@ def bruh():
 
 def attackSystem():
     global monsterHp, selfHp
-    fist_Dmg = random.randint(1, 3)
-    monster_Dmg = random.randint(2, 4)
-    monsterHp -= fist_Dmg
-    selfHp -= monster_Dmg
+    monsterHp -= random.randint(1, 3)
+    selfHp -= random.randint(2, 4)
     while monsterHp >= 0:
         time.sleep(0.2)
         print('\n')

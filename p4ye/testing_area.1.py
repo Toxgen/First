@@ -7,7 +7,7 @@ pen = turtle.Turtle()
 wn = turtle.Screen()
 pen.hideturtle()
 
-# Main game loop
+# Declaring Variables
 score_a = 0
 score_b = 0
 xx = 0
@@ -16,6 +16,8 @@ no = True
 medium = False
 hard = False
 fireActivation = False
+
+# Main Game Function
 
 def game():
     global score_a, score_b, xx, medium, fireActivation
@@ -55,6 +57,8 @@ def game():
     ball.goto(0, 0)
     ball.dx = 0.1
     ball.dy = -0.1
+
+    # Difficulty Setting
     if medium is True and hard is False:
         ball.dx = 0.182
         ball.dy = -0.182
@@ -142,14 +146,20 @@ def game():
             pen.penup()
     border()
     dottedline()
+
+    # Setting The RGB Limit for the Window
     wn.colormode(255)
+
+    # Main Game Loop
     while True:
       if not is_paused:
         wn.update()
-        pen.hideturtle()
-        colors = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-        # Color Changing Ball
 
+        # Setting A Ball Speed
+        ball.speed(10)
+
+        # Color Changing Ball
+        colors = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
         if xx > 1:
             ball.color(colors)
             xx -= 2
@@ -199,6 +209,8 @@ def game():
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b. ycor() - 50):
             ball.setx(340)
             ball.dx *= -1
+
+            # Fire Gamemode
             if fireActivation is True:
                 if ball.dx > 0:
                     ball.dx += random.uniform(0, 0.165)
@@ -208,6 +220,8 @@ def game():
         if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a. ycor() - 50):
             ball.setx(-340)
             ball.dx *= -1
+
+            #Fire Gamemode
             if fireActivation is True:
                 if ball.dx > 0:
                     ball.dx += random.uniform(0, 0.165)
@@ -310,6 +324,8 @@ def draw_hardButton(pen, message="hard"):
     pen.goto(hard_x + 15, hard_y + 15)
     pen.write(message, font=("Arial", 15, "normal"))
 
+# Main Screen Loop
+
 while xyx is True:
 
     # loading screen
@@ -362,6 +378,8 @@ while xyx is True:
 
 pen.clear()
 
+# FireBall Gamemode Button
+
 def fireBall(pen, message="fireball"):
     pen.color("orange")
     pen.penup()
@@ -375,6 +393,8 @@ def fireBall(pen, message="fireball"):
     pen.end_fill()
     pen.goto(medium_x + 15, medium_y + 15)
     pen.write(message, font=("Arial", 15, "normal"))
+
+# No Gamemode Button
 
 def noGamemodeButton(pen, message="continue"):
     pen.color("red")
@@ -390,12 +410,16 @@ def noGamemodeButton(pen, message="continue"):
     pen.goto(hard_x + 15, hard_y + 15)
     pen.write(message, font=("Arial", 15, "normal"))
 
+# Gamemode Screen Loop
+
 while no is True:
     pen.penup()
     pen.goto(0, 200)
     pen.write("Gamemodes", align="center", font=("Courier", 25, "normal"))
     fireBall(pen)
     noGamemodeButton(pen)
+
+    # Checking if the button was pressed
     def gamemodeButtonClick(x, y):
         global no, fireActivation
         if (no is True):
@@ -413,5 +437,3 @@ while no is True:
         else: 
             pass
     wn.onclick(gamemodeButtonClick)
-
-wn.mainloop()

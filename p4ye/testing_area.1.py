@@ -11,15 +11,90 @@ pen.hideturtle()
 score_a = 0
 score_b = 0
 xx = 0
+check = 0 
 is_paused = False
 no = True
 medium = False
 hard = False
 fireActivation = False
+checking = False
+confirm = False
+# Checking Class
+
+class wowzers:
+    def __init__(self, checking):
+        self.checking = checking
+
+    def __str__(self):
+        global confirm
+        if self.checking == 0:
+            print(f"No Retry")
+        elif self.checking == 1:
+            print(f"Retry Pressed")
+            confirm = True
+        else:
+            raise Exception("Error")
+        
 # Main Game Function
 
 def game():
-    global score_a, score_b, xx, medium, fireActivation
+    global score_a, score_b, xx, medium, fireActivation, check, confirm
+    # Dimensions
+    
+    cx = -100
+    cy = 25
+    clength = 90
+    cwidth = 50
+
+    ncx = 100
+    ncy = 25
+    nclength = 90
+    ncwidth = 50
+    
+    # Checking Button
+    
+    def checkingButton(pen, message="Retry?"):
+        pen.color("orange")
+        pen.penup()
+        pen.fillcolor("yellow")
+        pen.begin_fill()
+        pen.goto(cx, cy)
+        pen.goto(cx + clength, cy)
+        pen.goto(cx + clength, cy + cwidth)
+        pen.goto(cx,  cy + cwidth)
+        pen.goto(cx, cy)
+        pen.end_fill()
+        pen.goto(cx + 15, cy + 15)
+        pen.write(message, font=("Arial", 15, "normal"))
+
+    def quitting(pen, message="Quit"):
+        pen.color("orange")
+        pen.penup()
+        pen.fillcolor("yellow")
+        pen.begin_fill()
+        pen.goto(ncx, ncy)
+        pen.goto(ncx + nclength, ncy)
+        pen.goto(ncx + nclength, cy + ncwidth)
+        pen.goto(ncx,  ncy + ncwidth)
+        pen.goto(ncx, ncy)
+        pen.end_fill()
+        pen.goto(ncx + 15, ncy + 15)
+        pen.write(message, font=("Arial", 15, "normal"))
+
+
+    # Checking if Button is Clicked
+    def pressed(x, y):
+        global checking
+        if (checking is False):
+            if cx <= x <= cx + clength:
+                if cy <= y <= cy + cwidth:
+                    checking = True
+            if ncx <= x <= ncx + nclength:
+                if ncy <= y <= ncy + ncwidth:
+                    wn.bye()
+        else:
+            pass
+
     # Pen
     pen.speed(0)
     pen.color("white")
@@ -228,23 +303,39 @@ def game():
                     ball.dx -= random.uniform(0, 0.165)
         # Score
 
-        if score_a == 10:
+        if score_a == 1:
             time.sleep(0.45)
             pen.goto(0, 0)
             pen.write("Player A Wins", align="center",
                       font=("Courier", 24, "normal"))
             wn.bgcolor("red")
-            time.sleep(5)
+            wn.clear()
+            while checking is False:
+                checkingButton(pen)
+                quitting(pen)
+                wn.onclick(pressed)
+                if checking is True:
+                    check += 1; break
+            if confirm is True: # Probably have to declare class idk
+                game()
             break
 
         else:
-            if score_b == 10:
+            if score_b == 1:
                 time.sleep(0.45)
                 pen.goto(0, 0)
                 pen.write("Player B Wins", align="center",
                           font=("Courier", 24, "normal"))
                 wn.bgcolor("blue")
-                time.sleep(5)
+                wn.clear()
+                while checking is False:
+                    checkingButton(pen)
+                    quitting(pen)
+                    wn.onclick(pressed)
+                    if checking is True:
+                        check += 1; break
+                if confirm is True:
+                    game()
                 break
 
         # Moving the paddle and other keys
@@ -392,7 +483,6 @@ def fireBall(pen, message):
     pen.end_fill()
     pen.goto(medium_x + 15, medium_y + 15)
     pen.write(message, font=("Arial", 15, "normal"))
-
 # No Gamemode Button
 
 def noGamemodeButton(pen, message):
@@ -416,7 +506,7 @@ while no is True:
     pen.write("Gamemodes", align="center", font=("Courier", 25, "normal"))
     fireBall(pen, "fireball")
     noGamemodeButton(pen, "continue")
-
+    
     # Checking if the button was pressed
     def gamemodeButtonClick(x, y):
         global no, fireActivation
@@ -435,3 +525,5 @@ while no is True:
         else: 
             pass
     wn.onclick(gamemodeButtonClick)
+
+wn.mainloop()

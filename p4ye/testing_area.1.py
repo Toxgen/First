@@ -92,8 +92,6 @@ def game():
             if ncx <= x <= ncx + nclength:
                 if ncy <= y <= ncy + ncwidth:
                     wn.bye()
-        else:
-            pass
 
     # Pen
     pen.speed(0)

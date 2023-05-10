@@ -3,6 +3,8 @@ import time
 import random
 from random import randint
 
+# remember to copy to vs.code, maybe put the whole entire thing in a loop
+
 pen = turtle.Turtle()
 wn = turtle.Screen()
 pen.hideturtle()
@@ -27,10 +29,8 @@ class wowzers:
 
     def __str__(self):
         global confirm
-        if self.checking == 0:
+        if self.checking == True:
             print(f"No Retry")
-        elif self.checking == 1:
-            print(f"Retry Pressed")
             confirm = True
         else:
             raise Exception("Error")
@@ -39,7 +39,7 @@ class wowzers:
 
 def game():
     global score_a, score_b, xx, medium, fireActivation, check, confirm
-    # Dimensions
+    # Button Dimensions
     
     cx = -100
     cy = 25
@@ -293,7 +293,7 @@ def game():
             ball.setx(-340)
             ball.dx *= -1
 
-            #Fire Gamemode
+            
             if fireActivation is True:
                 if ball.dx > 0:
                     ball.dx += random.uniform(0, 0.165)

@@ -3,7 +3,7 @@ import time
 import random
 from random import randint
 
-# remember to copy to vs.code, maybe put the whole entire thing in a loop
+# Major Problemo, when you restart it, the variables are still the same, like the xyx is
 
 pen = turtle.Turtle()
 wn = turtle.Screen()
@@ -13,31 +13,50 @@ pen.hideturtle()
 score_a = 0
 score_b = 0
 xx = 0
-check = 0
 restart = 1
+
 is_paused = False
 no = True
 medium = False
 hard = False
 fireActivation = False
 checking = False
-confirm = False
         
+# Button Dimensions [line: 359 - Last Line]
+easy_x = -200
+easy_y = -50
+easy_length = 70
+easy_width = 50
+
+medium_x = -50
+medium_y = -50
+medium_length = 90
+medium_width = 50
+
+hard_x = 120
+hard_y = -50
+hard_length = 70
+hard_width = 50
+
+mode = "dark"
+xyx = True
+
+# Button Dimesons for Checking for Restart [line: 62]
+
+cx = -100
+cy = 25
+clength = 90
+cwidth = 50
+
+ncx = 100
+ncy = 25
+nclength = 90
+ncwidth = 50
+
 # Main Game Function
 for wtib in range(restart):
     def game():
-        global score_a, score_b, xx, medium, fireActivation, check, restart
-        # Dimensions
-        
-        cx = -100
-        cy = 25
-        clength = 90
-        cwidth = 50
-
-        ncx = 100
-        ncy = 25
-        nclength = 90
-        ncwidth = 50
+        global score_a, score_b, xx, medium, fireActivation, restart, checking
         
         # Checking Button
         
@@ -296,8 +315,8 @@ for wtib in range(restart):
                     pen.goto(0, 0)
                     pen.write("Player A Wins", align="center",
                             font=("Courier", 24, "normal"))
-                    wn.bgcolor("red")
                     wn.clear()
+                    wn.bgcolor("red")
                     while checking is False:
                         checkingButton(pen)
                         quitting(pen)
@@ -312,14 +331,13 @@ for wtib in range(restart):
                         pen.goto(0, 0)
                         pen.write("Player B Wins", align="center",
                                 font=("Courier", 24, "normal"))
-                        wn.bgcolor("blue")
                         wn.clear()
+                        wn.bgcolor("blue")
                         while checking is False:
                             checkingButton(pen)
                             quitting(pen)
                             wn.onclick(pressed)
                             if checking is True:
-                                check += 1
                                 restart + 1
                                 pen.clear()
                                 break
@@ -338,25 +356,7 @@ for wtib in range(restart):
             else:
                 wn.update()
 
-    # Button Dimensions
-    easy_x = -200
-    easy_y = -50
-    easy_length = 70
-    easy_width = 50
-
-    medium_x = -50
-    medium_y = -50
-    medium_length = 90
-    medium_width = 50
-
-    hard_x = 120
-    hard_y = -50
-    hard_length = 70
-    hard_width = 50
-
-    mode = "dark"
     # Draw Button Function
-    xyx = True
 
     def draw_easyButton(pen, message="easy"):
         pen.color("red")

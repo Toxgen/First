@@ -3,6 +3,8 @@ import time
 import random
 from random import randint
 
+# remember to copy to vs.code, maybe put the whole entire thing in a loop
+
 pen = turtle.Turtle()
 wn = turtle.Screen()
 pen.hideturtle()
@@ -19,6 +21,7 @@ medium = False
 hard = False
 fireActivation = False
 checking = False
+confirm = False
         
 # Main Game Function
 for wtib in range(restart):
@@ -509,4 +512,4 @@ for wtib in range(restart):
                 pass
         wn.onclick(gamemodeButtonClick)
 
-    wn.mainloop()
+wn.mainloop()

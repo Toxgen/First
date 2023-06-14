@@ -1,33 +1,25 @@
 import time as t
 
-"""
-notes
+def calulating(num, op) -> int:
+    return num, op
 
-for both nums and ops 
-might have to loop through those
-actually i have 0 idea
-
-
-
-uaayaya
-"""
-
-
-def opsTranslate(list) -> list:
-    for a in range(len(list)):  # maybe we dont need to make a new list, but like changing whats in that list. make that change later, this currently works
+def opsTranslate(list) -> list: 
+    for a in range(len(list)): 
         if list[a] == 1:
-            lst_ops.append("+")
+            list.pop(a)
+            list.insert(a, "+")
         if list[a] == 2:
-            lst_ops.append("-")
+            list.pop(a)
+            list.insert(a, "-")
         if list[a] == 3:
-            lst_ops.append("*")
+            list.pop(a)
+            list.insert(a, "*")
         if list[a] == 4:
-            lst_ops.append("/")
-    return lst_ops
+            list.pop(a)
+            list.insert(a, "/")
+    return list
 
 def calculator() -> int:
-    global lst_ops
-    lst_ops = []
     list_num = []
     ops = []
 
@@ -51,7 +43,7 @@ def calculator() -> int:
 
     for i in range(amt): 
         while True:
-            userInput = input("Enter A Number: ") # when inputs number in here, it does the equation automatically using a different fufnctions
+            userInput = input("Enter A Number: ") 
             try:
                 num = int(userInput)
             except ValueError:
@@ -70,7 +62,7 @@ def calculator() -> int:
     4 -> /
     """, "\n")
 
-    t.sleep(4.2)
+    t.sleep(3.9)
 
     for x in range(amt-1):
         while True:
@@ -88,32 +80,37 @@ def calculator() -> int:
                 break
         ops.append(int(opss))
 
-    print("translating over...")
-    t.sleep(1.444)
+    print("Translating over...")
+    t.sleep(0.444)
     opsTranslate(ops)
 
     try:
-        int2 = "{0} & {1}".format(
-            list_num[0], list_num[1])
-        int3 = "{0} & {1} & {2}".format(
-            list_num[0], list_num[1], list_num[2])
-        int4 = "{0} & {1} & {2} & {3}".format(
-            list_num[0], list_num[1], list_num[2], list_num[3])
-        int5 = "{0} & {1} & {2} & {3} & {4}".format(
-            list_num[0], list_num[1], list_num[2], list_num[3], list_num[4])
-        int6 = "{0} & {1} & {2} & {3} & {4} & {5}".format(
-            list_num[0], list_num[1], list_num[2], list_num[3], list_num[4], list_num[5])
-        int7 = "{0} & {1} & {2} & {3} & {4} & {5} & {6}".format(
-            list_num[0], list_num[1], list_num[2], list_num[3], list_num[4], list_num[5], list_num[6])
-        int8 = "{0} & {1} & {2} & {3} & {4} & {5} & {6} & {7}".format(
-            list_num[0], list_num[1], list_num[2], list_num[3], list_num[4], list_num[5], list_num[6], list_num[7])
-        int9 = "{0} & {1} & {2} & {3} & {4} & {5} & {6} & {7} & {8}".format(
-            list_num[0], list_num[1], list_num[2], list_num[3], list_num[4], list_num[5], list_num[6], list_num[7], list_num[8])
-        int10 = "{0} & {1} & {2} & {3} & {4} & {5} & {6} & {7} & {8} & {9}".format(
-            list_num[0], list_num[1], list_num[2], list_num[3], list_num[4], list_num[5], list_num[6], list_num[7], list_num[8], list_num[9])  # maybe add the signs for the spaces inbetween the and signs
+        int2 = "{0} {1} {2}".format(
+            list_num[0], ops[0], list_num[1]) 
+        int3 = "{0} {1} {2} {3} {4}".format(
+            list_num[0], ops[0], list_num[1], ops[1], list_num[2])
+        int4 = "{0} {1} {2} {3} {4} {5} {6}".format(
+            list_num[0], ops[0], list_num[1], ops[1], list_num[2], ops[2], list_num[3])
+        int5 = "{0} {1} {2} {3} {4} {5} {6} {7} {8}".format(
+            list_num[0], ops[0], list_num[1], ops[1], list_num[2], ops[2], list_num[3], ops[3], list_num[4])
+        int6 = "{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10}".format(
+            list_num[0], ops[0], list_num[1], ops[1], list_num[2], ops[2], list_num[3], ops[3], list_num[4], 
+            ops[4], list_num[5])
+        int7 = "{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12}".format(
+            list_num[0], ops[0], list_num[1], ops[1], list_num[2], ops[2], list_num[3], ops[3], list_num[4], 
+            ops[4], list_num[5], ops[5], list_num[6])
+        int8 = "{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12} {13} {14}".format(
+            list_num[0], ops[0], list_num[1], ops[1], list_num[2], ops[2], list_num[3], ops[3], list_num[4], 
+            ops[4], list_num[5], ops[5], list_num[6], ops[6], list_num[7])
+        int9 = "{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12} {13} {14} {15} {16}".format(
+            list_num[0], ops[0], list_num[1], ops[1], list_num[2], ops[2], list_num[3], ops[3], list_num[4], 
+            ops[4], list_num[5], ops[5], list_num[6], ops[6], list_num[7], ops[7], list_num[8])
+        int10 = "{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12} {13} {14} {15} {16} {17} {18}".format(
+            list_num[0], ops[0], list_num[1], ops[1], list_num[2], ops[2], list_num[3], ops[3], list_num[4], 
+            ops[4], list_num[5], ops[5], list_num[6], ops[6], list_num[7], ops[7], list_num[8], ops[8], list_num[9])
     except Exception:
         print("Declaring Variables...", '\n')
-        t.sleep(3)
+        t.sleep(0.45)
     
     if amt == 2:
         print(int2, '\n')
@@ -135,5 +132,7 @@ def calculator() -> int:
         print(int10, '\n')
     else:
         raise Exception("Something Went Wrong, Retry")
+    
+    calulating(list_num, ops)
     
 calculator()

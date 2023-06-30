@@ -60,15 +60,16 @@ def calculator():
 
     while True: # Maybe add something to check if they put ans in the amount1 <===
         amount1 = input("Number 1: ")
-        try: # Checking if input is int
+        try:
             num1 = int(amount1)
         except ValueError:
             print("Not int", '\n')
             continue
 
         amount2 = input("Number 2: ") 
-        try: # Checking if input is int
+        try: 
             num2 = int(amount2)
+            print('\n')
         except ValueError:
             print("Not int", '\n')
             continue
@@ -104,8 +105,7 @@ def calculator():
         elif userInput == "/": 
             ans = divid(num1, num2)
             if ans == "Infinity":
-                raise Exception("Infinity cannot be added, subtracted, multiplied, or divided")
-
+                raise Exception("Infinity") # maybe add smth to actually say infinity
         print(f"The ans is {ans}")
         t.sleep(1.32)
         break

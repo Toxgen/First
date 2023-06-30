@@ -22,20 +22,19 @@ def divid(x, y): # Division
 def checkingEquation():
     while True: # Main Loop
         amount1 = input("Number 1: ") 
-        try: # Checking if input is int
+        try:
             num1 = int(amount1)
         except ValueError:
             print("Not int", '\n')
             continue
 
         amount2 = input("Number 2: ") 
-        try: # Checking if input is int
+        try: 
             num2 = int(amount2)
+            print('\n')
         except ValueError:
             print("Not int", '\n')
             continue
-
-        print('\n')
 
         while True: 
             userInput = input("Operation: ") 

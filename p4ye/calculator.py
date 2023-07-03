@@ -8,6 +8,11 @@ continueOperation = False
 check = ()
 xyz = 2
 
+'''
+maybe add something for cubed / square root of the specific number
+
+'''
+
 def add(x, y):
     return x + y
 def sub(x, y):
@@ -54,23 +59,23 @@ def checkingEquation():
             userInput = input("Operation: ")
             try:
                 if userInput == "+":
-                    break
+                     print('\n'); break
                 elif userInput == "-":
-                    break
+                     print('\n'); break
                 elif userInput == "*":
-                    break
+                     print('\n'); break
                 elif userInput == "/":
-                    break
+                     print('\n'); break
                 elif userInput == "^":
-                    break
+                     print('\n'); break
                 else:
                     raise Exception
             except Exception:
                 print("Not an Operation", '\n')
                 continue
 
-        print(
-            f"Does this Equation Look Right: {num1} {userInput} {num2}?", "y for yes, n for no", sep='\n')
+        print(f"Does this Equation Look Right: {num1} {userInput} {num2}?", "y for yes, n for no", sep='\n')
+        
         while True:
             try:
                 right = input('> ').lower().strip()
@@ -121,15 +126,15 @@ def calculator():
             userInput = input("Operation: ")
             try:
                 if userInput == "+":
-                    break
+                        print('\n'); break
                 elif userInput == "-":
-                    break
+                        print('\n'); break
                 elif userInput == "*":
-                    break
+                        print('\n'); break
                 elif userInput == "/":
-                    break
+                        print('\n'); break
                 elif userInput == "^":
-                    break
+                        print('\n'); break
                 else:
                     raise Exception
             except Exception:

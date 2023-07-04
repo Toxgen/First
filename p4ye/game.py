@@ -42,11 +42,11 @@ class game:
         print("Name?", "p.s. 3 - 10 characters long & no special characters", sep='\n')
         while True:
             self.name = input('Name: ')
-            if len(self.name) > 11:
-                print("Too Long, Retry", '\n')
+            if len(self.name) <= 2:
+                print("Retry", '\n')
                 continue
-            elif len(self.name) < 2:
-                print("Too Short, Retry", '\n')
+            elif len(self.name) >= 11:
+                print("Retry", '\n')
                 continue
             else:
                 self.name.split()
@@ -104,8 +104,8 @@ class game:
                     print("Please type in a allowed command", '\n', self.input)
                 continue
 
-    def attk_RNGESUS(self):
-        return self.weapDict.items()[0] - self.mobDefe # Make this a user selected weapon, but currently too many things to worry about rn
+    def attk_RNGESUS(self): # Maybe add a randomm number generator for the amount of damage so it doesnt seem so consistent
+        return self.weapDict.get('fist') - self.mobDefe # Make this a user selected weapon, but currently too many things to worry about rn,  e.g. replalce get['fist'] with userInput instead
     def defe_RNGESUS(self):
         return self.mobAttk - self.defe
 
@@ -113,12 +113,13 @@ class game:
         atk_RNGESUS = 0
         dee_RNGESUS = 0
         self.mobList.append("goblin") # add all enemies
+        self.weapDict['fist'] = r.randint(1, 3)
         if time == 0:
             for q in range(len(self.mobList)):
                 if 'goblin' in self.mobList[q]:
                     self.mobHp = 10
                     self.mobAttk = r.randint(1,3)
-                    self.mobDefe = 1
+                    self.mobDefe = 0
 
             print("New Adventure!", '\n')
             print(f"Encountered 'Goblin'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}") # For encountered goblin make some system that appends that enemy bc of that
@@ -135,7 +136,7 @@ class game:
                 else:
                     print("Please type in attack", '\n')
             
-gaming = game(20, 1, 0, 0, 0, '', '', list(), dict(), ('fist', r.randint(1,3)))
+gaming = game(20, 1, 0, 0, 0, '', '', list(), dict(), dict())
 
 def start():
     print('u live in cabin and want explore', 'choose name', '\n', sep='\n')

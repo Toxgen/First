@@ -8,15 +8,16 @@ TYPE IN YES TWICE QUICK: DIDNT REGISTER SOMEHOW I DUNNO
 
 
 class game:
-
-    def __init__(self, hp, defe, mobHp, mobAttk, mobDefe, input, name, mobList, inv, weapDict):
+    def __init__(self, hp, defe, mobHp, mobAttk, mobDefe, luck, input, name, addingWep, mobList, inv, weapDict):
         self.hp = hp
         self.defe = defe
         self.mobHp = mobHp
         self.mobAttk = mobAttk
         self.mobDefe = mobDefe
+        self.luck = luck
         self.input = input
         self.name = name
+        self.addingWep = addingWep
         self.mobList = mobList
         self.inv = inv
         self.weapDict = weapDict
@@ -104,11 +105,34 @@ class game:
                     print("Please type in a allowed command", '\n', self.input)
                 continue
 
-    def attk_RNGESUS(self): # Maybe add a randomm number generator for the amount of damage so it doesnt seem so consistent
-        return self.weapDict.get('fist') - self.mobDefe # Make this a user selected weapon, but currently too many things to worry about rn,  e.g. replalce get['fist'] with userInput instead
+    def attk_RNGESUS(self):
+        print("Which weapons would you like to attack with?", self.weapDict.keys(), sep='\n', end='\n') # scoot this down to the adventure(self)
+        while True:
+            self.input = input('> ').lower().strip()
+            if self.input == 'fist' and self.addingWep >= 0:
+                print("ok")
+                break
+            elif self.input == "stick":
+                if self.addingWep >= 1:
+                    print("ok")
+                    break
+                else:
+                    print("you have yet to obtain this yet, retry", '\n')
+                    continue
+            else:
+                print("Type in a valid weapon")
+                
+        return self.weapDict.get(self.input) + r.randint(self.luck, self.luck + 3) - self.mobDefe  # Maybe add something like critcal hit 
+    
     def defe_RNGESUS(self):
         return self.mobAttk - self.defe
-
+    def addingWeapons(self):
+        if self.addingWep == 0:
+            self.weapDict['fist'] = 2
+        elif self.addingWep == 1:
+            self.weapDict['stick'] = 3
+        else:
+            pass
     def adventure(self, time):
         atk_RNGESUS = 0
         dee_RNGESUS = 0
@@ -135,8 +159,9 @@ class game:
                     print(f"Oh no, your health is at {self.hp}")
                 else:
                     print("Please type in attack", '\n')
+
             
-gaming = game(20, 1, 0, 0, 0, '', '', list(), dict(), dict())
+gaming = game(20, 1, 0, 0, 0, 0, '', '', 0, list(), dict(), dict())
 
 def start():
     print('u live in cabin and want explore', 'choose name', '\n', sep='\n')

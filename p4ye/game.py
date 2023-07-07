@@ -135,7 +135,7 @@ class game:
             pass
 
 
-    def adventure(self, time):
+    def adventure(self, time): # somehow return something true if critical like make variable inside function and in the attacking function make it true
         
         
         atk_RNGESUS = 0
@@ -145,7 +145,7 @@ class game:
             self.mobAttk = r.randint(1,3)
             self.mobDefe = 0
 
-            print("New Adventure!", '\n')
+            print("New Adventure!", '\n') # for line 149 maybe add like add a list of mobs possible for that area, maybe even add a photo???. like make a character hased photo i dunnk
             print(f"Encountered 'Goblin'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}") # For encountered goblin make some system that appends that enemy bc of that
             print("Type attack to attack your opponent!")
             while True:
@@ -177,7 +177,7 @@ class game:
 gaming = game()
 
 def start():
-    print('u live in cabin and want explore', 'choose name', '\n', sep='\n')
+    print('u live in cabin and want explore', 'choose name', '\n', sep='\n') # obv gotta change this, but really just focus oj bugs first
     name = gaming.naming()
     print(f'{name}, nice name, now go out in the world!')
     t.sleep(2.5)

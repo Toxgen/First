@@ -151,7 +151,7 @@ class game:
             for i in range(10+game.luck):
            #     self.inv.append("Place holder", 6) # This will defintely add a error
 
-    def adventure(self, time):
+    def adventure(self, time): # somehow return something true if critical like make variable inside function and in the attacking function make it true
         
         
         atk_RNGESUS = 0
@@ -196,7 +196,7 @@ class game:
 gaming = game()
 
 def start():
-    print('u live in cabin and want explore', 'choose name', '\n', sep='\n')
+    print('u live in cabin and want explore', 'choose name', '\n', sep='\n') # obv gotta change this, but really just focus oj bugs first
     name = gaming.naming()
     print(f'{name}, nice name, now go out in the world!')
     t.sleep(2.5)

@@ -149,6 +149,7 @@ class game:
     def lootTables(self):
         if game.mob == 'goblin':
             for i in range(10+game.luck):
+                pass
            #     self.inv.append("Place holder", 6) # This will defintely add a error
 
     def adventure(self, time): # somehow return something true if critical like make variable inside function and in the attacking function make it true

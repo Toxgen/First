@@ -143,20 +143,19 @@ class game:
             
         print(f"""_______________________________
                     {game.weapDict.get("Fist", '')} 
-                    {game.weapDict.get("Stick", 'Not Yet Unlocked!')}
+                    {game.weapDict.get("Goblin Sword", 'Not Yet Unlocked!')}
                   ________________________________""")
             
     def lootTables(self):
         if game.mob == 'goblin':
             for i in range(10+game.luck):
-                pass
-           #     self.inv.append("Place holder", 6) # This will defintely add a error
+                if r.randint(1, 100) / 2 > 25:
+                    self.inv.append("") # Add something here for like armor, what they drop (goblin teeth ish i dunnow), s-word
+                
 
     def adventure(self, time): # somehow return something true if critical like make variable inside function and in the attacking function make it true
         
-        
-        atk_RNGESUS = 0
-        dee_RNGESUS = 0
+
         if time:
             self.mobHp = 10
             self.mobAttk = r.randint(1,3)
@@ -169,14 +168,12 @@ class game:
             while True:
                 game.input = input('> ').lower().strip()
                 if game.input == "attack":
-                    atk_RNGESUS = game.attk_RNGESUS(self)
-                    self.mobHp -= atk_RNGESUS
+                    self.mobHp -= game.attk_RNGESUS(self)
                     if self.mobHp <= 0:
                         break
                     else:
                         print(f"The goblin health is at {self.mobHp}")
-                    dee_RNGESUS = game.defe_RNGESUS(self)
-                    game.hp -= dee_RNGESUS
+                    game.hp -= game.defe_RNGESUS(self)
                     if game.hp <= 0:
                         break
                     else:
@@ -187,10 +184,14 @@ class game:
                     continue
                 
                 print("You have defeated the Goblin!")
+
                 # Add some loot system here <------------------------- god so much work?
+                break
         else:
             pass # Add what after tutorial will look like
-
+class start_attk(game):
+    def __init__(self, hp, defe, crit_chance):
+        pass # Try to add super().whatever <--- if it goes here
 
 
             

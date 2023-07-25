@@ -1,3 +1,5 @@
+""""""
+
 import random as r
 import time as t
 
@@ -17,7 +19,8 @@ class game:
     weaprn = ''
     mob = ''
 
-    weapDict = {}
+    possibleWeaponDict = {"Fist", "Rusty Sword", "Sword"}
+    weapDict = {"Fist"}
 
     def __init__(self, mobHp=0, mobAttk=0, mobDefe=0, name='', addingWep=[], mobList=[], inv={}):
         self.mobHp = mobHp
@@ -31,12 +34,12 @@ class game:
 
 
     def naming(self):
-        special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'"
+        special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
         c = 0
         if len(self.name) > 0:
             print("Rename?", "Type in no or yes", sep='\n')
             while True:
-                gameinput = input('> ').lower().strip()
+                game.input = input('> ').lower().strip()
                 if game.input == "yes":
                     break
                 elif game.input == "no":
@@ -132,20 +135,27 @@ class game:
     
     
     def addingWeapons(self):
-        if self.addingWep == 0:
-            game.weapDict['fist'] = 2
-        elif self.addingWep == 1:
-            game.weapDict['stick'] = 3
+        if self.addingWep == 1:
+            game.weapDict['Rusty Sword'] = 3 # maybe change to return instead appending
+            pass
+        elif self.addingWep == 2:
+            game.weapDict['Sword'] = 5
+            pass
         else:
             pass
         
     def selectWeapon(self):
-            
-        print(f"""_______________________________
-                    {game.weapDict.get("Fist", '')} 
-                    {game.weapDict.get("Goblin Sword", 'Not Yet Unlocked!')}
-                  ________________________________""")
-            
+        print(len(game.weapDict))
+        for xy in range(len(game.weapDict)):
+            if game.weapDict[xy].keys() in game.possibleWeaponDict: 
+                if xy == 0:
+                    print("____________________________")
+                print(f"{game.weapDict[xy].keys()}")
+                if xy == len(game.weapDict()):
+                    print("_____________________________")
+                    break
+
+
     def lootTables(self):
         if game.mob == 'goblin':
             for i in range(10+game.luck):
@@ -153,10 +163,7 @@ class game:
                     self.inv.append("") # Add something here for like armor, what they drop (goblin teeth ish i dunnow), s-word
                 
 
-    def adventure(self, time): # somehow return something true if critical like make variable inside function and in the attacking function make it true
-        
-
-        if time:
+    def first_attk(self): # somehow return something true if critical like make variable inside function and in the attacking function make it true
             self.mobHp = 10
             self.mobAttk = r.randint(1,3)
             self.mobDefe = 0
@@ -183,18 +190,9 @@ class game:
                     print("Please type in attack", '\n')
                     continue
                 
-                print("You have defeated the Goblin!")
-
-                # Add some loot system here <------------------------- god so much work?
-                break
-        else:
-            pass # Add what after tutorial will look like
-class start_attk(game):
-    def __init__(self, hp, defe, crit_chance):
-        pass # Try to add super().whatever <--- if it goes here
+            print("You have defeated the Goblin!")
 
 
-            
 gaming = game()
 
 def start():
@@ -203,6 +201,5 @@ def start():
     print(f'{name}, nice name, now go out in the world!')
     t.sleep(2.5)
     print("Type in adv to start an adventure!")
-    gaming.adventure(1)
+    gaming.first_attk()
 start()
-

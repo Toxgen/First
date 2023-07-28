@@ -1,3 +1,23 @@
+
+class foo():
+    def __init__(self, test):
+        self.test = test
+    def __call__(self) -> str:
+        return f"{self.test} cool"
+
+class child(foo):
+    def __init__(self, test):
+        super().__init__(test)
+    def change(self):
+        self.test = 'MWAHHHHH'
+
+foo = foo("uhh")
+child = child("bruh")
+
+child.change()
+uh = foo.__call__()
+print(uh)
+"""
 import turtle
 import time
 import random
@@ -513,3 +533,4 @@ for wtib in range(restart):
         wn.onclick(gamemodeButtonClick)
 
 wn.mainloop()
+"""

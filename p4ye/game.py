@@ -126,7 +126,7 @@ class game:
         return self.mobAttk - self.defe
     
     
-    def addingWeapons(self):
+    def addingWeapons(self): # return this
         if self.addingWep == 1:
             self.weapDict['Rusty Sword'] = 3 # maybe change to return instead appending
             pass

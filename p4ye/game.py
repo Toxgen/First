@@ -1,6 +1,8 @@
 import random as r
 import time as t
 
+# git force --push cause screw merging
+
 class game:
 
     possibleWeaponDict = ["Fist", "Rusty Sword", "Sword"]

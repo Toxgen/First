@@ -1,7 +1,6 @@
 import random as r
 import time as t
-
-# git force --push cause screw merging
+import loot_tables as loot
 
 class game:
 
@@ -13,7 +12,7 @@ class game:
         self.defe = 0
         self.crit_chance = 10
         self.crit_dmg = 1.5
-        self.luck = 0
+        self.luck = 5
         self.input = ''
         self.weaprn = ''
         self.mob = ''
@@ -93,9 +92,9 @@ class game:
                     print("""The Following Commands Are:
 
                             'Stats': To show your stats
-                            'Inv': To show your inventory
-                            'Adv': To start an adventure 
-                            'Swi': To switch current weapon
+                            'Inventory or inv': To show your inventory
+                            'Adventure or adv': To start an adventure 
+                            'Switch or swi': To switch current weapon
                             """)
                     t.sleep(1.0)
                     continue
@@ -162,15 +161,8 @@ class game:
 
 
     def lootTables(self):
-        if self.mob == 'goblin':
-            for i in range(10+self.luck):
-                if r.randint(1, 100) / 2 > 25:
-                    self.inv.append("") # Add something here for like armor, what they drop (goblin teeth ish i dunnow), s-word
-
-    def adventure(self):
         pass
-           
-
+                
 class tutorial(game):
     def __init__(self):
         super().__init__(mobHp=10, mobAttk="2 - 3", mobDefe=0, name='', addingWep=[], mobList=[], inv={})
@@ -181,7 +173,7 @@ class tutorial(game):
     def main(self) -> int:
         crit = 0
 
-        print(f"Encountered 'Goblin'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}")
+        print(f"Encountered 'Goblin'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}, Level: 1")
         print("Type attack to attack your opponent!")
         self.mob = "goblin"
         while True:
@@ -219,7 +211,7 @@ class tutorial(game):
                 continue
 
         print("You have defeated the Goblin!")
-       # super.
+        super().lootTables()
 
 if __name__ == "__main__":
     gaming = game(0, 0, 0, '', [], [], {})

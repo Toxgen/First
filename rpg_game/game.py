@@ -2,7 +2,7 @@ import random as r
 import time as t
 import loot_tables as loot
 
-class game:
+class main:
 
     possibleWeaponDict = ["Fist", "Rusty Sword", "Sword"]
     weapDict = {"Fist": 2}
@@ -10,8 +10,8 @@ class game:
     def __init__(self, mobHp, mobAttk, mobDefe, name, addingWep, mobList, inv):
         self.hp = 20
         self.defe = 0
-        self.crit_chance = 10
-        self.crit_dmg = 1.5
+        self.crit_chance = 100
+        self.crit_dmg = 1500
         self.luck = 5
         self.input = ''
         self.weaprn = ''
@@ -138,7 +138,7 @@ class game:
         # Add special effects like posion or smth to that extent
     
     
-    def addingWeapons(self):
+    def addingWeapons(self) -> dict:
         # maybe do match?
         if self.addingWep == 1:
             return self.weapDict['Rusty Sword', 3]
@@ -159,20 +159,17 @@ class game:
                         print("____________________________")
                         break
 
-
-    def lootTables(self):
-        pass
                 
-class tutorial(game):
+class starting_phase(main):
     def __init__(self):
         super().__init__(mobHp=10, mobAttk="2 - 3", mobDefe=0, name='', addingWep=[], mobList=[], inv={})
 
     def __repr__(self):
         return "Tutorial!"
 
-    def main(self) -> int:
+    def main(self):
         crit = 0
-
+        
         print(f"Encountered 'Goblin'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}, Level: 1")
         print("Type attack to attack your opponent!")
         self.mob = "goblin"
@@ -180,6 +177,7 @@ class tutorial(game):
             self.input = input('> ').lower()
             if self.input in ["attack", "atk", "attk", "q"]: # "q"
                 i = super().attk_RNGESUS("Fist")
+                print(f"{int(i[0])} DMG")
 
                 if len(i) == 2:
                     self.mobHp -= i[0]
@@ -211,11 +209,14 @@ class tutorial(game):
                 continue
 
         print("You have defeated the Goblin!")
-        super().lootTables()
+
+        loots = loot.drops(1, self.luck)
+        for i in loots:
+            loots.sort() # sort this and find out how many of that item there is & add the amount to the sort, maybe make it a script in loot_tables.py
 
 if __name__ == "__main__":
-    gaming = game(0, 0, 0, '', [], [], {})
-    tutorial = tutorial()
+    gaming = main(0, 0, 0, '', [], [], [[], [], [], []])
+    tutorial = starting_phase()
 
     def start():
         t.sleep(1)

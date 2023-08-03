@@ -2,3 +2,4 @@
 .pytest_cache/v/cache/stepwise
 .pytest_cache/CACHEDIR.TAG
 p4ye/__pycache__/game.cpython-310.pyc
+p4ye/__pycache__/loot_tables.cpython-310.pyc

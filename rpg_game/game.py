@@ -258,30 +258,53 @@ class starting_phase(main):
         placeholder = tool.counting_drop(loots, self.mob)
 
         super().insertingMobDrops(placeholder)
-        for q in range(len(placeholder)): # Maybe only print what they actually earned rather than just printing 0's
+        for q in range(len(placeholder)): 
 
             match q:
 
                 case 0:
-                    print("+=======================+",
-                          f"Earned {placeholder[q]} goblin_hide(s)", sep='\n')
+                    if placeholder[q] > 1:
+                        print("+=======================+",
+                            f"Earned {placeholder[q]} goblin_hides", sep='\n')
+                    else:
+                        print("+=======================+",
+                            f"Earned {placeholder[q]} goblin_hide", sep='\n')
+                        
                     t.sleep(0.33)
                     continue
                 
                 case 1:
-                    print(f"Earned {placeholder[q]} goblin_leg(s)")
-                    t.sleep(0.33)
+                    if placeholder[q]:
+                        if placeholder[q] > 1:
+                            print(f"Earned {placeholder[q]} goblin_legs")
+                        else:
+                            print(f"Earned {placeholder[q]} goblin_leg")
+
+                        t.sleep(0.33)
                     continue
 
                 case 2:
-                    print(f"Earned {placeholder[q]} goblin_sword(s)")
-                    t.sleep(0.33)
+                    if placeholder[q]:
+                        if placeholder[q] > 1:
+                            print(f"Earned {placeholder[q]} goblin_swords")
+                        else:
+                            print(f"Earned {placeholder[q]} goblin_sword")
+
+                        t.sleep(0.33)
                     continue
 
                 case 3:
-                    print(f"Earned {placeholder[q]} goblin_staff", 
-                          "+=======================+", sep='\n')
-                    t.sleep(0.33)
+                    if placeholder[q]:
+                        if placeholder[q] > 1:
+                            print(f"Earned {placeholder[q]} goblin_staffs", 
+                                    "+=======================+", sep='\n')
+                        else:
+                            print(f"Earned {placeholder[q]} goblin_staff",
+                                  "+=======================+", sep='\n')
+                    else:
+                        print("+=======================+")
+                            
+                        t.sleep(0.33)
 
 
 if __name__ == "__main__":

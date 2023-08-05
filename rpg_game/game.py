@@ -1,6 +1,7 @@
 import random as r
 import time as t
-import loot_tables as loot
+
+import tools as tool
 
 class main:
 
@@ -11,7 +12,7 @@ class main:
         self.hp = 20
         self.defe = 0
         self.crit_chance = 100
-        self.crit_dmg = 1500
+        self.crit_dmg = 1.5
         self.luck = 5
         self.input = ''
         self.weaprn = ''
@@ -23,7 +24,7 @@ class main:
         self.addingWep = addingWep
         self.mobList = mobList
         self.mobList.append("goblin")
-        self.inv = inv
+        self.inv = [[], [], [], [], [], [], []]
 
 
     def naming(self) -> str:
@@ -81,7 +82,7 @@ class main:
                     continue
 
                 
-    def help_ccmd(self):
+    def help_ccmd(self) -> None:
         print("Type In { help } For Commands", "\n")
         t.sleep(0.5)
         while True:
@@ -135,19 +136,16 @@ class main:
 
     def defe_RNGESUS(self, attk: int) -> int: 
         return [int(attk - self.defe)]
-        # Add special effects like posion or smth to that extent
     
     
     def addingWeapons(self) -> dict:
-        # maybe do match?
-        if self.addingWep == 1:
-            return self.weapDict['Rusty Sword', 3]
-        elif self.addingWep == 2:
-            return self.weapDict['Sword', 5]
-        else:
-            pass
+        match self.addingWep: # Prob move this
+            case 1:
+                return self.weapDict['Rusty Sword', 3]
+            case 2:
+                return self.weapDict['Sword', 5]
         
-    def selectWeapon(self):
+    def selectWeapon(self) -> None:
         sel_wep = list(self.weapDict.keys())
         for xy in self.weapDict:
             for y in self.possibleWeaponDict:
@@ -159,25 +157,69 @@ class main:
                         print("____________________________")
                         break
 
+    def insertingMobDrops(self, placeholder: list) -> None:
+        if self.mob == "goblin":
+            for i in range(len(placeholder)):
+
+                match i:
+
+                    case 0:
+                        self.inv[0].insert(0, "goblin_hide")
+                        self.inv[0].insert(1, placeholder[i])
+
+                    case 1:
+                        try:
+
+                            self.inv[1].insert[0, "goblin_leg"]
+                            self.inv[1].insert(1, placeholder[i])
+
+                        except TypeError:
+                            continue
+
+                    case 2:
+                        try:
+
+                            self.inv[2].insert[0, "goblin_sword"]
+                            self.inv[2].insert(1, placeholder[i])
+
+                        except TypeError:
+                            continue
+
+                    case 3:
+                        try:
+
+                            self.inv[3].insert[0, "goblin_staff"]
+                            self.inv[3].insert(1, placeholder[i])
+
+                        except TypeError:
+                            continue
+
+                    case _:
+                        print("OH NAHHHHHHHHHHHHHHHHHHHHH")
+                        while True:
+                            raise ChildProcessError("NOOOOOOOOOOOOOOOOOOOOOOOOOO")
+        
                 
 class starting_phase(main):
     def __init__(self):
-        super().__init__(mobHp=10, mobAttk="2 - 3", mobDefe=0, name='', addingWep=[], mobList=[], inv={})
+        super().__init__(mobHp=10, mobAttk="2 - 3", mobDefe=0, name='', addingWep=[], mobList=[], inv=[])
 
     def __repr__(self):
         return "Tutorial!"
 
     def main(self):
         crit = 0
+
         
         print(f"Encountered 'Goblin'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}, Level: 1")
         print("Type attack to attack your opponent!")
+
         self.mob = "goblin"
+
         while True:
             self.input = input('> ').lower()
             if self.input in ["attack", "atk", "attk", "q"]: # "q"
                 i = super().attk_RNGESUS("Fist")
-                print(f"{int(i[0])} DMG")
 
                 if len(i) == 2:
                     self.mobHp -= i[0]
@@ -191,9 +233,11 @@ class starting_phase(main):
                     if crit:
                         print("+===========================+",
                             f"Enemy Hp: {self.mobHp}", f"CRITCAL HIT! {i[0]} DMG", sep='\n')
+                        t.sleep(0.133)
                     else:
                         print("+===========================+",
                               f"Enemy Hp: {self.mobHp} || Dmg: {i[0]}", sep='\n')
+                        t.sleep(0.133)
                 
                 i = super().defe_RNGESUS(r.randint(2, 3))
                 self.hp -= i[0]
@@ -210,9 +254,35 @@ class starting_phase(main):
 
         print("You have defeated the Goblin!")
 
-        loots = loot.drops(1, self.luck)
-        for i in loots:
-            loots.sort() # sort this and find out how many of that item there is & add the amount to the sort, maybe make it a script in loot_tables.py
+        loots = tool.drops(1, self.luck)
+        placeholder = tool.counting_drop(loots, self.mob)
+
+        super().insertingMobDrops(placeholder)
+        for q in range(len(placeholder)): # Maybe only print what they actually earned rather than just printing 0's
+
+            match q:
+
+                case 0:
+                    print("+=======================+",
+                          f"Earned {placeholder[q]} goblin_hide(s)", sep='\n')
+                    t.sleep(0.33)
+                    continue
+                
+                case 1:
+                    print(f"Earned {placeholder[q]} goblin_leg(s)")
+                    t.sleep(0.33)
+                    continue
+
+                case 2:
+                    print(f"Earned {placeholder[q]} goblin_sword(s)")
+                    t.sleep(0.33)
+                    continue
+
+                case 3:
+                    print(f"Earned {placeholder[q]} goblin_staff", 
+                          "+=======================+", sep='\n')
+                    t.sleep(0.33)
+
 
 if __name__ == "__main__":
     gaming = main(0, 0, 0, '', [], [], [[], [], [], []])

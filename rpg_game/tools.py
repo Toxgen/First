@@ -48,5 +48,29 @@ def drops(level: int, luck: int) -> list:
     
     return returning
 
+def counting_drop(test: list, mob: str):
+    """
+    Input the list
+    """
+
+    match mob:
+
+        case "goblin":
+            g_hide = test.count("goblin_hide")
+
+            g_leg = test.count("goblin_leg")
+            
+            g_sword = test.count("goblin_sword")
+
+            g_staff = test.count("goblin_staff")
+
+            return [g_hide, g_leg, g_sword, g_staff]
+    
+        case _:
+            raise Exception("UH OH")
+
+
+
 if __name__ == '__main__':
-    print(drops(1, 5))   
+    a = drops(0, 10)
+    print(counting_drop(a, "goblin"))

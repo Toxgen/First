@@ -164,40 +164,47 @@ class main:
                 match i:
 
                     case 0:
-                        self.inv[0].insert(0, "goblin_hide")
-                        self.inv[0].insert(1, placeholder[i])
+                        try:
+                            
+                            self.inv[0].insert(0, "goblin_hide")
+                            self.inv[0].insert(1, placeholder[i])
+                        
+                        except Exception:
+                            raise Exception("0st case")
 
                     case 1:
                         try:
-
-                            self.inv[1].insert[0, "goblin_leg"]
+                        
+                            self.inv[1].insert(0, "goblin_leg")
                             self.inv[1].insert(1, placeholder[i])
 
-                        except TypeError:
-                            continue
-
+                        except Exception:
+                            raise Exception("1st case")
                     case 2:
                         try:
 
-                            self.inv[2].insert[0, "goblin_sword"]
+                            self.inv[2].insert(0, "goblin_sword")
                             self.inv[2].insert(1, placeholder[i])
 
-                        except TypeError:
-                            continue
+                        except Exception:
+                            raise Exception("2nd case")
 
                     case 3:
                         try:
 
-                            self.inv[3].insert[0, "goblin_staff"]
+                            self.inv[3].insert(0, "goblin_staff")
                             self.inv[3].insert(1, placeholder[i])
-
-                        except TypeError:
-                            continue
+                        
+                        except Exception:
+                            raise Exception("3rd case")
 
                     case _:
                         print("OH NAHHHHHHHHHHHHHHHHHHHHH")
                         while True:
                             raise ChildProcessError("NOOOOOOOOOOOOOOOOOOOOOOOOOO")
+                        
+            while [] in self.inv: # Removes all the nested lists
+                self.inv.remove([])
         
                 
 class starting_phase(main):
@@ -254,7 +261,7 @@ class starting_phase(main):
 
         print("You have defeated the Goblin!")
 
-        loots = tool.drops(1, self.luck)
+        loots = tool.drops(1, 100)
         placeholder = tool.counting_drop(loots, self.mob)
 
         super().insertingMobDrops(placeholder)
@@ -305,7 +312,7 @@ class starting_phase(main):
                         print("+=======================+")
                             
                         t.sleep(0.33)
-
+        print(self.inv)
 
 if __name__ == "__main__":
     gaming = main(0, 0, 0, '', [], [], [[], [], [], []])

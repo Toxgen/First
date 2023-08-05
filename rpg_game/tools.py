@@ -70,7 +70,16 @@ def counting_drop(test: list, mob: str):
             raise Exception("UH OH")
 
 
-
 if __name__ == '__main__':
     a = drops(0, 10)
     print(counting_drop(a, "goblin"))
+
+
+"""
+dropes = ["apples", "banana", 1, 1, 1, 1, 1, 1, 1, 1, 1,1]
+ewj = []
+for _ in dropes:
+    ewj.append([])
+
+print(ewj)
+"""

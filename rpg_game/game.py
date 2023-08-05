@@ -148,7 +148,7 @@ class main:
     def selectWeapon(self) -> None:
         sel_wep = list(self.weapDict.keys())
         for xy in self.weapDict:
-            for y in self.possibleWeaponDict:
+            for y in self.possibleWeaponDict: # make possibleweapondict a local variable wirhour self.
                 if sel_wep[xy] == self.possibleWeaponDict[y]: # Change the weapDict keys into a seperate list of keys
                     if xy == 0:
                         print("____________________________", '\n')

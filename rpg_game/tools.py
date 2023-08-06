@@ -1,78 +1,152 @@
 import random as r
+import time as t
 
-        
-def drops(level: int, luck: int) -> list:
+import game as g
+
+
+def drops(level: int, luck: int, mob: str) -> list:
     """
-    level: current mob level
-    luck: current luck stat | self.luck
-    """
-    returning = []
-    
-    if level > 40:
-        pass
-    elif level > 30:
-        pass
-    elif level > 20:
-        pass
-    elif level > 10:
-        pass
-    else:
-        pass
-        
-    for i in range(luck):
-
-        if not i: # guaranteed 1
-            returning.append("goblin_hide")
-
-        x = r.randint(0, 100)
-
-        if len(returning) >= 3:
-            x = r.randint(0, 150)
-
-        if x <= 5:  
-            returning.append("goblin_staff")
-            continue
-
-        if x <= 8:  
-            returning.append("goblin_sword")
-            continue
-
-        if x <= 12:  
-            returning.append("goblin_leg")
-            continue
-
-        if x <= 25: 
-            returning.append("goblin_hide")
-            continue
-
-    
-    return returning
-
-def counting_drop(test: list, mob: str):
-    """
-    Input the list
+    very complicated drops
+    (the mob level, self.luck, self.mob)
     """
 
     match mob:
 
         case "goblin":
-            g_hide = test.count("goblin_hide")
 
-            g_leg = test.count("goblin_leg")
+            returning = []
             
-            g_sword = test.count("goblin_sword")
+            if level > 40:
+                pass
+            elif level > 30:
+                pass
+            elif level > 20:
+                pass
+            elif level > 10:
+                pass
+            else:
+                pass
+                
+            for i in range(luck):
 
-            g_staff = test.count("goblin_staff")
+                if not i: # guaranteed 1
+                    returning.append("goblin_hide")
+
+                x = r.randint(0, 100)
+
+                if len(returning) >= 3:
+                    x = r.randint(0, 150)
+
+                if x <= 5:  
+                    returning.append("goblin_staff")
+                    continue
+
+                if x <= 8:  
+                    returning.append("goblin_sword")
+                    continue
+
+                if x <= 12:  
+                    returning.append("goblin_leg")
+                    continue
+
+                if x <= 25: 
+                    returning.append("goblin_hide")
+                    continue
+
+            return returning
+
+        case _:
+            raise Exception("1st: Oh NAHHHHHHHHHHHHHHHHH")
+
+            
+            
+
+def counting_drop(list: list, mob: str):
+    """
+    count em
+    (the drops, self.mob)
+    """
+
+    match mob:
+
+        case "goblin":
+            g_hide = list.count("goblin_hide")
+
+            g_leg = list.count("goblin_leg")
+            
+            g_sword = list.count("goblin_sword")
+
+            g_staff = list.count("goblin_staff")
 
             return [g_hide, g_leg, g_sword, g_staff]
     
         case _:
-            raise Exception("UH OH")
+            raise Exception("2nd: UH OH")
+        
+def printingDrops(preinv: list, mob: str):
+    """
+    print em drops
+    (the counted drop list, self.mob)
+    """
+
+    match mob:
+
+        case "goblin":
+
+            for q in range(len(preinv)):
+
+                match q:
+
+                        case 0:
+                            if preinv[q] > 1:
+                                print("+=======================+",
+                                    f"Earned {preinv[q]} goblin_hides", sep='\n')
+                            else:
+                                print("+=======================+",
+                                    f"Earned {preinv[q]} goblin_hide", sep='\n')
+
+                            t.sleep(0.33)
+                            continue
+
+                        case 1:
+                            if preinv[q]:
+                                if preinv[q] > 1:
+                                    print(f"Earned {preinv[q]} goblin_legs")
+                                else:
+                                    print(f"Earned {preinv[q]} goblin_leg")
+
+                                t.sleep(0.33)
+                            continue
+
+                        case 2:
+                            if preinv[q]:
+                                if preinv[q] > 1:
+                                    print(f"Earned {preinv[q]} goblin_swords")
+                                else:
+                                    print(f"Earned {preinv[q]} goblin_sword")
+
+                                t.sleep(0.33)
+                            continue
+
+                        case 3:
+                            if preinv[q]:
+                                if preinv[q] > 1:
+                                    print(f"Earned {preinv[q]} goblin_staffs",
+                                        "+=======================+", sep='\n')
+                                else:
+                                    print(f"Earned {preinv[q]} goblin_staff",
+                                        "+=======================+", sep='\n')
+                            else:
+                                print("+=======================+")
+
+                                t.sleep(0.33)
+            
+        case _:
+            raise Exception("3rd: OH NAHHHHHH JIT TRIPPING")
 
 
 if __name__ == '__main__':
-    a = drops(0, 10)
-    print(counting_drop(a, "goblin"))
+    print("nothing")
 
 
 """

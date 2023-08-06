@@ -146,8 +146,7 @@ class main:
         sel_wep = list(self.weapDict.keys())
         for xy in self.weapDict:
             for y in possibleWeapDict:
-                # Change the weapDict keys into a seperate list of keys
-                if sel_wep[xy] == possibleWeapDict[y]:
+                if sel_wep[xy] == possibleWeapDict[y]: # Change the weapDict keys into a seperate list of keys
                     if xy == 0:
                         print("____________________________", '\n')
                     print(f"{sel_wep[xy]}")

@@ -86,6 +86,7 @@ class main:
         t.sleep(0.5)
         while True:
             self.input = input('> ').lower().strip()
+            
             match self.input:
 
                 case "help":

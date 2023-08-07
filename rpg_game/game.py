@@ -3,7 +3,12 @@ import time as t
 
 import tools as tool
 
-
+# maybe use a dice system for luck like 1 = unlucky increase enemy attack
+# and 6 is very lucking increase own attack and decrase enemy's
+# make gold a seperate variable
+# make a new gui system
+# maybe add a pet
+# add more functions to tools.py cause this is getting overwhelming
 class main:
 
     weapDict = {"fist": 2}
@@ -86,7 +91,7 @@ class main:
         t.sleep(0.5)
         while True:
             self.input = input('> ').lower().strip()
-            
+
             match self.input:
 
                 case "help":
@@ -265,7 +270,6 @@ class starting_phase(main):
 
         super().insertingMobDrops(preinv)
         tool.printingDrops(preinv, self.mob)
-        print(self.inv)
 
 
 if __name__ == "__main__":
@@ -275,6 +279,6 @@ if __name__ == "__main__":
     def start():
         t.sleep(1)
         print(tutorial, "=========", sep='\n')
-        tutorial.main()
+        tutorial.main() # continue the main plot here, idk what else
 
     start()

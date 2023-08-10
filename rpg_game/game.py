@@ -90,7 +90,7 @@ class main:
         print("Type In { help } For Commands", "\n")
         t.sleep(0.5)
         while True:
-            self.input = input('> ').lower().strip()
+            self.input = input('> ').lower()
 
             match self.input:
 
@@ -110,6 +110,7 @@ class main:
                     break
 
                 case "inv":
+
                     for key, value in self.inv:
                         print(f'{key}:{value}')
                         t.sleep(0.075)
@@ -117,6 +118,9 @@ class main:
                             print('\n')
                         else:
                             print(sep='   ')
+                            """
+                            THIS NEEDS TO BE IMPROVED !!
+                            """
 
                 case "adv":
                     print("WIP")

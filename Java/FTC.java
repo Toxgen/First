@@ -1,4 +1,4 @@
-
+/* 
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -32,11 +32,11 @@ private DcMotor	bR;
           	bL.setPower(1);
           	program.sleep(950)
           	fR.setPower(-1);
-		fL.setPower(-1);	
+			fL.setPower(-1);	
           	bR.setPower(1);
           	bL.setPower(1);
           	program.sleep(1200);
-		fR.setPower(0);
+			fR.setPower(0);
           	fL.setPower(0);	
           	bR.setPower(0);
           	bL.setPower(0);
@@ -45,3 +45,4 @@ private DcMotor	bR;
         }
     }
 }
+*/

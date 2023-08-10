@@ -2,3 +2,4 @@
 .pytest_cache/v/cache/stepwise
 .pytest_cache/CACHEDIR.TAG
 *.pyc
+.Java/FTC.java

@@ -12,9 +12,10 @@ import tools as tool
 class main:
 
     weapDict = {"fist": 2}
+    gold = 0
 
     def __init__(self, mobHp, mobAttk, mobDefe, name, addingWep, mobList):
-        self.hp = 999
+        self.hp = 50
         self.defe = 0
         self.crit_chance = 100
         self.crit_dmg = 1.5
@@ -29,7 +30,7 @@ class main:
         self.addingWep = addingWep
         self.mobList = mobList
         self.mobList.append("goblin")
-        self.inv = [[], [], [], []]
+        self.inv = {}
 
     def naming(self) -> str:
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
@@ -111,16 +112,7 @@ class main:
 
                 case "inv":
 
-                    for key, value in self.inv:
-                        print(f'{key}:{value}')
-                        t.sleep(0.075)
-                        if key // 2 == float:
-                            print('\n')
-                        else:
-                            print(sep='   ')
-                            """
-                            THIS NEEDS TO BE IMPROVED !!
-                            """
+                    tool.printingInv(self.inv)
 
                 case "adv":
                     print("WIP")
@@ -173,8 +165,10 @@ class main:
                     case 0:
                         try:
 
-                            self.inv[0].insert(0, "goblin_hide")
-                            self.inv[0].insert(1, preinv[i])
+                            if "goblin_hide" not in self.inv:
+                                self.inv.update({"goblin_hide": 0})
+
+                            self.inv["goblin_hide"] += preinv[i]
 
                         except Exception:
                             raise Exception("0st case")
@@ -182,16 +176,20 @@ class main:
                     case 1:
                         try:
 
-                            self.inv[1].insert(0, "goblin_leg")
-                            self.inv[1].insert(1, preinv[i])
+                            if "goblin_leg" not in self.inv:
+                                self.inv.update({"goblin_leg": 0})
+
+                            self.inv["goblin_leg"] += preinv[i]
 
                         except Exception:
                             raise Exception("1st case")
                     case 2:
                         try:
 
-                            self.inv[2].insert(0, "goblin_sword")
-                            self.inv[2].insert(1, preinv[i])
+                            if "goblin_sword" not in self.inv:
+                                self.inv.update({"goblin_sword": 0})
+
+                            self.inv["goblin_sword"] += preinv[i]
 
                         except Exception:
                             raise Exception("2nd case")
@@ -199,20 +197,16 @@ class main:
                     case 3:
                         try:
 
-                            self.inv[3].insert(0, "goblin_staff")
-                            self.inv[3].insert(1, preinv[i])
+                            if "goblin_staff" not in self.inv:
+                                self.inv.update({"goblin_staff": 0})
+
+                            self.inv["goblin_staff"] += preinv[i]
 
                         except Exception:
                             raise Exception("3rd case")
 
                     case _:
-                        print("OH NAHHHHHHHHHHHHHHHHHHHHH")
-                        while True:
-                            raise ChildProcessError(
-                                "NOOOOOOOOOOOOOOOOOOOOOOOOOO")
-
-            while [] in self.inv:
-                self.inv.remove([])
+                        raise Exception("oh no")
 
 
 class starting_phase(main):
@@ -274,6 +268,8 @@ class starting_phase(main):
 
         super().insertingMobDrops(preinv)
         tool.printingDrops(preinv, self.mob)
+        print(self.inv)
+        tool.printingInv(self.inv)
 
 
 if __name__ == "__main__":

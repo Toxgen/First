@@ -143,11 +143,34 @@ def printingDrops(preinv: list, mob: str):
             
         case _:
             raise Exception("3rd: OH NAHHHHHH JIT TRIPPING")
+        
+def printingInv(inv: dict):
+    print("+======|inv|======+")
+    for i, (key, value) in enumerate(inv.items()):
+        print(f'+ {value} x {key}')
+        if i > 8:
+            break
 
+    for i, (key, value) in enumerate(inv.items()):
+        print(f'+ {value} x {key}')
+
+    print("+=================+")
 
 if __name__ == '__main__':
-    print("nothing")
-
+    inv = {
+        "lol": 1,
+        "k": 1,
+        "ld": 231,
+        "d": 312,
+        "dw": 321,
+        "dwad": 32131,
+        "elwakd": 231312,
+        "ejwadj": 23131,
+        "euj21ij": 231,
+        "eedwjjd": 213,
+        "LLO": 213
+    }
+    printingInv(inv)
 
 """
 dropes = ["apples", "banana", 1, 1, 1, 1, 1, 1, 1, 1, 1,1]

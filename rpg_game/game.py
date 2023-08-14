@@ -2,6 +2,7 @@ import random as r
 import time as t
 
 import tools as tool
+import sql_data as sql
 
 # maybe use a dice system for luck like 1 = unlucky increase enemy attack
 # and 6 is very lucking increase own attack and decrase enemy's

@@ -1,7 +1,8 @@
 import random as r
-import time as t
+from random import randint
 
-import game as g
+import time as t
+from time import sleep
 
 
 def drops(level: int, luck: int, mob: str) -> list:
@@ -145,20 +146,55 @@ def printingDrops(preinv: list, mob: str):
             raise Exception("3rd: OH NAHHHHHH JIT TRIPPING")
         
 def printingInv(inv: dict):
+
+    def __contPrtint(inv: dict):
+        
+    """
+    print inventory
+    (the inventory)
+    """
+    __quit = False
     print("+======|inv|======+")
     for i, (key, value) in enumerate(inv.items()):
         print(f'+ {value} x {key}')
-        if i > 8:
-            break
 
-    for i, (key, value) in enumerate(inv.items()):
-        print(f'+ {value} x {key}')
+        if i > 8:
+            print("+=================+")
+
+            while True:
+                check = input("Continue? ").lower()
+                if check in ["yes", "ye", "y", "continue", "cont"]:
+                    print("+=================+")
+                    break
+                elif check in ["no", "n"]:
+                    __quit = True
+                    break
+                else:
+                    continue
+
+            if __quit:
+                break
+
+            __key = list(inv)
+            __value = list(inv.values())
+        
+            for x in range(len(inv)):
+
+                try:
+                   print(f'+ {__value[x+9]} x {__key[x+9]}')
+
+                except IndexError:
+                   break
+
+                break
+
+            break
 
     print("+=================+")
 
 if __name__ == '__main__':
     inv = {
-        "lol": 1,
+        "lol": 2,
         "k": 1,
         "ld": 231,
         "d": 312,

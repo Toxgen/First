@@ -148,7 +148,8 @@ def printingDrops(preinv: list, mob: str):
 def printingInv(inv: dict):
 
     def __contPrtint(inv: dict):
-        
+        pass
+
     """
     print inventory
     (the inventory)

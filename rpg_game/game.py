@@ -2,6 +2,7 @@ import random as r
 import time as t
 
 import tools as tool
+import sql_data as sql
 
 # maybe use a dice system for luck like 1 = unlucky increase enemy attack
 # and 6 is very lucking increase own attack and decrase enemy's
@@ -15,6 +16,9 @@ class main:
     gold = 0
 
     def __init__(self, mobHp, mobAttk, mobDefe, name, addingWep, mobList):
+        """
+        WE REALLY COULD JUST PUT THIS ALL INTO A SQL DATABASE INSTEAD OF REDEFINING IT EVERY TIME
+        """
         self.hp = 50
         self.defe = 0
         self.crit_chance = 100

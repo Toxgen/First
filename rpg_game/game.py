@@ -52,7 +52,7 @@ class main:
                     print("Please Type in { yes } or { no }", '\n')
 
         if self.input:
-            return None
+            return "" # check if this actually works
 
         t.sleep(0.5)
         print("Name?", "p.s. 1 - 12 characters long & no special characters", sep='\n')

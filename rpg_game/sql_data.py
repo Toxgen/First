@@ -56,19 +56,23 @@ def execute_query(connection, query):
 
 
 if __name__ == "__main__":
+
     __connection = create_server_connection(host_name="localhost", 
                                      user_name="root", 
                                      user_password=__pw)
 
-
-    create_database(connection=__connection, 
-                    query="""CREATE DATABASE stats""")
+    execute_create_database = input(">> ").lower()
+    if execute_create_database in ["y", "yes"]:
+        create_database(connection=__connection, 
+                        query="""CREATE DATABASE stats""")
     
     __connection = create_db_connection(host_name="localhost",
                          user_name="root", 
                          user_password=__pw,
-                         db_name="stats")
-    
-    execute_query(connection=__connection, query="""CREATE TABLE stats (
-                  client_id INT PRIMARY KEY
-                  );""") # REMEMBER TO DEL THIS QUERY
+                         db_name="rpg_stats")
+
+    execute_create_database = input(">> ").lower()
+    if execute_create_database in ["y", "yes"]:
+        execute_query(connection=__connection, query="""CREATE TABLE stats (
+                    client_id INT PRIMARY KEY
+                    );""") 

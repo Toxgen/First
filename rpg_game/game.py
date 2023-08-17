@@ -21,9 +21,8 @@ class main:
         """
         self.hp = 50
         self.defe = 0
-        self.crit_chance = 100
+        self.crit_chance = 5
         self.crit_dmg = 1.5
-        self.luck = 5
         self.input = ''
         self.weaprn = ''
         self.mob = ''

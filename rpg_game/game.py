@@ -124,40 +124,40 @@ class main:
     def attk_RNGESUS(self, input: str) -> int:
         dice = r.randint(1, 12)
         counter = 1.0
+        
         if dice >= 11:
             return [int(self.weapDict.get(input) ** 1.3 - self.mobDefe), 1, dice]
         
         while dice >= 6:
             counter += 0.045
-            dice -= 1
             if dice < 6:
                 return [int(self.weapDict.get(input) ** counter - self.mobDefe), 0, dice]
+            dice -= 1
 
         while dice < 6:
             counter += 0.0475
-            dice += 1
             if dice < 6:
                 return [int(self.weapDict.get(input) - self.mobDefe ** counter), 0, dice]
+            dice += 1
 
-    def defe_RNGESUS(self, attk: int, dice: int):
-        print("does this actually appear")
+    def defe_RNGESUS(self, attk: int, dice: int) -> int: # still gotta check if it returns float
         counter = 1.0
+        
         if dice >= 11:
             return [int(attk ** 0.8 - self.defe)]
         
         while dice >= 6:
             counter -= 0.035
-            dice -= 1
             if dice >= 6:
-                print(int(attk-self.defe ** counter))
-                return [int(attk - self.defe ** counter)] # MAYBE THE IF STATEMENT IS COMPLETEY IGRNOING TEH DICE >= 6
+                return [int(attk - self.defe ** counter)]
+            dice -= 1
 
         while dice < 6:
             counter -= 0.040
-            dice += 1
             if dice < 6:
-                print(int(attk ** counter - self.defe))
                 return [int(attk ** counter - self.defe)]
+            dice += 1
+                
 
     def addingWeapons(self) -> dict:
         match self.addingWep: 

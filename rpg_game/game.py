@@ -5,9 +5,13 @@ import tools as tool
 
 import sql_data as sql
 
-# make gold a seperate variable
 # maybe add a pet
 # add more functions to tools.py cause this is getting overwhelming
+# maybe add rhe level difficulty like zelda like, 50 hp is harder than 40 hp
+
+"""
+maybe add some boolean statemenst in sql to check if the user has finished that
+"""
 class main:
 
     weapDict = {"fist": 2}
@@ -26,8 +30,8 @@ class main:
         self.mobAttk = mobAttk
         self.mobDefe = mobDefe
         self.name = name
-        self.addingWep = addingWep
-        self.mobList = mobList
+        self.addingWep = addingWep # We could really get rid of this
+        self.mobList = mobList # We really could get rid of this
         self.mobList.append("goblin")
         self.inv = {}
 
@@ -301,7 +305,7 @@ class starting_phase(main):
     def __repr__(self):
         return "Tutorial!"
 
-    def main(self):
+    def start(self):
         crit = 0
 
         print(
@@ -370,14 +374,10 @@ class starting_phase(main):
         tool.printingDrops(preinv, self.mob)
 
 if __name__ == "__main__":
-    gaming = main(0, 0, 0, '', [], [])
+    main = main(0, 0, 0, '', [], [])
     tutorial = starting_phase()
 
-    def start():
-        t.sleep(1)
-        print(tutorial, "=========", sep='\n')
-        print(gaming.defe_RNGESUS(10, 6))
-        tutorial.main()
-        print("Very cool, now ur ready for ur awesome gameplay")
-
-    start()
+    t.sleep(1)
+    print(tutorial, "=========", sep='\n')
+    tutorial.start()
+    print("Very cool, now ur ready for ur awesome gameplay") # add some more text after this

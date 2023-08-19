@@ -2,6 +2,7 @@ import random as r
 import time as t
 
 import tools as tool
+
 import sql_data as sql
 
 # maybe use a dice system for luck like 1 = unlucky increase enemy attack
@@ -140,18 +141,18 @@ class main:
         return [int(attk - self.defe)]
 
     def addingWeapons(self) -> dict:
-        match self.addingWep:  # Prob move this
+        match self.addingWep: 
             case 1:
                 return self.weapDict['Rusty Sword', 3]
             case 2:
                 return self.weapDict['Sword', 5]
 
     def selectWeapon(self) -> None:
-        possibleWeapDict = ["fist", "goblin_sword"]
+        possibleWeapList = ["fist", "goblin_sword"]
         sel_wep = list(self.weapDict.keys())
         for xy in self.weapDict:
-            for y in possibleWeapDict:
-                if sel_wep[xy] == possibleWeapDict[y]: # Change the weapDict keys into a seperate list of keys
+            for y in possibleWeapList:
+                if sel_wep[xy] == possibleWeapList[y]: # Change the weapDict keys into a seperate list of keys
                     if xy == 0:
                         print("____________________________", '\n')
                     print(f"{sel_wep[xy]}")
@@ -210,6 +211,67 @@ class main:
 
                     case _:
                         raise Exception("oh no")
+                    
+    def main_attack(self) -> None:
+        crit = None
+
+        print(
+            f"Encountered '{self.mob}'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}")
+        print("Type attack to attack your opponent!")
+
+        maxHp = self.hp
+        maxMobHp = self.mobHp
+
+        while True:
+            self.input = input('> ').lower()
+            if self.input in ["attack", "atk", "attk", "q"]:
+
+                __attk = self.attk_RNGESUS("fist")
+                __defe = self.defe_RNGESUS(r.randint(2, 3))
+
+                if len(__attk) == 2:
+                    self.mobHp -= __attk[0]
+                    crit = __attk[1]
+                else:
+                    self.mobHp -= __attk[0]
+
+                self.hp -= __defe[0]
+
+                if self.hp <= 0:
+                    quit("ERROR 1: Died unexpected")
+
+                if self.mobHp <= 0:
+                    break
+
+                else:
+                    print("+===========================+",
+                          f"- Lost: {__defe[0]}", sep='\n')
+
+                if crit:
+                    print(f"CRIT! Dealt: {__attk[0]}",
+                            f"Your Hp: {self.hp}/{maxHp}",
+                            f"Enemy Hp: {self.mobHp}/{maxMobHp}", 
+                            "+===========================+", 
+                            sep='\n')
+                    t.sleep(0.133)
+                else:
+                    print(f"+ Dealt: {__attk[0]}",
+                            f"Your Hp: {self.hp}/{maxHp}",
+                            f"Enemy Hp: {self.mobHp}/{maxMobHp}", 
+                            "+===========================+", 
+                            sep='\n')
+                    t.sleep(0.133)
+            else:
+                print("Please type in attack", '\n')
+                continue
+
+        print("You have defeated the Goblin!")
+
+
+        preinv = tool.counting_drop(tool.drops(1, self.mob), self.mob)
+
+        self.insertingMobDrops(preinv)
+        tool.printingDrops(preinv, self.mob)
 
 
 class starting_phase(main):
@@ -227,39 +289,48 @@ class starting_phase(main):
         print("Type attack to attack your opponent!")
 
         self.mob = "goblin"
+        maxHp = self.hp
+        maxMobHp = self.mobHp
 
         while True:
             self.input = input('> ').lower()
             if self.input in ["attack", "atk", "attk", "q"]:
-                i = super().attk_RNGESUS("fist")
 
-                if len(i) == 2:
-                    self.mobHp -= i[0]
-                    crit = i[1]
+                __attk = super().attk_RNGESUS("fist")
+                __defe = super().defe_RNGESUS(r.randint(2, 3))
+
+                if len(__attk) == 2:
+                    self.mobHp -= __attk[0]
+                    crit = __attk[1]
                 else:
-                    self.mobHp -= i[0]
+                    self.mobHp -= __attk[0]
+
+                self.hp -= __defe[0]
+
+                if self.hp <= 0:
+                    quit("ERROR 1: Died unexpected")
 
                 if self.mobHp <= 0:
                     break
-                else:
-                    if crit:
-                        print("+===========================+",
-                              f"Enemy Hp: {self.mobHp}", f"CRITCAL HIT! {i[0]} DMG", sep='\n')
-                        t.sleep(0.133)
-                    else:
-                        print("+===========================+",
-                              f"Enemy Hp: {self.mobHp} || Dmg: {i[0]}", sep='\n')
-                        t.sleep(0.133)
 
-                i = super().defe_RNGESUS(r.randint(2, 3))
-                self.hp -= i[0]
-
-                if self.hp <= 0:
-                    break
                 else:
-                    print(f"Hp: {self.hp} || Dmg: {i[0]}",
-                          "+===========================+", sep='\n')
-                    continue
+                    print("+===========================+",
+                          f"- Lost: {__defe[0]}", sep='\n')
+
+                if crit:
+                    print(f"CRIT! Dealt: {__attk[0]}",
+                            f"Your Hp: {self.hp}/{maxHp}",
+                            f"Enemy Hp: {self.mobHp}/{maxMobHp}", 
+                            "+===========================+", 
+                            sep='\n')
+                    t.sleep(0.133)
+                else:
+                    print(f"+ Dealt: {__attk[0]}",
+                            f"Your Hp: {self.hp}/{maxHp}",
+                            f"Enemy Hp: {self.mobHp}/{maxMobHp}", 
+                            "+===========================+", 
+                            sep='\n')
+                    t.sleep(0.133)
             else:
                 print("Please type in attack", '\n')
                 continue
@@ -267,13 +338,10 @@ class starting_phase(main):
         print("You have defeated the Goblin!")
 
 
-        preinv = tool.counting_drop(tool.drops(1, self.luck, self.mob), self.mob)
+        preinv = tool.counting_drop(tool.drops(1, self.mob), self.mob)
 
         super().insertingMobDrops(preinv)
         tool.printingDrops(preinv, self.mob)
-        print(self.inv)
-        tool.printingInv(self.inv)
-
 
 if __name__ == "__main__":
     gaming = main(0, 0, 0, '', [], [])
@@ -282,6 +350,7 @@ if __name__ == "__main__":
     def start():
         t.sleep(1)
         print(tutorial, "=========", sep='\n')
-        tutorial.main() # continue the main plot here, idk what else
+        tutorial.main()
+        print("Very cool, now ur ready for ur awesome gameplay")
 
     start()

@@ -1,15 +1,13 @@
 import random as r
 from random import randint
 
-import time as t
-from time import sleep
-
-
-def drops(level: int, luck: int, mob: str) -> list:
+def drops(level: int, mob: str) -> list:
     """
     very complicated drops
     (the mob level, self.luck, self.mob)
     """
+
+    luck = r.randint(1, 6)
 
     match mob:
 
@@ -90,6 +88,9 @@ def printingDrops(preinv: list, mob: str):
     (the counted drop list, self.mob)
     """
 
+    import time as t
+    from time import sleep
+
     match mob:
 
         case "goblin":
@@ -146,20 +147,23 @@ def printingDrops(preinv: list, mob: str):
             raise Exception("3rd: OH NAHHHHHH JIT TRIPPING")
         
 def printingInv(inv: dict):
-
-    def __contPrtint(inv: dict):
-        pass
-
     """
     print inventory
     (the inventory)
     """
+
+    import time as t
+    from time import sleep
+
     __quit = False
+
     print("+======|inv|======+")
     for i, (key, value) in enumerate(inv.items()):
         print(f'+ {value} x {key}')
 
-        if i > 8:
+        t.sleep(0.05)
+
+        if i % 8 == 0 and i > 1:
             print("+=================+")
 
             while True:
@@ -176,39 +180,13 @@ def printingInv(inv: dict):
             if __quit:
                 break
 
-            __key = list(inv)
-            __value = list(inv.values())
-        
-            for x in range(len(inv)):
-
-                try:
-                   print(f'+ {__value[x+9]} x {__key[x+9]}')
-
-                except IndexError:
-                   break
-
-                break
-
-            break
+            while i % 8 != 0:
+                print(f"+ {value[i]} x {key[i]}")
 
     print("+=================+")
 
 if __name__ == '__main__':
-    inv = {
-        "lol": 2,
-        "k": 1,
-        "ld": 231,
-        "d": 312,
-        "dw": 321,
-        "dwad": 32131,
-        "elwakd": 231312,
-        "ejwadj": 23131,
-        "euj21ij": 231,
-        "eedwjjd": 213,
-        "LLO": 213
-    }
-    printingInv(inv)
-
+    pass
 """
 dropes = ["apples", "banana", 1, 1, 1, 1, 1, 1, 1, 1, 1,1]
 ewj = []

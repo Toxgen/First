@@ -5,13 +5,6 @@ import tools as tool
 
 import sql_data as sql
 
-# maybe add a pet
-# add more functions to tools.py cause this is getting overwhelming
-# maybe add rhe level difficulty like zelda like, 50 hp is harder than 40 hp
-
-"""
-maybe add some boolean statemenst in sql to check if the user has finished that
-"""
 class main:
 
     weapDict = {"fist": 2}
@@ -127,24 +120,27 @@ class main:
 
     def attk_RNGESUS(self, input: str) -> int:
         dice = r.randint(1, 12)
+        dice2 = dice
         counter = 1.0
+
+        print(dice, "  .  ")
         
-        if dice >= 11:
+        if dice2 >= 11:
             return [int(self.weapDict.get(input) ** 1.3 - self.mobDefe), 1, dice]
         
-        while dice >= 6:
+        while dice2 >= 6:
             counter += 0.045
             if dice < 6:
                 return [int(self.weapDict.get(input) ** counter - self.mobDefe), 0, dice]
-            dice -= 1
+            dice2 -= 1
 
-        while dice < 6:
+        while dice2 < 6:
             counter += 0.0475
-            if dice < 6:
+            if dice2 < 6:
                 return [int(self.weapDict.get(input) - self.mobDefe ** counter), 0, dice]
-            dice += 1
+            dice2 += 1
 
-    def defe_RNGESUS(self, attk: int, dice: int) -> int: # still gotta check if it returns float
+    def defe_RNGESUS(self, attk: int, dice: int) -> int:
         counter = 1.0
         
         if dice >= 11:
@@ -249,8 +245,10 @@ class main:
             self.input = input('> ').lower()
             if self.input in ["attack", "atk", "attk", "q"]:
 
+                mob_dmg = r.randint(2, 3)
+
                 attk = self.attk_RNGESUS("fist") # change this into the userinput
-                defe = self.defe_RNGESUS(r.randint(2, 3), attk[2]) # change this r.randint, obv.
+                defe = self.defe_RNGESUS(mob_dmg, attk[2]) # change this r.randint, obv.
 
                 if len(attk) == 2:
                     self.mobHp -= attk[0]
@@ -321,19 +319,15 @@ class starting_phase(main):
             if self.input in ["attack", "atk", "attk", "q"]:
 
                 __attk = super().attk_RNGESUS("fist")
-                print(__attk)
                 __defe = super().defe_RNGESUS(r.randint(2, 3), __attk[2])
 
-                print(__defe, __attk)
 
                 if len(__attk) == 2:
                     self.mobHp -= __attk[0]
                     crit = __attk[1]
                 else:
                     self.mobHp -= __attk[0]
-
-                print(__attk[2])
-
+                    
                 self.hp -= __defe[0]
 
                 if self.hp <= 0:

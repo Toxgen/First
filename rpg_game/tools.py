@@ -35,21 +35,21 @@ def drops(level: int, mob: str) -> list:
                 _x = r.randint(0, 100)
 
                 if len(returning) >= 3:
-                    x = r.randint(0, 150)
+                    _x = r.randint(0, 150)
 
-                if x <= 5:  
+                if _x <= 5:  
                     returning.append("goblin_staff")
                     continue
 
-                if x <= 8:  
+                if _x <= 8:  
                     returning.append("goblin_sword")
                     continue
 
-                if x <= 12:  
+                if _x <= 12:  
                     returning.append("goblin_leg")
                     continue
 
-                if x <= 25: 
+                if _x <= 25: 
                     returning.append("goblin_hide")
                     continue
 

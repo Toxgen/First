@@ -35,28 +35,28 @@ def drops(level: int, mob: str) -> list:
                 _x = r.randint(0, 100)
 
                 if len(returning) >= 3:
-                    _x = r.randint(0, 150)
+                    x = r.randint(0, 150)
 
-                if _x <= 5:  
+                if x <= 5:  
                     returning.append("goblin_staff")
                     continue
 
-                if _x <= 8:  
+                if x <= 8:  
                     returning.append("goblin_sword")
                     continue
 
-                if _x <= 12:  
+                if x <= 12:  
                     returning.append("goblin_leg")
                     continue
 
-                if _x <= 25: 
+                if x <= 25: 
                     returning.append("goblin_hide")
                     continue
 
             return returning
 
         case _:
-            raise Exception("Error: This shouldn't happen, p.s. check mob arg")
+            raise Exception("1st: Oh NAHHHHHHHHHHHHHHHHH")
 
             
             

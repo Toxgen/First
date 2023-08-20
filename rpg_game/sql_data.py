@@ -1,8 +1,8 @@
 import mysql.connector
 from mysql.connector import Error
 
-__pw = "5qnwpjhr027frfhrmm"
 
+__pw = "5qnwpjhr027frfhrmm"
 
 def create_server_connection(host_name, user_name, user_password):
     __connection = None

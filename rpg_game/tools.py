@@ -1,11 +1,12 @@
-import random as r
-from random import randint
 
 def drops(level: int, mob: str) -> list:
     """
     very complicated drops
     (the mob level, self.luck, self.mob)
     """
+
+    import random as r
+    from random import randint
 
     luck = r.randint(1, 6)
 
@@ -26,36 +27,36 @@ def drops(level: int, mob: str) -> list:
             else:
                 pass
                 
-            for i in range(luck):
+            for _i in range(luck):
 
-                if not i: # guaranteed 1
+                if not _i: # guaranteed 1
                     returning.append("goblin_hide")
 
-                x = r.randint(0, 100)
+                _x = r.randint(0, 100)
 
                 if len(returning) >= 3:
-                    x = r.randint(0, 150)
+                    _x = r.randint(0, 150)
 
-                if x <= 5:  
+                if _x <= 5:  
                     returning.append("goblin_staff")
                     continue
 
-                if x <= 8:  
+                if _x <= 8:  
                     returning.append("goblin_sword")
                     continue
 
-                if x <= 12:  
+                if _x <= 12:  
                     returning.append("goblin_leg")
                     continue
 
-                if x <= 25: 
+                if _x <= 25: 
                     returning.append("goblin_hide")
                     continue
 
             return returning
 
         case _:
-            raise Exception("1st: Oh NAHHHHHHHHHHHHHHHHH")
+            raise Exception("Error: This shouldn't happen, p.s. check mob arg")
 
             
             
@@ -80,7 +81,7 @@ def counting_drop(list: list, mob: str):
             return [g_hide, g_leg, g_sword, g_staff]
     
         case _:
-            raise Exception("2nd: UH OH")
+            raise Exception("Error: This shouldn't happen, p.s. check mob arg")
         
 def printingDrops(preinv: list, mob: str):
     """
@@ -95,48 +96,48 @@ def printingDrops(preinv: list, mob: str):
 
         case "goblin":
 
-            for q in range(len(preinv)):
+            for _q in range(len(preinv)):
 
-                match q:
+                match _q:
 
                         case 0:
-                            if preinv[q] > 1:
+                            if preinv[_q] > 1:
                                 print("+=======================+",
-                                    f"Earned {preinv[q]} goblin_hides", sep='\n')
+                                    f"Earned {preinv[_q]} goblin_hides", sep='\n')
                             else:
                                 print("+=======================+",
-                                    f"Earned {preinv[q]} goblin_hide", sep='\n')
+                                    f"Earned {preinv[_q]} goblin_hide", sep='\n')
 
                             t.sleep(0.33)
                             continue
 
                         case 1:
-                            if preinv[q]:
-                                if preinv[q] > 1:
-                                    print(f"Earned {preinv[q]} goblin_legs")
+                            if preinv[_q]:
+                                if preinv[_q] > 1:
+                                    print(f"Earned {preinv[_q]} goblin_legs")
                                 else:
-                                    print(f"Earned {preinv[q]} goblin_leg")
+                                    print(f"Earned {preinv[_q]} goblin_leg")
 
                                 t.sleep(0.33)
                             continue
 
                         case 2:
-                            if preinv[q]:
-                                if preinv[q] > 1:
-                                    print(f"Earned {preinv[q]} goblin_swords")
+                            if preinv[_q]:
+                                if preinv[_q] > 1:
+                                    print(f"Earned {preinv[_q]} goblin_swords")
                                 else:
-                                    print(f"Earned {preinv[q]} goblin_sword")
+                                    print(f"Earned {preinv[_q]} goblin_sword")
 
                                 t.sleep(0.33)
                             continue
 
                         case 3:
-                            if preinv[q]:
-                                if preinv[q] > 1:
-                                    print(f"Earned {preinv[q]} goblin_staffs",
+                            if preinv[_q]:
+                                if preinv[_q] > 1:
+                                    print(f"Earned {preinv[_q]} goblin_staffs",
                                         "+=======================+", sep='\n')
                                 else:
-                                    print(f"Earned {preinv[q]} goblin_staff",
+                                    print(f"Earned {preinv[_q]} goblin_staff",
                                         "+=======================+", sep='\n')
                             else:
                                 print("+=======================+")
@@ -144,9 +145,9 @@ def printingDrops(preinv: list, mob: str):
                                 t.sleep(0.33)
             
         case _:
-            raise Exception("3rd: OH NAHHHHHH JIT TRIPPING")
+            raise Exception("Error: This shouldn't happen, p.s. check mob arg")
         
-def printingInv(inv: dict):
+def printingInv(inv: dict) -> None:
     """
     print inventory
     (the inventory)
@@ -158,12 +159,12 @@ def printingInv(inv: dict):
     __quit = False
 
     print("+======|inv|======+")
-    for i, (key, value) in enumerate(inv.items()):
+    for _i, (key, value) in enumerate(inv.items()):
         print(f'+ {value} x {key}')
 
         t.sleep(0.05)
 
-        if i % 8 == 0 and i > 1:
+        if _i % 8 == 0 and _i > 1:
             print("+=================+")
 
             while True:
@@ -180,8 +181,8 @@ def printingInv(inv: dict):
             if __quit:
                 break
 
-            while i % 8 != 0:
-                print(f"+ {value[i]} x {key[i]}")
+            while _i % 8 != 0:
+                print(f"+ {value[_i]} x {key[_i]}")
 
     print("+=================+")
 

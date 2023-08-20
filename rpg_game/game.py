@@ -5,9 +5,13 @@ import tools as tool
 
 import sql_data as sql
 
-# make gold a seperate variable
 # maybe add a pet
 # add more functions to tools.py cause this is getting overwhelming
+# maybe add rhe level difficulty like zelda like, 50 hp is harder than 40 hp
+
+"""
+maybe add some boolean statemenst in sql to check if the user has finished that
+"""
 class main:
 
     weapDict = {"fist": 2}
@@ -26,8 +30,8 @@ class main:
         self.mobAttk = mobAttk
         self.mobDefe = mobDefe
         self.name = name
-        self.addingWep = addingWep
-        self.mobList = mobList
+        self.addingWep = addingWep # We could really get rid of this
+        self.mobList = mobList # We really could get rid of this
         self.mobList.append("goblin")
         self.inv = {}
 
@@ -124,40 +128,40 @@ class main:
     def attk_RNGESUS(self, input: str) -> int:
         dice = r.randint(1, 12)
         counter = 1.0
+        
         if dice >= 11:
             return [int(self.weapDict.get(input) ** 1.3 - self.mobDefe), 1, dice]
         
         while dice >= 6:
             counter += 0.045
-            dice -= 1
             if dice < 6:
                 return [int(self.weapDict.get(input) ** counter - self.mobDefe), 0, dice]
+            dice -= 1
 
         while dice < 6:
             counter += 0.0475
-            dice += 1
             if dice < 6:
                 return [int(self.weapDict.get(input) - self.mobDefe ** counter), 0, dice]
+            dice += 1
 
-    def defe_RNGESUS(self, attk: int, dice: int):
-        print("does this actually appear")
+    def defe_RNGESUS(self, attk: int, dice: int) -> int: # still gotta check if it returns float
         counter = 1.0
+        
         if dice >= 11:
             return [int(attk ** 0.8 - self.defe)]
         
         while dice >= 6:
             counter -= 0.035
-            dice -= 1
             if dice >= 6:
-                print(int(attk-self.defe ** counter))
-                return [int(attk - self.defe ** counter)] # MAYBE THE IF STATEMENT IS COMPLETEY IGRNOING TEH DICE >= 6
+                return [int(attk - self.defe ** counter)]
+            dice -= 1
 
         while dice < 6:
             counter -= 0.040
-            dice += 1
             if dice < 6:
-                print(int(attk ** counter - self.defe))
                 return [int(attk ** counter - self.defe)]
+            dice += 1
+                
 
     def addingWeapons(self) -> dict:
         match self.addingWep: 
@@ -301,7 +305,7 @@ class starting_phase(main):
     def __repr__(self):
         return "Tutorial!"
 
-    def main(self):
+    def start(self):
         crit = 0
 
         print(
@@ -370,14 +374,10 @@ class starting_phase(main):
         tool.printingDrops(preinv, self.mob)
 
 if __name__ == "__main__":
-    gaming = main(0, 0, 0, '', [], [])
+    main = main(0, 0, 0, '', [], [])
     tutorial = starting_phase()
 
-    def start():
-        t.sleep(1)
-        print(tutorial, "=========", sep='\n')
-        print(gaming.defe_RNGESUS(10, 6))
-        tutorial.main()
-        print("Very cool, now ur ready for ur awesome gameplay")
-
-    start()
+    t.sleep(1)
+    print(tutorial, "=========", sep='\n')
+    tutorial.start()
+    print("Very cool, now ur ready for ur awesome gameplay") # add some more text after this

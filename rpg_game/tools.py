@@ -183,16 +183,13 @@ def printingInv(inv: dict) -> None:
 
             while _i % 8 != 0:
                 print(f"+ {value[_i]} x {key[_i]}")
-
+                
     print("+=================+")
+
+def returnMob(hp: int, location: str) -> list:
+    _health_multiplier = round(hp/10 * 0.5)
+    _defe_multiplier = round(hp/10 * 0.5)
 
 if __name__ == '__main__':
     pass
-"""
-dropes = ["apples", "banana", 1, 1, 1, 1, 1, 1, 1, 1, 1,1]
-ewj = []
-for _ in dropes:
-    ewj.append([])
 
-print(ewj)
-"""

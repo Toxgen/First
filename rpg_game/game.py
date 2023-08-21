@@ -233,9 +233,9 @@ class main:
                     
     def main_attack(self) -> None:
         crit = None
-
+            
         print(
-            f"Encountered '{self.mob}'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}")
+            f"Encountered '{mob_stats[0][0]}'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}") # seriously gotta fix this
         print("Type attack to attack your opponent!")
 
         maxHp = self.hp

@@ -4,6 +4,8 @@ import time as t
 import tools as tool
 
 import sql_data as sql
+# Add a xp function args is whatever i need and return the level and the level cap
+
 
 class main:
 

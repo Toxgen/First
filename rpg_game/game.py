@@ -12,7 +12,7 @@ class main:
     weapDict = {"fist": 2}
     gold = 0
 
-    def __init__(self, mobHp, mobAttk, mobDefe, name, addingWep, mobList):
+    def __init__(self, mobHp, mobAttk, mobDefe, name):
         """
         WE REALLY COULD JUST PUT THIS ALL INTO A SQL DATABASE INSTEAD OF REDEFINING IT EVERY TIME
         """
@@ -25,8 +25,6 @@ class main:
         self.mobAttk = mobAttk
         self.mobDefe = mobDefe
         self.name = name
-        self.addingWep = addingWep # We could really get rid of this
-        self.mobList = mobList # We really could get rid of this
         self.mobList.append("goblin")
         self.inv = {}
 
@@ -159,14 +157,6 @@ class main:
             if dice < 6:
                 return [int(attk ** counter - self.defe)]
             dice += 1
-                
-
-    def addingWeapons(self) -> dict: # i doubt we still need this
-        match self.addingWep: 
-            case 1:
-                return self.weapDict['Rusty Sword', 3]
-            case 2:
-                return self.weapDict['Sword', 5]
 
     def selectWeapon(self) -> None:
         possibleWeapList = ["fist", "goblin_sword"]
@@ -370,7 +360,7 @@ class starting_phase(main):
         tool.printingDrops(preinv, self.mob)
 
 if __name__ == "__main__":
-    main = main(0, 0, 0, '', [], [])
+    main = main(0, 0, 0, "")
     tutorial = starting_phase()
 
     t.sleep(1)

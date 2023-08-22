@@ -3,4 +3,3 @@
 .pytest_cache/CACHEDIR.TAG
 *.pyc
 .Java/FTC.java
-.rpg_game/sql_data.py

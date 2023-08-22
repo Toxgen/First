@@ -161,7 +161,7 @@ class main:
             dice += 1
                 
 
-    def addingWeapons(self) -> dict:
+    def addingWeapons(self) -> dict: # i doubt we still need this
         match self.addingWep: 
             case 1:
                 return self.weapDict['Rusty Sword', 3]
@@ -182,7 +182,7 @@ class main:
                         break
 
     def insertingMobDrops(self, preinv: list) -> None:
-        if self.mob == "goblin":
+        if self.mob == "goblin": # match case
             for i in range(len(preinv)):
 
                 match i:

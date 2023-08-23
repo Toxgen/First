@@ -16,6 +16,7 @@ class main:
     def sqlParseQuery(connection):
         sql.execute_query(connection=connection, query="""
                           USE rpg_stats;
+                          SELECT * FROM stats;
                           SELECT id FROM stats WHERE id > 3 LIMIT 4;
                           SELECT FOUND_ROWS();""")
         

@@ -5,8 +5,6 @@ import tools as tool
 
 import sql_data as sql
 
-
-
 class main:
 
     weapDict = {"fist": 2}

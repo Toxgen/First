@@ -25,7 +25,7 @@ class main:
         self.input = ''
         self.weaprn = ''
         self.mob = ''
-        self.xp_sys = [0, 0, 0]
+        self.xp_sys = [0, 4, 0]
         self.mobHp = mobHp # we really could move this into the attak function 1
         self.mobAttk = mobAttk # 2
         self.mobDefe = mobDefe # 3
@@ -37,6 +37,7 @@ class main:
         check = True
 
         self.xp_sys[0] = 0
+        
         while True:
             if self.xp_sys[2] > round(1.5(self.xp_sys[0] ** 1.15) + 10):
                 self.xp_sys[0] += 1
@@ -376,10 +377,12 @@ class starting_phase(main):
 
         print("You have defeated the Goblin!")
 
-
         preinv = tool.counting_drop(tool.drops(1, self.mob), self.mob)
 
         super().insertingMobDrops(preinv)
+        print("+=====================+",
+              "You gained 4 xp!",
+              "+=====================+")
         tool.printingDrops(preinv, self.mob)
 
 if __name__ == "__main__":

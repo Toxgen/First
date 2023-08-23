@@ -1,21 +1,21 @@
 import mysql.connector
 from mysql.connector import Error
 
-__pw = "5qnwpjhr027frfhrmm"
+pw = "5qnwpjhr027frfhrmm"
 
 def create_server_connection(host_name, user_name, user_password):
-    __connection = None
+    connection = None
     try:
-        __connection = mysql.connector.connect(
+        connection = mysql.connector.connect(
             host=host_name,
             user=user_name,
             passwd=user_password,
         )
-        print("MySQL Database connection successful")
+        print("MySQL Server connection successful")
     except Error as err:
         print(f"Error: '{err}'")
 
-    return __connection
+    return connection
 
 
 def create_database(connection, query):
@@ -28,9 +28,9 @@ def create_database(connection, query):
 
 
 def create_db_connection(host_name, user_name, user_password, db_name):
-    __connection = None
+    connection = None
     try:
-        __connection = mysql.connector.connect(
+        connection = mysql.connector.connect(
             host=host_name,
             user=user_name,
             passwd=user_password,
@@ -39,7 +39,7 @@ def create_db_connection(host_name, user_name, user_password, db_name):
         print("MySQL Database connection successful")
     except Error as err:
         print(f"Error: '{err}'")
-    return __connection
+    return connection
 
 
 def execute_query(connection, query):
@@ -56,22 +56,21 @@ def execute_query(connection, query):
 
 if __name__ == "__main__":
 
-    __connection = create_server_connection(host_name="localhost", 
+    connection = create_server_connection(host_name="localhost", 
                                      user_name="root", 
-                                     user_password=__pw)
-
+                                     user_password=pw)
     #execute = input(">> ").lower()
     #if execute in ["y", "yes"]:
-    #    create_database(connection=__connection, 
+    #    create_database(connection=connection, 
     #                    query="""CREATE DATABASE stats""")
     
-    __connection = create_db_connection(host_name="localhost",
+    connection = create_db_connection(host_name="localhost",
                          user_name="root", 
-                         user_password=__pw,
+                         user_password=pw,
                          db_name="rpg_stats")
 
     #execute = input(">> ").lower()
     #if execute in ["y", "yes"]:
-    #    execute_query(connection=__connection, query="""CREATE TABLE stats (
+    #    execute_query(connection=connection, query="""CREATE TABLE stats (
     #                client_id INT PRIMARY KEY
     #                );""") 

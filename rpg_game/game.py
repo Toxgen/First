@@ -4,7 +4,7 @@ import time as t
 import tools as tool
 
 import sql_data as sql
-# Add a xp function args is whatever i need and return the level and the level cap
+
 
 
 class main:
@@ -12,21 +12,28 @@ class main:
     weapDict = {"fist": 2}
     gold = 0
 
+    @staticmethod
+    def sqlParseQuery(connection):
+        sql.execute_query(connection=connection, query="""
+                          USE rpg_stats;
+                          SELECT id FROM stats WHERE id > 3 LIMIT 4;
+                          SELECT FOUND_ROWS();""")
+        
+
     def __init__(self, mobHp, mobAttk, mobDefe, name):
-        """
-        WE REALLY COULD JUST PUT THIS ALL INTO A SQL DATABASE INSTEAD OF REDEFINING IT EVERY TIME
-        """
         self.hp = 50
         self.defe = 0
         self.input = ''
         self.weaprn = ''
         self.mob = ''
-        self.mobHp = mobHp
-        self.mobAttk = mobAttk
-        self.mobDefe = mobDefe
+        self.mobHp = mobHp # we really could move this into the attak function 1
+        self.mobAttk = mobAttk # 2
+        self.mobDefe = mobDefe # 3
         self.name = name
-        self.mobList.append("goblin")
         self.inv = {}
+
+    def xp(self):
+        pass
 
     def naming(self) -> str:
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
@@ -290,7 +297,7 @@ class main:
 
 class starting_phase(main):
     def __init__(self):
-        super().__init__(mobHp=10, mobAttk="2 - 3", mobDefe=0, name='', addingWep=[], mobList=[])
+        super().__init__(mobHp=10, mobAttk="2 - 3", mobDefe=0, name='')
 
     def __repr__(self):
         return "Tutorial!"
@@ -360,6 +367,11 @@ class starting_phase(main):
         tool.printingDrops(preinv, self.mob)
 
 if __name__ == "__main__":
+
+    connection = sql.create_server_connection("localhost", "root", sql.pw)
+    sql.create_db_connection("localhost", "root", sql.pw, "rpg_stats")
+    main.sqlParseQuery(connection)
+
     main = main(0, 0, 0, "")
     tutorial = starting_phase()
 

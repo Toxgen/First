@@ -5,8 +5,6 @@ import tools as tool
 
 import sql_data as sql
 
-
-
 class main:
 
     weapDict = {"fist": 2}
@@ -27,15 +25,34 @@ class main:
         self.input = ''
         self.weaprn = ''
         self.mob = ''
+        self.xp_sys = [0, 4, 0]
         self.mobHp = mobHp # we really could move this into the attak function 1
         self.mobAttk = mobAttk # 2
         self.mobDefe = mobDefe # 3
         self.name = name
         self.inv = {}
+        self.location = "woods"
 
     def xp(self):
-        pass
+        cc_level = self.xp_sys[0]
+        check = True
 
+        self.xp_sys[0] = 0
+        
+        while True:
+            if self.xp_sys[2] > round(1.5(self.xp_sys[0] ** 1.15) + 10):
+                self.xp_sys[0] += 1
+            else:
+                break
+                
+            if check:
+                if round(1.5(cc_level ** 1.15)) <= self.xp_sys[1]:
+                    self.xp_sys[0] += 1
+                    check = False
+                    
+        if cc_level > self.xp_sys[0]:
+            print(f"Congrats! You gained {self.xp_sys[0]-cc_level}")
+            
     def naming(self) -> str:
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
         c = None
@@ -130,8 +147,6 @@ class main:
         dice = r.randint(1, 12)
         dice2 = dice
         counter = 1.0
-
-        print(dice, "  .  ")
         
         if dice2 >= 11:
             return [int(self.weapDict.get(input) ** 1.3 - self.mobDefe), 1, dice]
@@ -361,10 +376,12 @@ class starting_phase(main):
 
         print("You have defeated the Goblin!")
 
-
         preinv = tool.counting_drop(tool.drops(1, self.mob), self.mob)
 
         super().insertingMobDrops(preinv)
+        print("+=====================+",
+              "You gained 4 xp!",
+              "+=====================+")
         tool.printingDrops(preinv, self.mob)
 
 if __name__ == "__main__":

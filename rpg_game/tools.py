@@ -187,9 +187,52 @@ def printingInv(inv: dict) -> None:
     print("+=================+")
 
 def returnMob(hp: int, location: str) -> list:
-    _health_multiplier = round(hp/10 * 0.5)
-    _defe_multiplier = round(hp/10 * 0.5)
+    import random as r
+    from random import randint
+    md = [ # shortened to md cause its too hard to write so much mob_data
+        # woods [0][0 - 2]
+        ["goblin", 8, 2, 3, 1, None],
+        ["slime", 12, 3, 4, 3, None],
+        ["wolf", 7, 5, 7, 2, None]
+        # plains [1][0 - ?]
+    ]
+
+    def __wood_mobs(md: list, mob: str, hp: int, defe: int, attk: int) -> list: # im too lazy to finish this, do this later
+        match mob:
+            case "goblin":
+                for i in range(5):
+                    pass
+            
+            case "slime":
+                pass
+            case "wolf":
+                pass
+            case _:
+                raise Exception("wood mobs error")
+    if hp > 50:
+        _hp_multi = round(hp/20 * 0.5) # this is gonna make it wayyyyyy to high tho
+        _def_multi = round(hp/20 * 0.5)
+        _attk_mul = round(hp/30 * 0.25)
+    
+    else:
+        _hp_multi = 1
+        _def_multi = 1
+        _attk_mul = 1
+    
+    match location:
+        case "woods":
+            x = r.randint(0, 20)
+            if x > 10: # Returns Goblin
+                return [md[0][0], 
+                        md[0][1] + _hp_multi + _hp_multi * 0.5, 
+                        md[0][2] + _attk_mul + _attk_mul * 0.5,
+                        md[0][3] + _attk_mul + _attk_mul * 0.5,
+                        md[0][4] + _def_multi + _def_multi * 0.5]
+
+        case _:
+            raise Exception("ERROR 1: MissType")
+
+    
 
 if __name__ == '__main__':
     pass
-

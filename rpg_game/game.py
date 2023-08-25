@@ -36,9 +36,8 @@ class main:
 
         self.xp_sys[0] = 0
 
-        if check:
-            if round(1.5(cc_level ** 1.15)) <= self.xp_sys[1]:
-                self.xp_sys[0] += 1
+        if round(1.5(cc_level ** 1.15)) <= self.xp_sys[1]:
+            self.xp_sys[0] += 1
         
         while True:
             if self.xp_sys[2] > round(1.5(self.xp_sys[0] ** 1.15) + 10):

@@ -5,8 +5,6 @@ import tools as tool
 
 import sql_data as sql
 
-
-# (int | None) try this
 class main:
 
     weapDict = {"fist": 2}
@@ -39,7 +37,7 @@ class main:
         if round(1.5(cc_level ** 1.15)) <= self.xp_sys[1]:
             self.xp_sys[0] += 1
         
-        while True:
+        while True: # just add the if stament into the while statement
             if self.xp_sys[2] > round(1.5(self.xp_sys[0] ** 1.15) + 10):
                 self.xp_sys[0] += 1
             else:
@@ -48,7 +46,7 @@ class main:
         if cc_level > self.xp_sys[0]:
             print(f"Congrats! You gained {self.xp_sys[0]-cc_level}")
             
-    def naming(self) -> (str | None): # add something if it returns none for renaming
+    def naming(self) -> (str | None):
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
         c = None
 

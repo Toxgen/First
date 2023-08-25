@@ -51,7 +51,7 @@ class main:
         if cc_level > self.xp_sys[0]:
             print(f"Congrats! You gained {self.xp_sys[0]-cc_level}")
             
-    def naming(self) -> str:
+    def naming(self) -> (str | None): # add something if it returns none for renaming
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
         c = None
 
@@ -67,7 +67,7 @@ class main:
                     print("Please Type in { yes } or { no }", '\n')
 
         if self.input:
-            return "" # check if this actually works
+            return None
 
         t.sleep(0.5)
         print("Name?", "p.s. 1 - 12 characters long & no special characters", sep='\n')
@@ -165,18 +165,18 @@ class main:
         counter = 1.0
         
         if dice >= 11:
-            return [round(attk ** 0.8 - self.defe)]
+            return [int(attk ** 0.8 - self.defe)]
         
         while dice >= 6:
             counter -= 0.035
             if dice >= 6:
-                return [round(attk - self.defe ** counter)]
+                return [int(attk - self.defe ** counter)]
             dice -= 1
 
         while dice < 6:
             counter -= 0.040
             if dice < 6:
-                return [round(attk ** counter - self.defe)]
+                return [int(attk ** counter - self.defe)]
             dice += 1
 
     def selectWeapon(self) -> None:

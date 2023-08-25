@@ -33,20 +33,18 @@ class main:
 
     def xp(self):
         cc_level = self.xp_sys[0]
-        check = True
 
         self.xp_sys[0] = 0
+
+        if check:
+            if round(1.5(cc_level ** 1.15)) <= self.xp_sys[1]:
+                self.xp_sys[0] += 1
         
         while True:
             if self.xp_sys[2] > round(1.5(self.xp_sys[0] ** 1.15) + 10):
                 self.xp_sys[0] += 1
             else:
                 break
-                
-            if check:
-                if round(1.5(cc_level ** 1.15)) <= self.xp_sys[1]:
-                    self.xp_sys[0] += 1
-                    check = False
                     
         if cc_level > self.xp_sys[0]:
             print(f"Congrats! You gained {self.xp_sys[0]-cc_level}")

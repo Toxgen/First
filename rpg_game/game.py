@@ -5,6 +5,8 @@ import tools as tool
 
 import sql_data as sql
 
+
+# (int | None) try this
 class main:
 
     weapDict = {"fist": 2}
@@ -19,16 +21,12 @@ class main:
                           SELECT FOUND_ROWS();""")
         
 
-    def __init__(self, mobHp, mobAttk, mobDefe, name):
+    def __init__(self, name):
         self.hp = 50
         self.defe = 0
         self.input = ''
-        self.weaprn = ''
-        self.mob = ''
+        self.ccWeap = ''
         self.xp_sys = [0, 4, 0]
-        self.mobHp = mobHp # we really could move this into the attak function 1
-        self.mobAttk = mobAttk # 2
-        self.mobDefe = mobDefe # 3
         self.name = name
         self.inv = {}
         self.location = "woods"
@@ -167,18 +165,18 @@ class main:
         counter = 1.0
         
         if dice >= 11:
-            return [int(attk ** 0.8 - self.defe)]
+            return [round(attk ** 0.8 - self.defe)]
         
         while dice >= 6:
             counter -= 0.035
             if dice >= 6:
-                return [int(attk - self.defe ** counter)]
+                return [round(attk - self.defe ** counter)]
             dice -= 1
 
         while dice < 6:
             counter -= 0.040
             if dice < 6:
-                return [int(attk ** counter - self.defe)]
+                return [round(attk ** counter - self.defe)]
             dice += 1
 
     def selectWeapon(self) -> None:
@@ -248,53 +246,57 @@ class main:
                     
     def main_attack(self) -> None:
         crit = None
+        mob_list = tool.returnMob(self.hp, "woods") # Woods for now, but implement a system later
+
+        mob = mob_list[0]
+        mobHp = mob_list[1]
+        mobAttk = [x for x in mob_list if 2 in x if 3 in x] 
+        mobDefe = mob_list[4]
             
         print(
-            f"Encountered ''! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}") # seriously gotta fix this
+            f"Encountered '{mob}'! || Hp: {mobHp}, Attk: {mobAttk}, Def: {mobDefe}")
         print("Type attack to attack your opponent!")
 
         maxHp = self.hp
-        maxMobHp = self.mobHp
+        maxMobHp = mobHp
 
         while True:
             self.input = input('> ').lower()
             if self.input in ["attack", "atk", "attk", "q"]:
 
-                mob_dmg = r.randint(2, 3)
-
-                attk = self.attk_RNGESUS("fist") # change this into the userinput
-                defe = self.defe_RNGESUS(mob_dmg, attk[2]) # change this r.randint, obv.
+                attk = self.attk_RNGESUS(self.ccWeap)
+                mobDefe = self.defe_RNGESUS(mobAttk, mobAttk[2])
 
                 if len(attk) == 2:
-                    self.mobHp -= attk[0]
+                    mobHp -= attk[0]
                     crit = attk[1]
                 else:
-                    self.mobHp -= attk[0]
+                    mobHp -= attk[0]
 
-                self.hp -= defe[0]
+                self.hp -= mobDefe[0]
 
                 if self.hp <= 0:
-                    pass # do something about this
+                    quit("WIP")
 
-                if self.mobHp <= 0:
+                if mobHp <= 0:
                     break
 
                 else:
                     print("+===========================+",
                           f"% Rolled: {attk[2]}",
-                          f"- Lost: {defe[0]}hp", sep='\n')
+                          f"- Lost: {mobDefe[0]}hp", sep='\n')
 
                 if crit:
                     print(f"CRIT! Dealt: {attk[0]}hp",
                             f"Your Hp: {self.hp}/{maxHp}",
-                            f"Enemy Hp: {self.mobHp}/{maxMobHp}", 
+                            f"Enemy Hp: {mobHp}/{maxMobHp}", 
                             "+===========================+", 
                             sep='\n')
                     t.sleep(0.133)
                 else:
                     print(f"+ Dealt: {attk[0]}hp",
                             f"Your Hp: {self.hp}/{maxHp}",
-                            f"Enemy Hp: {self.mobHp}/{maxMobHp}", 
+                            f"Enemy Hp: {mobHp}/{maxMobHp}", 
                             "+===========================+", 
                             sep='\n')
                     t.sleep(0.133)
@@ -305,15 +307,15 @@ class main:
         print("You have defeated the Goblin!")
 
 
-        preinv = tool.counting_drop(tool.drops(1, self.mob), self.mob)
+        preinv = tool.counting_drop(tool.drops(1, mob), mob)
 
         self.insertingMobDrops(preinv)
-        tool.printingDrops(preinv, self.mob)
+        tool.printingDrops(preinv, mob)
 
 
 class starting_phase(main):
     def __init__(self):
-        super().__init__(mobHp=10, mobAttk="2 - 3", mobDefe=0, name='')
+        super().__init__(name='')
 
     def __repr__(self):
         return "Tutorial!"
@@ -321,8 +323,12 @@ class starting_phase(main):
     def start(self):
         crit = 0
 
+        mobHp = 10
+        mobAttk = "2 - 3"
+        mobDefe = 0
+
         print(
-            f"Encountered 'Goblin'! || Hp: {self.mobHp}, Attk: {self.mobAttk}, Def: {self.mobDefe}, Level: 1")
+            f"Encountered 'Goblin'! || Hp: {mobHp}, Attk: {mobAttk}, Def: {mobDefe}, Level: 1")
         print("Type attack to attack your opponent!")
 
         self.mob = "goblin"
@@ -388,9 +394,9 @@ if __name__ == "__main__":
 
     connection = sql.create_server_connection("localhost", "root", sql.pw)
     sql.create_db_connection("localhost", "root", sql.pw, "rpg_stats")
-    main.sqlParseQuery(connection)
+    #main.sqlParseQuery(connection)
 
-    main = main(0, 0, 0, "")
+    main = main("")
     tutorial = starting_phase()
 
     t.sleep(1)

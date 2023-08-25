@@ -196,19 +196,6 @@ def returnMob(hp: int, location: str) -> list:
         ["wolf", 7, 5, 7, 2, None]
         # plains [1][0 - ?]
     ]
-
-    def __wood_mobs(md: list, mob: str, hp: int, defe: int, attk: int) -> list: # im too lazy to finish this, do this later
-        match mob:
-            case "goblin":
-                for i in range(5):
-                    pass
-            
-            case "slime":
-                pass
-            case "wolf":
-                pass
-            case _:
-                raise Exception("wood mobs error")
     if hp > 50:
         _hp_multi = round(hp/20 * 0.5) # this is gonna make it wayyyyyy to high tho
         _def_multi = round(hp/20 * 0.5)
@@ -218,17 +205,39 @@ def returnMob(hp: int, location: str) -> list:
         _hp_multi = 1
         _def_multi = 1
         _attk_mul = 1
+
+    def __wood_mobs(md: list, mob: str, hp: int, defe: int, attk: int) -> list: 
+        match mob:
+            case "goblin":
+                for i in range(5):
+                    return [md[0][0], 
+                            md[0][1] + _hp_multi + _hp_multi * 0.5, 
+                            md[0][2] + _attk_mul + _attk_mul * 0.5,
+                            md[0][3] + _attk_mul + _attk_mul * 0.5,
+                            md[0][4] + _def_multi + _def_multi * 0.5]
+        
+            case "slime":
+                    return [md[1][0], 
+                            md[1][1] + _hp_multi + _hp_multi * 0.5, 
+                            md[1][2] + _attk_mul + _attk_mul * 0.5,
+                            md[1][3] + _attk_mul + _attk_mul * 0.5,
+                            md[1][4] + _def_multi + _def_multi * 0.5]
+            case "wolf":
+                pass
+            case _:
+                raise Exception("wood mobs error")  
     
     match location:
         case "woods":
             x = r.randint(0, 20)
-            if x > 10: # Returns Goblin
-                return [md[0][0], 
-                        md[0][1] + _hp_multi + _hp_multi * 0.5, 
-                        md[0][2] + _attk_mul + _attk_mul * 0.5,
-                        md[0][3] + _attk_mul + _attk_mul * 0.5,
-                        md[0][4] + _def_multi + _def_multi * 0.5]
-
+            if x > 12:
+                return __wood_mobs(md, md[0][0], _hp_multi, _def_multi, _attk_mul)
+            
+            if x > 8:
+                return __wood_mobs(md, md[1][0], _hp_multi, _def_multi, _attk_mul)
+            
+            if x > 4:
+                return __wood_mobs(md, md[2][0], _hp_multi, _def_multi, _attk_mul)
         case _:
             raise Exception("ERROR 1: MissType")
 

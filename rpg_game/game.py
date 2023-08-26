@@ -36,15 +36,16 @@ class main:
         cc_level = self.xp_sys[0]
 
         self.xp_sys[0] = 0
+        print(round(1.5 * (cc_level ** 1.15)))
 
-        if round(1.5(cc_level ** 1.15)) <= self.xp_sys[1]:
+        if round(1.5 * (cc_level ** 1.15)) <= self.xp_sys[1]:
             self.xp_sys[0] += 1
         
-        while self.xp_sys[2] > round(1.5(self.xp_sys[0] ** 1.15) + 10):
+        while self.xp_sys[2] > round(1.5 * (self.xp_sys[0] ** 1.15) + 10):
             self.xp_sys[0] += 1
                     
         if cc_level > self.xp_sys[0]:
-            print(f"Congrats! You gained {self.xp_sys[0]-cc_level}")
+            print(f"Congrats! You gained {self.xp_sys[0] - cc_level}")
             
     def naming(self) -> (str | None):
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
@@ -136,42 +137,46 @@ class main:
                     print("Please type in a allowed command", '\n')
                     continue
 
-    def attk_RNGESUS(self, input: str, defe: int) -> int: # maybe change that into cc_weap, add defense as arg
+    def attk_RNGESUS(self, input: str, defe: int) -> int: # this attacking is wayyy to low, round function test bc i think thats why
         dice = r.randint(1, 12)
         dice2 = dice
         counter = 1.0
         
         if dice2 >= 11:
-            return [round(self.weapDict.get(input) ** 1.3 - defe), 1, dice]
+            return [round(self.weapDict.get(input) ** 1.5 - defe) + 2, 1, dice]
         
         while dice2 >= 6:
-            counter += 0.045
+            counter += 0.0575
             if dice < 6:
-                return [round(self.weapDict.get(input) ** counter - defe), 0, dice]
+                print(round(self.weapDict.get(input) ** counter - defe) + 1, 0, dice)
+                print(self.weapDict.get(input) ** counter)
+                return [round(self.weapDict.get(input) ** counter - defe) + 1, 0, dice]
             dice2 -= 1
 
         while dice2 < 6:
-            counter += 0.0475
+            counter -= 0.05
             if dice2 < 6:
-                return [round(self.weapDict.get(input) - defe ** counter), 0, dice]
+                print(round(self.weapDict.get(input) ** counter - defe) - 1, 0, dice)
+                print(self.weapDict.get(input) ** counter)
+                return [round(self.weapDict.get(input) ** counter - defe) - 1, 0, dice]
             dice2 += 1
 
     def defe_RNGESUS(self, attk: int, dice: int) -> int:
         counter = 1.0
         
         if dice >= 11:
-            return [round(attk ** 0.8 - self.defe)]
+            return [round((attk ** 0.6) - (self.defe + 2))]
         
         while dice >= 6:
-            counter -= 0.035
+            counter -= 0.0325
             if dice >= 6:
-                return [round(attk - self.defe ** counter)]
+                return [round((attk ** counter) - (1 + self.defe))]
             dice -= 1
 
         while dice < 6:
-            counter -= 0.040
+            counter += 0.03
             if dice < 6:
-                return [round(attk ** counter - self.defe)]
+                return [round((attk ** counter) - (self.defe - 1))]
             dice += 1
 
     def selectWeapon(self) -> None:
@@ -187,8 +192,8 @@ class main:
                         print("____________________________")
                         break
 
-    def insertingMobDrops(self, preinv: list) -> None:
-        if self.mob == "goblin": # match case
+    def insertingMobDrops(self, preinv: list, mob: str) -> None:
+        if mob == "goblin": # match case
             for i in range(len(preinv)):
 
                 match i:
@@ -249,7 +254,7 @@ class main:
         mobDefe = mob_list[4]
             
         print(
-            f"Encountered '{mob}'! || Hp: {mobHp}, Attk: {mobAttk[0]}-{mobAttk[1]}, Def: {mobDefe}")
+            f"Encountered '{mob}'! || Hp: {mobHp}, Attk: {mobAttk[0]} - {mobAttk[1]}, Def: {mobDefe}")
         print("Type attack to attack your opponent!")
 
         maxHp = self.hp
@@ -320,10 +325,10 @@ class starting_phase(main):
 
         __mobHp = 10
         mobAttk = "2 - 3"
-        mobDefe = 0
+        __mobDefe = 0
 
         print(
-            f"Encountered 'Goblin'! || Hp: {__mobHp}, Attk: {mobAttk}, Def: {mobDefe}, Level: 1")
+            f"Encountered 'Goblin'! || Hp: {__mobHp}, Attk: {mobAttk}, Def: {__mobDefe}, Level: 1")
         print("Type attack to attack your opponent!")
 
         self.mob = "goblin"
@@ -334,7 +339,7 @@ class starting_phase(main):
             self.input = input('> ').lower()
             if self.input in ["attack", "atk", "attk", "q"]:
 
-                __attk = super().attk_RNGESUS("fist")
+                __attk = super().attk_RNGESUS("fist", __mobDefe)
                 __defe = super().defe_RNGESUS(r.randint(2, 3), __attk[2])
 
 
@@ -379,8 +384,8 @@ class starting_phase(main):
 
         preinv = tool.counting_drop(tool.drops(1, self.mob), self.mob)
 
-        super().insertingMobDrops(preinv)
-        print("+=====================+",
+        super().insertingMobDrops(preinv, "goblin")
+        print("+=====================+", # this formatting is completely wrong
               "You gained 4 xp!",
               "+=====================+")
         tool.printingDrops(preinv, self.mob)

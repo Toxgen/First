@@ -47,7 +47,7 @@ class main:
         if cc_level > self.xp_sys[0]:
             print(f"Congrats! You gained {self.xp_sys[0] - cc_level}")
             
-    def naming(self) -> (str | None):
+    def naming(self) -> (str | None): # might want to add .strip() to remove shitespace?
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
         c = None
 

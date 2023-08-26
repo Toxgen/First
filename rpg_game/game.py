@@ -9,7 +9,6 @@ import sql_data as sql
 Tutorial has to return something
 PLEASE SQL WORK
 """
-
 class main:
 
     weapDict = {"fist": 2}
@@ -47,7 +46,7 @@ class main:
         if cc_level > self.xp_sys[0]:
             print(f"Congrats! You gained {self.xp_sys[0]-cc_level}")
             
-    def naming(self) -> (str | None): # add something if it returns none for renaming
+    def naming(self) -> (str | None):
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
         c = None
 

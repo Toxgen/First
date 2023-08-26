@@ -59,18 +59,8 @@ if __name__ == "__main__":
     connection = create_server_connection(host_name="localhost", 
                                      user_name="root", 
                                      user_password=pw)
-    #execute = input(">> ").lower()
-    #if execute in ["y", "yes"]:
-    #    create_database(connection=connection, 
-    #                    query="""CREATE DATABASE stats""")
     
     connection = create_db_connection(host_name="localhost",
                          user_name="root", 
                          user_password=pw,
                          db_name="rpg_stats")
-
-    #execute = input(">> ").lower()
-    #if execute in ["y", "yes"]:
-    #    execute_query(connection=connection, query="""CREATE TABLE stats (
-    #                client_id INT PRIMARY KEY
-    #                );""") 

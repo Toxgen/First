@@ -5,8 +5,11 @@ import tools as tool
 
 import sql_data as sql
 
+"""
+Tutorial has to return something
+PLEASE SQL WORK
+"""
 
-# (int | None) try this
 class main:
 
     weapDict = {"fist": 2}
@@ -15,7 +18,6 @@ class main:
     @staticmethod
     def sqlParseQuery(connection):
         sql.execute_query(connection=connection, query="""
-                          USE rpg_stats;
                           SELECT * FROM stats;
                           SELECT id FROM stats WHERE id > 3 LIMIT 4;
                           SELECT FOUND_ROWS();""")
@@ -31,7 +33,7 @@ class main:
         self.inv = {}
         self.location = "woods"
 
-    def xp(self):
+    def xp(self) -> None:
         cc_level = self.xp_sys[0]
 
         self.xp_sys[0] = 0
@@ -39,11 +41,8 @@ class main:
         if round(1.5(cc_level ** 1.15)) <= self.xp_sys[1]:
             self.xp_sys[0] += 1
         
-        while True:
-            if self.xp_sys[2] > round(1.5(self.xp_sys[0] ** 1.15) + 10):
-                self.xp_sys[0] += 1
-            else:
-                break
+        while self.xp_sys[2] > round(1.5(self.xp_sys[0] ** 1.15) + 10):
+            self.xp_sys[0] += 1
                     
         if cc_level > self.xp_sys[0]:
             print(f"Congrats! You gained {self.xp_sys[0]-cc_level}")
@@ -100,7 +99,7 @@ class main:
                     print("Name?", sep='\n')
                     break
                 else:
-                    print("Type in either { yes } or { no")
+                    print("Type in either { yes } or { no }")
                     continue
 
     def help_ccmd(self) -> None:
@@ -138,42 +137,42 @@ class main:
                     print("Please type in a allowed command", '\n')
                     continue
 
-    def attk_RNGESUS(self, input: str) -> int:
+    def attk_RNGESUS(self, input: str, defe: int) -> int: # maybe change that into cc_weap, add defense as arg
         dice = r.randint(1, 12)
         dice2 = dice
         counter = 1.0
         
         if dice2 >= 11:
-            return [int(self.weapDict.get(input) ** 1.3 - self.mobDefe), 1, dice]
+            return [round(self.weapDict.get(input) ** 1.3 - defe), 1, dice]
         
         while dice2 >= 6:
             counter += 0.045
             if dice < 6:
-                return [int(self.weapDict.get(input) ** counter - self.mobDefe), 0, dice]
+                return [round(self.weapDict.get(input) ** counter - defe), 0, dice]
             dice2 -= 1
 
         while dice2 < 6:
             counter += 0.0475
             if dice2 < 6:
-                return [int(self.weapDict.get(input) - self.mobDefe ** counter), 0, dice]
+                return [round(self.weapDict.get(input) - defe ** counter), 0, dice]
             dice2 += 1
 
     def defe_RNGESUS(self, attk: int, dice: int) -> int:
         counter = 1.0
         
         if dice >= 11:
-            return [int(attk ** 0.8 - self.defe)]
+            return [round(attk ** 0.8 - self.defe)]
         
         while dice >= 6:
             counter -= 0.035
             if dice >= 6:
-                return [int(attk - self.defe ** counter)]
+                return [round(attk - self.defe ** counter)]
             dice -= 1
 
         while dice < 6:
             counter -= 0.040
             if dice < 6:
-                return [int(attk ** counter - self.defe)]
+                return [round(attk ** counter - self.defe)]
             dice += 1
 
     def selectWeapon(self) -> None:
@@ -251,7 +250,7 @@ class main:
         mobDefe = mob_list[4]
             
         print(
-            f"Encountered '{mob}'! || Hp: {mobHp}, Attk: {mobAttk}, Def: {mobDefe}")
+            f"Encountered '{mob}'! || Hp: {mobHp}, Attk: {mobAttk[0]}-{mobAttk[1]}, Def: {mobDefe}")
         print("Type attack to attack your opponent!")
 
         maxHp = self.hp
@@ -261,7 +260,7 @@ class main:
             self.input = input('> ').lower()
             if self.input in ["attack", "atk", "attk", "q"]:
 
-                attk = self.attk_RNGESUS(self.ccWeap)
+                attk = self.attk_RNGESUS(self.ccWeap, mobDefe)
                 mobDefe = self.defe_RNGESUS(mobAttk, mobAttk[2])
 
                 if len(attk) == 2:
@@ -317,20 +316,20 @@ class starting_phase(main):
     def __repr__(self):
         return "Tutorial!"
 
-    def start(self):
+    def start(self) -> list:
         crit = 0
 
-        mobHp = 10
+        __mobHp = 10
         mobAttk = "2 - 3"
         mobDefe = 0
 
         print(
-            f"Encountered 'Goblin'! || Hp: {mobHp}, Attk: {mobAttk}, Def: {mobDefe}, Level: 1")
+            f"Encountered 'Goblin'! || Hp: {__mobHp}, Attk: {mobAttk}, Def: {mobDefe}, Level: 1")
         print("Type attack to attack your opponent!")
 
         self.mob = "goblin"
         maxHp = self.hp
-        maxMobHp = self.mobHp
+        maxMobHp = __mobHp
 
         while True:
             self.input = input('> ').lower()
@@ -341,17 +340,17 @@ class starting_phase(main):
 
 
                 if len(__attk) == 2:
-                    self.mobHp -= __attk[0]
+                    __mobHp -= __attk[0]
                     crit = __attk[1]
                 else:
-                    self.mobHp -= __attk[0]
+                    __mobHp -= __attk[0]
                     
                 self.hp -= __defe[0]
 
                 if self.hp <= 0:
                     quit("ERROR 1: Died unexpected")
 
-                if self.mobHp <= 0:
+                if __mobHp <= 0:
                     break
 
                 else:
@@ -362,14 +361,14 @@ class starting_phase(main):
                 if crit:
                     print(f"CRIT! Dealt: {__attk[0]}hp",
                             f"Your Hp: {self.hp}/{maxHp}",
-                            f"Enemy Hp: {self.mobHp}/{maxMobHp}", 
+                            f"Enemy Hp: {__mobHp}/{maxMobHp}", 
                             "+===========================+", 
                             sep='\n')
                     t.sleep(0.133)
                 else:
                     print(f"+ Dealt: {__attk[0]}hp",
                             f"Your Hp: {self.hp}/{maxHp}",
-                            f"Enemy Hp: {self.mobHp}/{maxMobHp}", 
+                            f"Enemy Hp: {__mobHp}/{maxMobHp}", 
                             "+===========================+", 
                             sep='\n')
                     t.sleep(0.133)
@@ -386,6 +385,8 @@ class starting_phase(main):
               "You gained 4 xp!",
               "+=====================+")
         tool.printingDrops(preinv, self.mob)
+
+        return [self.hp, preinv]
 
 if __name__ == "__main__":
 

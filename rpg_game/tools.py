@@ -57,10 +57,6 @@ def drops(level: int, mob: str) -> list:
 
         case _:
             raise Exception("1st: Oh NAHHHHHHHHHHHHHHHHH")
-
-            
-            
-
 def counting_drop(list: list, mob: str):
     """
     count em
@@ -81,8 +77,7 @@ def counting_drop(list: list, mob: str):
             return [g_hide, g_leg, g_sword, g_staff]
     
         case _:
-            raise Exception("Error: This shouldn't happen, p.s. check mob arg")
-        
+            raise Exception("Error: This shouldn't happen, p.s. check mob arg")      
 def printingDrops(preinv: list, mob: str):
     """
     print em drops
@@ -145,8 +140,7 @@ def printingDrops(preinv: list, mob: str):
                                 t.sleep(0.33)
             
         case _:
-            raise Exception("Error: This shouldn't happen, p.s. check mob arg")
-        
+            raise Exception("Error: This shouldn't happen, p.s. check mob arg")        
 def printingInv(inv: dict) -> None:
     """
     print inventory
@@ -159,7 +153,7 @@ def printingInv(inv: dict) -> None:
     __quit = False
 
     print("+======|inv|======+")
-    for _i, (key, value) in enumerate(inv.items()):
+    for _i, (key, value) in enumerate(inv.items()): 
         print(f'+ {value} x {key}')
 
         t.sleep(0.05)
@@ -167,7 +161,8 @@ def printingInv(inv: dict) -> None:
         if _i % 8 == 0 and _i > 1:
             print("+=================+")
 
-            while True:
+            while True: # probably gotta fix this because if they have a lot of items, then this would just bug out
+                # probably do something like i % 8 = 0: blah blah blah
                 check = input("Continue? ").lower()
                 if check in ["yes", "ye", "y", "continue", "cont"]:
                     print("+=================+")
@@ -185,11 +180,10 @@ def printingInv(inv: dict) -> None:
                 print(f"+ {value[_i]} x {key[_i]}")
                 
     print("+=================+")
-
 def returnMob(hp: int, location: str) -> list:
     import random as r
     from random import randint
-    md = [ # shortened to md cause its too hard to write so much mob_data
+    md = [ 
         # woods [0][0 - 2]
         ["goblin", 8, 2, 3, 1, None],
         ["slime", 12, 3, 4, 3, None],
@@ -197,7 +191,7 @@ def returnMob(hp: int, location: str) -> list:
         # plains [1][0 - ?]
     ]
     if hp > 50:
-        _hp_multi = round(hp/20 * 0.5) # this is gonna make it wayyyyyy to high tho
+        _hp_multi = round(hp/20 * 0.5) 
         _def_multi = round(hp/20 * 0.5)
         _attk_mul = round(hp/30 * 0.25)
     
@@ -223,7 +217,8 @@ def returnMob(hp: int, location: str) -> list:
                             md[1][3] + _attk_mul + _attk_mul * 0.5,
                             md[1][4] + _def_multi + _def_multi * 0.5]
             case "wolf":
-                pass
+                pass # work on this later
+
             case _:
                 raise Exception("wood mobs error")  
     
@@ -240,8 +235,6 @@ def returnMob(hp: int, location: str) -> list:
                 return __wood_mobs(md, md[2][0], _hp_multi, _def_multi, _attk_mul)
         case _:
             raise Exception("ERROR 1: MissType")
-
-    
 
 if __name__ == '__main__':
     pass

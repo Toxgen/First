@@ -47,7 +47,7 @@ class main:
         if cc_level > self.xp_sys[0]:
             print(f"Congrats! You gained {self.xp_sys[0] - cc_level}")
             
-    def naming(self) -> (str | None):
+    def naming(self) -> (str | None): # might want to add .strip() to remove shitespace?
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
         c = None
 
@@ -69,7 +69,7 @@ class main:
         print("Name?", "p.s. 1 - 12 characters long & no special characters", sep='\n')
 
         while True:
-            self.name = input('> ')
+            self.name = input('> ').strip()
             if len(self.name) <= 0:
                 print("Retry", '\n')
                 continue
@@ -265,7 +265,7 @@ class main:
             if self.input in ["attack", "atk", "attk", "q"]:
 
                 attk = self.attk_RNGESUS(self.ccWeap, mobDefe)
-                mobDefe = self.defe_RNGESUS(mobAttk, mobAttk[2])
+                mobDefe = self.defe_RNGESUS(r.randint(mobAttk[0], mobAttk[1]), attk[2])
 
                 if len(attk) == 2:
                     mobHp -= attk[0]
@@ -385,9 +385,9 @@ class starting_phase(main):
         preinv = tool.counting_drop(tool.drops(1, self.mob), self.mob)
 
         super().insertingMobDrops(preinv, "goblin")
-        print("+=====================+", # this formatting is completely wrong
+        print("+=====================+",
               "You gained 4 xp!",
-              "+=====================+")
+              "+=====================+", sep="\n")
         tool.printingDrops(preinv, self.mob)
 
         return [self.hp, preinv]

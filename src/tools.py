@@ -1,6 +1,6 @@
 class gameInfo:
     pass # might want to just make a place to store all the info in herer
-# did this actually workw[.pfo,murheuefuxreuk9ioierk9rif]
+
 def drops(level: int, mob: str) -> list:
     """
     very complicated drops

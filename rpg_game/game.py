@@ -143,18 +143,18 @@ class main:
         counter = 1.0
         
         if dice2 >= 11:
-            return [round(self.weapDict.get(input) ** 1.75 - defe) + 2, 1, dice]
+            return [round(self.weapDict.get(input) ** 1.75 - defe) + 2, True, dice]
         
         while dice2 >= 6:
             counter += 0.1
             if dice2 == 6:
-                return [round(self.weapDict.get(input) ** counter - defe) + 1, 0, dice]
+                return [round(self.weapDict.get(input) ** counter - defe) + 1, False, dice]
             dice2 -= 1
 
         while dice2 <= 6:
             counter -= 0.1
             if dice2 == 6: # maybe add something if only it was lower than >2 or >3
-                return [round(self.weapDict.get(input) ** counter - defe) - 1, 0, dice]
+                return [round(self.weapDict.get(input) ** counter - defe) - 1, False, dice]
             dice2 += 1
 
     def defe_RNGESUS(self, attk: int, dice: int) -> int:
@@ -243,7 +243,6 @@ class main:
                         raise Exception("oh no")
                     
     def main_attack(self) -> None:
-        crit = None
         mob_list = tool.returnMob(self.hp, "woods") # Woods for now, but implement a system later
 
         mob = mob_list[0]
@@ -265,12 +264,7 @@ class main:
                 attk = self.attk_RNGESUS(self.ccWeap, mobDefe)
                 mobDefe = self.defe_RNGESUS(r.randint(mobAttk[0], mobAttk[1]), attk[2])
 
-                if len(attk) == 2:
-                    mobHp -= attk[0]
-                    crit = attk[1]
-                else:
-                    mobHp -= attk[0]
-
+                mobHp -= attk[0]
                 self.hp -= mobDefe[0]
 
                 if self.hp <= 0:
@@ -284,7 +278,7 @@ class main:
                           f"% Rolled: {attk[2]}",
                           f"- Lost: {mobDefe[0]}hp", sep='\n')
 
-                if crit:
+                if attk[1]:
                     print(f"CRIT! Dealt: {attk[0]}hp",
                             f"Your Hp: {self.hp}/{maxHp}",
                             f"Enemy Hp: {mobHp}/{maxMobHp}", 
@@ -302,7 +296,7 @@ class main:
                 print("Please type in attack", '\n')
                 continue
 
-        print("You have defeated the Goblin!") # akso gotta change this cause u dont always be defeating goblins
+        print(f"You have defeated the {mob}!") # akso gotta change this cause u dont always be defeating goblins
 
 
         preinv = tool.counting_drop(tool.drops(1, mob), mob)
@@ -341,12 +335,7 @@ class starting_phase(main):
                 __defe = super().defe_RNGESUS(r.randint(2, 3), __attk[2])
 
 
-                if len(__attk) == 2:
-                    __mobHp -= __attk[0]
-                    crit = __attk[1]
-                else:
-                    __mobHp -= __attk[0]
-                    
+                __mobHp -= __attk[0]      
                 self.hp -= __defe[0]
 
                 if self.hp <= 0:
@@ -360,7 +349,7 @@ class starting_phase(main):
                           f"% Rolled: {__attk[2]}",
                           f"- Lost: {__defe[0]}hp", sep='\n')
 
-                if crit:
+                if __attk[1]:
                     print(f"CRIT! Dealt: {__attk[0]}hp",
                             f"Your Hp: {self.hp}/{maxHp}",
                             f"Enemy Hp: {__mobHp}/{maxMobHp}", 

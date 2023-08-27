@@ -47,7 +47,7 @@ class main:
         if cc_level > self.xp_sys[0]:
             print(f"Congrats! You gained {self.xp_sys[0] - cc_level}")
             
-    def naming(self) -> (str | None): # might want to add .strip() to remove shitespace?
+    def naming(self) -> (str | None):
         special_chara = "~!@#$%^&*()_+`{|}[]\:;<,>.?/*-'="
         c = None
 
@@ -137,27 +137,23 @@ class main:
                     print("Please type in a allowed command", '\n')
                     continue
 
-    def attk_RNGESUS(self, input: str, defe: int) -> int: # this attacking is wayyy to low, round function test bc i think thats why
+    def attk_RNGESUS(self, input: str, defe: int) -> int:
         dice = r.randint(1, 12)
         dice2 = dice
         counter = 1.0
         
         if dice2 >= 11:
-            return [round(self.weapDict.get(input) ** 1.5 - defe) + 2, 1, dice]
+            return [round(self.weapDict.get(input) ** 1.75 - defe) + 2, 1, dice]
         
         while dice2 >= 6:
-            counter += 0.0575
-            if dice < 6:
-                print(round(self.weapDict.get(input) ** counter - defe) + 1, 0, dice)
-                print(self.weapDict.get(input) ** counter)
+            counter += 0.1
+            if dice2 == 6:
                 return [round(self.weapDict.get(input) ** counter - defe) + 1, 0, dice]
             dice2 -= 1
 
-        while dice2 < 6:
-            counter -= 0.05
-            if dice2 < 6:
-                print(round(self.weapDict.get(input) ** counter - defe) - 1, 0, dice)
-                print(self.weapDict.get(input) ** counter)
+        while dice2 <= 6:
+            counter -= 0.1
+            if dice2 == 6: # maybe add something if only it was lower than >2 or >3
                 return [round(self.weapDict.get(input) ** counter - defe) - 1, 0, dice]
             dice2 += 1
 
@@ -180,11 +176,12 @@ class main:
             dice += 1
 
     def selectWeapon(self) -> None:
-        possibleWeapList = ["fist", "goblin_sword"]
+        possibleWeapList = ["fist", "goblin_sword"] # maybe just throw this into a database or something to that 
+        # extent with other varibles similar to this, for organization
         sel_wep = list(self.weapDict.keys())
         for xy in self.weapDict:
             for y in possibleWeapList:
-                if sel_wep[xy] == possibleWeapList[y]: # Change the weapDict keys into a seperate list of keys
+                if sel_wep[xy] == possibleWeapList[y]:
                     if xy == 0:
                         print("____________________________", '\n')
                     print(f"{sel_wep[xy]}")
@@ -192,7 +189,8 @@ class main:
                         print("____________________________")
                         break
 
-    def insertingMobDrops(self, preinv: list, mob: str) -> None:
+    def insertingMobDrops(self, preinv: list, mob: str) -> None: # how would you transform this into the tools.py bc this takes a space
+        # possibly search up a function that gets what it returns and then adds it on this main class
         if mob == "goblin": # match case
             for i in range(len(preinv)):
 
@@ -304,7 +302,7 @@ class main:
                 print("Please type in attack", '\n')
                 continue
 
-        print("You have defeated the Goblin!")
+        print("You have defeated the Goblin!") # akso gotta change this cause u dont always be defeating goblins
 
 
         preinv = tool.counting_drop(tool.drops(1, mob), mob)

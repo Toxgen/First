@@ -1,4 +1,5 @@
-
+class gameInfo:
+    pass # might want to just make a place to store all the info in herer
 def drops(level: int, mob: str) -> list:
     """
     very complicated drops

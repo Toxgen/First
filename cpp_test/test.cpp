@@ -18,7 +18,7 @@ int main()
     cin >> y;
 
     cout << "add, subtract, multiply, or divide? \n";
-    while (int i = 0) {
+    while (true) {
 
         cin >> foo;
         if (foo == "multiply") {

@@ -1,17 +1,53 @@
 #include <iostream>
 #include <math.h>
 #include <stdio.h>
+#include <vector>
+#include <string>
 
 using namespace std;
-using cap = int;
-using zdog = long long int;
 
-cap main() 
+int main()
 {
-    zdog wow = pow(62, 60) - 1;
-    printf("woow, %d \n", wow);
-    zdog foo = 2;
+    float x, y;
+    string foo;
 
-    printf("is this gonna work, %d", wow * foo);
-    return 0;
+    cout << "type in first num \n";
+    cin >> x;
+
+    cout << "type in second num \n";
+    cin >> y;
+
+    cout << "add, subtract, multiply, or divide? \n";
+    while (int i = 0) {
+
+        cin >> foo;
+        if (foo == "multiply") {
+            
+        }
+    }
+
+}
+
+float multiply(float x, float y)
+{
+    return x * y;
+}
+
+float addition(float x, float y)
+{
+    return x + y;
+}
+
+float subtraction(float x, float y)
+{
+    return x - y;
+}
+
+float division(float x, float y)
+{
+    if (x && y == 0) {
+        return -1;
+    } else {
+        return x / y;
+    }
 }

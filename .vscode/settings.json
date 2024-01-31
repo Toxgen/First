@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        ".replit": "toml",
+        "*.tsx": "xml",
+        "vector": "cpp"
+    }
+}

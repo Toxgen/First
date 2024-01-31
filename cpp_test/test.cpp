@@ -8,46 +8,30 @@ using namespace std;
 
 int main()
 {
-    float x, y;
-    string foo;
+    string pizza = "pizza";
+    string* food = &pizza;
+    string favfood;
+    int favnum;
 
-    cout << "type in first num \n";
-    cin >> x;
+    cout << pizza << food << *food << "\n"; 
 
-    cout << "type in second num \n";
-    cin >> y;
+    *food = "macs";
 
-    cout << "add, subtract, multiply, or divide? \n";
-    while (int i = 0) {
+    cout << pizza << food << *food;
 
-        cin >> foo;
-        if (foo == "multiply") {
-            
+    cout << "\nwhat is your fav food: ";
+    cin >> favfood;
+
+    cout << "\nyour fav food is " << favfood;
+
+    while (true) {
+        cout << "\nthink of a number between 1 - 10";
+        cin >> favnum;
+        if (0 < favnum < 11) {
+            break;
+        } else {
+            continue;
         }
-    }
-
-}
-
-float multiply(float x, float y)
-{
-    return x * y;
-}
-
-float addition(float x, float y)
-{
-    return x + y;
-}
-
-float subtraction(float x, float y)
-{
-    return x - y;
-}
-
-float division(float x, float y)
-{
-    if (x && y == 0) {
-        return -1;
-    } else {
-        return x / y;
+        
     }
 }

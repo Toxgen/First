@@ -21,8 +21,10 @@ float multiply(int x, int y)
 
 float division(int x, int y) 
 {
-    float z;
-    return z = (x != 0 && y != 0) ? x / y : -1.01;
+    if (x == 0 && y == 0) {
+        throw runtime_error("blud is dividing by 0\n'");
+    }
+    return x / y;
 }
 
 int main()
@@ -68,14 +70,7 @@ int main()
         } else if (user == "/") {
             stupid = division(num1, num2);
 
-            cout << '\n' << stupid << '\n';
-
-            if (abs(stupid - (-1.01)) > 0.0001) {
-                cout << "your number is: " << stupid;
-
-            } else {
-                cout << "your number is: 0";
-            }
+            cout << "your number is: " << stupid;
 
         } else {
             return -1;
